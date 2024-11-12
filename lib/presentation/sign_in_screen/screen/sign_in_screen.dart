@@ -26,8 +26,15 @@ class SignInScreen extends StatelessWidget {
       body: Stack(
         children: [
           const BackgroundEffect(),
-          CommonNetworkImageView(
-            url: ImageConstants.bgImage,
+          Center(
+            child: Opacity(
+              opacity: 0.8,
+              child: CommonNetworkImageView(
+                url: ImageConstants.bgImage,
+                height: scale.fh  * 0.96,
+                width: scale.fw  * 0.96,
+              ),
+            ),
           ),
           SingleChildScrollView(
             child: Padding(
