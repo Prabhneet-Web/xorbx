@@ -10,4 +10,5 @@ class ColorConstant {
   static const color7 = Color(0xFFF36F1C);
   static const color8 = Color(0xFF24931E);
   static const color9 = Color(0xFFC73D3D);
+  static const buttonBorder = Color(0xFFD8D8D8);
 }
