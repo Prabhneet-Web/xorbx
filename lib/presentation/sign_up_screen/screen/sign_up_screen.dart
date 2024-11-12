@@ -16,21 +16,20 @@ class SignUpScreen extends StatelessWidget {
   final SignUpController controller = Get.find();
 
   SignUpScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     var scale = Get.find<ScalingUtility>()..setCurrentDeviceSize(context);
     return Scaffold(
-      backgroundColor: ColorConstant.color1,
-      body: Stack(
-        children: [
-          const BackgroundEffect(),
+        backgroundColor: ColorConstant.color1,
+        body: BackgroundEffect(dynamicChildren: [
           Center(
             child: Opacity(
               opacity: 0.8,
               child: CommonNetworkImageView(
                 url: ImageConstants.bgImage,
-                height: scale.fh  * 0.96,
-                width: scale.fw  * 0.96,
+                height: scale.fh * 0.96,
+                width: scale.fw * 0.96,
               ),
             ),
           ),
@@ -316,8 +315,6 @@ class SignUpScreen extends StatelessWidget {
               ),
             ),
           ),
-        ],
-      ),
-    );
+        ]));
   }
 }

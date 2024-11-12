@@ -4,7 +4,8 @@ import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/constants/color_constants.dart';
 
 class BackgroundEffect extends StatelessWidget {
-  const BackgroundEffect({super.key});
+  final List<Widget> dynamicChildren;
+  const BackgroundEffect({super.key, required this.dynamicChildren});
 
   @override
   Widget build(BuildContext context) {
@@ -62,6 +63,7 @@ class BackgroundEffect extends StatelessWidget {
             ),
           ),
         ),
+        ...dynamicChildren
       ],
     );
   }

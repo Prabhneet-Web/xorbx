@@ -16,10 +16,8 @@ class DashboardScreen extends GetWidget<DashboardController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorConstant.color1,
-      body: Stack(
-        children: [
-          const BackgroundEffect(),
+        backgroundColor: ColorConstant.color1,
+        body: BackgroundEffect(dynamicChildren: [
           SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
@@ -62,9 +60,7 @@ class DashboardScreen extends GetWidget<DashboardController> {
               ),
             ),
           ),
-        ],
-      ),
-    );
+        ]));
   }
 
   Widget _buildThreatDetectionCard() {
