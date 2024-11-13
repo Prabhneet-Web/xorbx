@@ -21,7 +21,7 @@ class AppRoutes {
   static const verificationScreen = '/verification_screen';
   static const dashboardScreen = '/dashboard_screen';
   static const sidebarScreen = '/sidebar_screen';
-  static const subDashboardScreen = '/sub_dashboard_screen';
+  static const realTimeThreadDetectionScreen = '/sub_dashboard_screen';
 
   static List<GetPage> pages = [
     GetPage(
@@ -50,7 +50,7 @@ class AppRoutes {
       bindings: [DashboardBinding()],
     ),
     GetPage(
-      name: subDashboardScreen,
+      name: realTimeThreadDetectionScreen,
       page: () => RealTimeThreatDetectionScreen(),
       bindings: [RealTimeThreatDetectionBinding()],
     ),

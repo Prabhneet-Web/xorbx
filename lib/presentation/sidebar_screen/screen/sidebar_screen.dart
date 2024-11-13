@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/constants/color_constants.dart';
 import 'package:xorbx/constants/image_constants.dart';
 import 'package:xorbx/utils/scaling_utility.dart';
@@ -29,7 +28,15 @@ class SidebarScreen extends GetWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      const Icon(Icons.close, color: Colors.white),
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(
+                          Icons.close,
+                          color: Colors.white,
+                        ),
+                      ),
                       SizedBox(width: scale.getScaledHeight(10)),
                     ],
                   ),
@@ -142,6 +149,7 @@ class SidebarScreen extends GetWidget {
                           items: const [],
                           scale: scale,
                         ),
+                        SizedBox(height: scale.getScaledHeight(120)),
                       ],
                     ),
                   ),

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:xorbx/constants/color_constants.dart';
 import 'package:xorbx/widgets/inner_shadow_painter.dart';
 
-class ShadowBorderCards extends StatelessWidget {
-  Widget child;
-  ShadowBorderCards({
+class ShadowBorderCard extends StatelessWidget {
+  final Widget? content;
+  const ShadowBorderCard({
     super.key,
-    required this.child,
+    this.content,
   });
 
   @override
@@ -16,7 +16,7 @@ class ShadowBorderCards extends StatelessWidget {
       child: Container(
         decoration: _cardDecoration(),
         padding: const EdgeInsets.all(16),
-        child: child,
+        child: content,
       ),
     );
   }

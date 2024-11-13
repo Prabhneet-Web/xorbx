@@ -11,7 +11,7 @@ import 'package:xorbx/utils/scaling_utility.dart';
 import 'package:xorbx/presentation/sub_dashboard_screen/real_time_threat_detection/controller/real_time_threat_detection_controller.dart';
 import 'package:xorbx/widgets/inner_shadow_painter.dart';
 
-class RealTimeThreatDetectionScreen extends StatelessWidget {
+class RealTimeThreatDetectionScreen extends GetWidget {
   final RealTimeThreadDetectionController controller =
       Get.put(RealTimeThreadDetectionController());
 

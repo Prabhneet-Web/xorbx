@@ -1,71 +1,62 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:get/get.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:xorbx/constants/color_constants.dart';
+import 'package:xorbx/utils/scaling_utility.dart';
 
 class HeatMap extends StatelessWidget {
   const HeatMap({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 4, 10, 12),
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.black26,
-            blurRadius: 8,
-            offset: Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Stack(
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 130, // Adjust the height of the map as needed
-                child: FlutterMap(
-                  options: const MapOptions(
-                    backgroundColor: ColorConstant.color1,
-                    initialCenter: LatLng(40.0, 48.0),
-                    initialZoom: 1.5,
-                  ),
-                  children: [
-                    TileLayer(
-                      urlTemplate:
-                          'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                      subdomains: const ['a', 'b', 'c'],
-                      tileDisplay: TileDisplay.instantaneous(),
-                    ),
-                    MarkerLayer(
-                      markers: _buildVulnerabilityMarkers(),
-                    ),
-                  ],
+    var scale = Get.find<ScalingUtility>()..setCurrentDeviceSize(context);
+    return Stack(
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: scale.getScaledHeight(
+                  130), // Adjust the height of the map as needed
+              child: FlutterMap(
+                options: const MapOptions(
+                  backgroundColor: ColorConstant.color1,
+                  initialCenter: LatLng(40.0, 48.0),
+                  initialZoom: 1.5,
                 ),
-              ),
-            ],
-          ),
-          const Positioned(
-            left: 8,
-            bottom: 8,
-            child: Text(
-              'Threats\nDetected: 12',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 11,
-                fontWeight: FontWeight.bold,
+                children: [
+                  TileLayer(
+                    urlTemplate:
+                        'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                    subdomains: const ['a', 'b', 'c'],
+                    tileDisplay: TileDisplay.instantaneous(),
+                  ),
+                  MarkerLayer(
+                    markers: _buildVulnerabilityMarkers(scale),
+                  ),
+                ],
               ),
             ),
+          ],
+        ),
+        Positioned(
+          left: scale.getScaledHeight(8),
+          bottom: scale.getScaledHeight(8),
+          child: Text(
+            'Threats\nDetected: 12',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: scale.getScaledHeight(11),
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
-  List<Marker> _buildVulnerabilityMarkers() {
+  List<Marker> _buildVulnerabilityMarkers(ScalingUtility scale) {
     // Sample data: list of vulnerability locations with respective colors
     final locations = [
       {'lat': 40.7128, 'lon': -74.0060, 'color': Colors.red}, // New York
@@ -88,8 +79,8 @@ class HeatMap extends StatelessWidget {
     // Map the locations into Marker widgets
     return locations.map((location) {
       return Marker(
-        width: 10,
-        height: 10,
+        width: scale.getScaledHeight(10),
+        height: scale.getScaledHeight(10),
         point: LatLng(location['lat'] as double, location['lon'] as double),
         child: Container(
           decoration: BoxDecoration(
