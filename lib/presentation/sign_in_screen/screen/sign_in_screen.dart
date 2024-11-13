@@ -43,8 +43,8 @@ class SignInScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(height: scale.getScaledHeight(100)),
-                  Image.asset(
-                    ImageConstants.xorbx,
+                  CommonNetworkImageView(
+                    url: ImageConstants.xorbx,
                     height: scale.getScaledHeight(40),
                     width: scale.getScaledHeight(82),
                   ),

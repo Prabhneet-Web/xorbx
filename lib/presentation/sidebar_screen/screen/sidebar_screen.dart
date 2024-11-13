@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/constants/color_constants.dart';
+import 'package:xorbx/constants/image_constants.dart';
 import 'package:xorbx/utils/scaling_utility.dart';
 import 'package:xorbx/widgets/background_effect.dart';
+import 'package:xorbx/widgets/common_network_image.dart';
+import 'package:xorbx/widgets/drop_down_options.dart';
 
 class SidebarScreen extends GetWidget {
   const SidebarScreen({super.key});
@@ -18,42 +21,42 @@ class SidebarScreen extends GetWidget {
           SafeArea(
             child: Padding(
               padding:
-                  EdgeInsets.symmetric(horizontal: scale.getScaledHeight(16)),
+                  EdgeInsets.symmetric(horizontal: scale.getScaledHeight(10)),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  SizedBox(height: scale.getScaledHeight(20)),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                        'Xorbx',
-                        style: AppStyle.style3.copyWith(
-                          color: Colors.white,
-                          fontSize: scale.getScaledHeight(32),
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
                       const Icon(Icons.close, color: Colors.white),
+                      SizedBox(width: scale.getScaledHeight(10)),
                     ],
                   ),
-                  SizedBox(height: scale.getScaledHeight(20)),
+                  SizedBox(height: scale.getScaledHeight(10)),
+                  CommonNetworkImageView(
+                    url: ImageConstants.xorbx,
+                    height: scale.getScaledHeight(40),
+                    width: scale.getScaledHeight(82),
+                  ),
+                  SizedBox(height: scale.getScaledHeight(30)),
                   Expanded(
                     child: ListView(
                       children: [
-                        SidebarSection(
-                          icon: Icons.description,
+                        DropDownOptions(
+                          icon: Icons.description_outlined,
                           title: "Overview",
                           items: const [],
                           scale: scale,
                         ),
-                        SidebarSection(
-                          icon: Icons.warning,
+                        DropDownOptions(
+                          icon: Icons.warning_amber_rounded,
                           title: "Security Alerts",
                           items: const [],
                           scale: scale,
                         ),
-                        SidebarSection(
-                          icon: Icons.book,
+                        DropDownOptions(
+                          icon: Icons.book_outlined,
                           title: "Legal",
                           items: const [
                             "Copyright Policy",
@@ -62,8 +65,8 @@ class SidebarScreen extends GetWidget {
                           ],
                           scale: scale,
                         ),
-                        SidebarSection(
-                          icon: Icons.settings,
+                        DropDownOptions(
+                          icon: Icons.settings_outlined,
                           title: "General Settings",
                           items: const [
                             "Language Preference",
@@ -72,8 +75,8 @@ class SidebarScreen extends GetWidget {
                           ],
                           scale: scale,
                         ),
-                        SidebarSection(
-                          icon: Icons.person,
+                        DropDownOptions(
+                          icon: Icons.person_pin_outlined,
                           title: "Account Information",
                           items: const [
                             "Email address",
@@ -82,14 +85,14 @@ class SidebarScreen extends GetWidget {
                           ],
                           scale: scale,
                         ),
-                        SidebarSection(
-                          icon: Icons.privacy_tip,
+                        DropDownOptions(
+                          icon: Icons.dataset_outlined,
                           title: "Privacy Settings",
                           items: const [],
                           scale: scale,
                         ),
-                        SidebarSection(
-                          icon: Icons.security,
+                        DropDownOptions(
+                          icon: Icons.candlestick_chart_outlined,
                           title: "Security Settings",
                           items: const [
                             "Password Management",
@@ -98,8 +101,8 @@ class SidebarScreen extends GetWidget {
                           ],
                           scale: scale,
                         ),
-                        SidebarSection(
-                          icon: Icons.data_usage,
+                        DropDownOptions(
+                          icon: Icons.cloud_queue_outlined,
                           title: "Data Management",
                           items: const [
                             "Backup & Sync",
@@ -108,8 +111,8 @@ class SidebarScreen extends GetWidget {
                           ],
                           scale: scale,
                         ),
-                        SidebarSection(
-                          icon: Icons.manage_accounts,
+                        DropDownOptions(
+                          icon: Icons.person_pin_outlined,
                           title: "Account Management",
                           items: const [
                             "Subscription Information",
@@ -117,8 +120,8 @@ class SidebarScreen extends GetWidget {
                           ],
                           scale: scale,
                         ),
-                        SidebarSection(
-                          icon: Icons.support,
+                        DropDownOptions(
+                          icon: Icons.message_outlined,
                           title: "Support & Feedback",
                           items: const [
                             "Help & Support",
@@ -127,14 +130,14 @@ class SidebarScreen extends GetWidget {
                           ],
                           scale: scale,
                         ),
-                        SidebarSection(
-                          icon: Icons.logout,
+                        DropDownOptions(
+                          icon: Icons.logout_outlined,
                           title: "Logout",
                           items: const [],
                           scale: scale,
                         ),
-                        SidebarSection(
-                          icon: Icons.history,
+                        DropDownOptions(
+                          icon: Icons.copyright_outlined,
                           title: "Version History",
                           items: const [],
                           scale: scale,
@@ -148,52 +151,6 @@ class SidebarScreen extends GetWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class SidebarSection extends StatelessWidget {
-  final IconData icon;
-  final String title;
-  final List<String> items;
-  final ScalingUtility scale;
-
-  const SidebarSection({
-    super.key,
-    required this.icon,
-    required this.title,
-    required this.items,
-    required this.scale,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ExpansionTile(
-      leading: Icon(icon, color: Colors.white),
-      title: Text(
-        title,
-        style:
-            TextStyle(color: Colors.white, fontSize: scale.getScaledHeight(18)),
-      ),
-      backgroundColor: Colors.transparent,
-      collapsedIconColor: Colors.white,
-      children: items
-          .map((item) => Padding(
-                padding: EdgeInsets.only(
-                  left: scale.getScaledHeight(16),
-                  bottom: scale.getScaledHeight(8),
-                ),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    item,
-                    style: TextStyle(
-                        color: Colors.white70,
-                        fontSize: scale.getScaledHeight(16)),
-                  ),
-                ),
-              ))
-          .toList(),
     );
   }
 }
