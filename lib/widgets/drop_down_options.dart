@@ -34,7 +34,16 @@ class DropDownOptions extends StatelessWidget {
       backgroundColor: Colors.transparent,
       collapsedIconColor: Colors.white,
       iconColor: Colors.white,
-      shape: RoundedRectangleBorder(),
+      collapsedShape: const Border(
+        bottom: BorderSide(
+          color: Colors.white30,
+        ),
+      ),
+      shape: const Border(
+        bottom: BorderSide(
+          color: Colors.white30,
+        ),
+      ),
       children: items
           .map(
             (item) => Padding(
