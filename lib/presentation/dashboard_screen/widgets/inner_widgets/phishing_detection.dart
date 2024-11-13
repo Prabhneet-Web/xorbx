@@ -27,8 +27,8 @@ class PhishingDetection extends StatelessWidget {
             leftTitles: AxisTitles(
               sideTitles: SideTitles(
                 showTitles: true,
-                reservedSize: scale.getScaledHeight(25), // Scaled reserved size
-                interval: 20, // Keep interval as it affects graph readability
+                reservedSize: scale.getScaledHeight(25),
+                interval: 20,
                 getTitlesWidget: (value, meta) {
                   return Text(
                     value.toInt().toString(),
@@ -68,6 +68,16 @@ class PhishingDetection extends StatelessWidget {
                 },
               ),
             ),
+            topTitles: const AxisTitles(
+              sideTitles: SideTitles(
+                showTitles: false,
+              ),
+            ),
+            rightTitles: const AxisTitles(
+              sideTitles: SideTitles(
+                showTitles: false,
+              ),
+            ),
           ),
           borderData: FlBorderData(
             show: true,
@@ -90,13 +100,13 @@ class PhishingDetection extends StatelessWidget {
                 FlSpot(2, scale.getScaledHeight(70)),
                 FlSpot(3, scale.getScaledHeight(70)),
                 FlSpot(3, scale.getScaledHeight(80)),
-                FlSpot(4, scale.getScaledHeight(90)),
-                FlSpot(5, scale.getScaledHeight(95)),
+                FlSpot(4, scale.getScaledHeight(62)),
+                FlSpot(5, scale.getScaledHeight(88)),
                 FlSpot(6, scale.getScaledHeight(70)),
                 FlSpot(7, scale.getScaledHeight(60)),
-                FlSpot(7.5, scale.getScaledHeight(90)),
-                FlSpot(8, scale.getScaledHeight(90)),
-                FlSpot(8.5, scale.getScaledHeight(100)),
+                FlSpot(7.5, scale.getScaledHeight(80)),
+                FlSpot(8, scale.getScaledHeight(60)),
+                FlSpot(8.5, scale.getScaledHeight(80)),
                 FlSpot(9, scale.getScaledHeight(90)),
               ],
               dotData: const FlDotData(
@@ -137,12 +147,12 @@ class PhishingDetection extends StatelessWidget {
                 FlSpot(1.5, scale.getScaledHeight(30)),
                 FlSpot(2, scale.getScaledHeight(50)),
                 FlSpot(3, scale.getScaledHeight(70)),
-                FlSpot(3, scale.getScaledHeight(90)),
+                FlSpot(3, scale.getScaledHeight(60)),
                 FlSpot(4, scale.getScaledHeight(60)),
                 FlSpot(5, scale.getScaledHeight(75)),
                 FlSpot(6, scale.getScaledHeight(85)),
                 FlSpot(7, scale.getScaledHeight(60)),
-                FlSpot(7.5, scale.getScaledHeight(80)),
+                FlSpot(7.5, scale.getScaledHeight(60)),
                 FlSpot(8, scale.getScaledHeight(70)),
                 FlSpot(8.5, scale.getScaledHeight(70)),
                 FlSpot(9, scale.getScaledHeight(60)),
@@ -155,7 +165,7 @@ class PhishingDetection extends StatelessWidget {
             ),
           ],
           minY: scale.getScaledHeight(0),
-          maxY: scale.getScaledHeight(100),
+          maxY: scale.getScaledHeight(80),
         ),
       ),
     );

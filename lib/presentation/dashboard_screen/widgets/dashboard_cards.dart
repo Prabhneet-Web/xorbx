@@ -27,9 +27,8 @@ class DashboardCards extends GetWidget {
               letterSpacing: 1,
             ),
           ),
-          SizedBox(height: scale.getScaledHeight(10)),
+          SizedBox(height: scale.getScaledHeight(16)),
           Container(
-            // height: scale.getScaledHeight(130),
             decoration: BoxDecoration(
               color: ColorConstant.cardColor,
               borderRadius: BorderRadius.circular(scale.getScaledHeight(8)),
