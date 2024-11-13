@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:xorbx/presentation/dashboard_screen/binding/dashboard_binding.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/dashboard_screen.dart';
+import 'package:xorbx/presentation/sidebar_screen/binding/sidebar_binding.dart';
+import 'package:xorbx/presentation/sidebar_screen/screen/sidebar_screen.dart';
 import 'package:xorbx/presentation/sign_in_screen/binding/sign_in_binding.dart';
 import 'package:xorbx/presentation/sign_in_screen/screen/sign_in_screen.dart';
 import 'package:xorbx/presentation/sign_up_screen/binding/sign_up_binding.dart';
@@ -18,6 +20,7 @@ class AppRoutes {
   static const signUpScreen = '/sign_up_screen';
   static const verificationScreen = '/verification_screen';
   static const dashboardScreen = '/dashboard_screen';
+  static const sidebarScreen = '/sidebar_screen';
   static const subDashboardScreen = '/sub_dashboard_screen';
 
   static List<GetPage> pages = [
@@ -50,6 +53,11 @@ class AppRoutes {
       name: subDashboardScreen,
       page: () => RealTimeThreatDetectionScreen(),
       bindings: [RealTimeThreatDetectionBinding()],
+    ),
+    GetPage(
+      name: sidebarScreen,
+      page: () => const SidebarScreen(),
+      bindings: [SidebarBinding()],
     ),
   ];
 }

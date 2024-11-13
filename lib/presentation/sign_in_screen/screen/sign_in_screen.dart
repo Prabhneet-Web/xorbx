@@ -1,11 +1,11 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xorbx/constants/app_routes.dart';
+import 'package:xorbx/routes/app_routes.dart';
 import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/constants/color_constants.dart';
 import 'package:xorbx/constants/image_constants.dart';
-import 'package:xorbx/constants/scaling_utility.dart';
+import 'package:xorbx/utils/scaling_utility.dart';
 import 'package:xorbx/presentation/sign_in_screen/controller/sign_in_controller.dart';
 import 'package:xorbx/widgets/background_effect.dart';
 import 'package:xorbx/widgets/common_network_image.dart';
@@ -22,8 +22,9 @@ class SignInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var scale = Get.find<ScalingUtility>()..setCurrentDeviceSize(context);
     return Scaffold(
-        backgroundColor: ColorConstant.color1,
-        body: BackgroundEffect(dynamicChildren: [
+      backgroundColor: ColorConstant.color1,
+      body: BackgroundEffect(
+        dynamicChildren: [
           Center(
             child: Opacity(
               opacity: 0.8,
@@ -175,6 +176,8 @@ class SignInScreen extends StatelessWidget {
               ),
             ),
           ),
-        ]));
+        ],
+      ),
+    );
   }
 }

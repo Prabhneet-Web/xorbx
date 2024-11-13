@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:xorbx/constants/app_routes.dart';
+import 'package:xorbx/routes/app_routes.dart';
 import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/constants/color_constants.dart';
 import 'package:xorbx/constants/image_constants.dart';
@@ -25,8 +25,8 @@ class VerificationScreen extends StatelessWidget {
             child: SingleChildScrollView(
               child: Center(
                 child: Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: scale.getScaledHeight(30)),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: scale.getScaledHeight(30)),
                   child: Column(
                     children: [
                       SizedBox(height: scale.getScaledHeight(100)),
@@ -102,8 +102,8 @@ class VerificationScreen extends StatelessWidget {
                           fixedSize:
                               Size(scale.fh - 100, scale.getScaledHeight(60)),
                           shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.circular(scale.getScaledHeight(12)),
+                            borderRadius: BorderRadius.circular(
+                                scale.getScaledHeight(12)),
                           ),
                         ),
                         child: Text(

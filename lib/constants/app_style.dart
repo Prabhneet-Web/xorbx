@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xorbx/constants/scaling_utility.dart';
+import 'package:xorbx/utils/scaling_utility.dart';
 
 class AppStyle {
   static TextStyle style1 = TextStyle(

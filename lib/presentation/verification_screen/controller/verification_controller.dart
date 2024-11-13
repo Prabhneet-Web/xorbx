@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xorbx/constants/app_routes.dart';
+import 'package:xorbx/routes/app_routes.dart';
 import 'package:xorbx/constants/color_constants.dart';
 
 class VerificationController extends GetxController {

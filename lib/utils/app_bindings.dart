@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:xorbx/constants/scaling_utility.dart';
+import 'package:xorbx/utils/scaling_utility.dart';
 
 class AppBinding extends Bindings {
   @override

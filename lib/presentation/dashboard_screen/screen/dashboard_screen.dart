@@ -5,9 +5,9 @@ import 'package:xorbx/constants/color_constants.dart';
 import 'package:xorbx/constants/image_constants.dart';
 import 'package:xorbx/presentation/dashboard_screen/controller/dashboard_controller.dart';
 import 'package:xorbx/presentation/sub_dashboard_screen/real_time_threat_detection/screen/real_time_threat_detection_screen.dart';
+import 'package:xorbx/routes/app_routes.dart';
 import 'package:xorbx/widgets/background_effect.dart';
 import 'package:xorbx/presentation/dashboard_screen/widgets/heat_map.dart';
-import 'package:xorbx/widgets/inner_shadow_painter.dart';
 import 'package:xorbx/widgets/shadow_border_card.dart';
 
 class DashboardScreen extends GetWidget<DashboardController> {
@@ -30,9 +30,16 @@ class DashboardScreen extends GetWidget<DashboardController> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Icon(
-                          Icons.menu_outlined,
-                          color: Color.fromRGBO(165, 212, 225, 1),
+                        IconButton(
+                          onPressed: () {
+                            Get.toNamed(
+                              AppRoutes.sidebarScreen,
+                            );
+                          },
+                          icon: const Icon(
+                            Icons.menu_outlined,
+                            color: Color.fromRGBO(165, 212, 225, 1),
+                          ),
                         ),
                         const SizedBox(
                           width: 5,

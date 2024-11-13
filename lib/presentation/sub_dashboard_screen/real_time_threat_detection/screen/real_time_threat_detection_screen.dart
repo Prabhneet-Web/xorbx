@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/constants/color_constants.dart';
-import 'package:xorbx/constants/scaling_utility.dart';
+import 'package:xorbx/utils/scaling_utility.dart';
 import 'package:xorbx/presentation/sub_dashboard_screen/real_time_threat_detection/controller/real_time_threat_detection_controller.dart';
 import 'package:xorbx/widgets/inner_shadow_painter.dart';
 
