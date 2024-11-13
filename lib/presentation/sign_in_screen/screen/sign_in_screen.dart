@@ -37,8 +37,7 @@ class SignInScreen extends StatelessWidget {
           ),
           SingleChildScrollView(
             child: Padding(
-              padding:
-                  EdgeInsets.symmetric(horizontal: scale.getScaledHeight(30.0)),
+              padding: scale.getPadding(horizontal: 20),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
