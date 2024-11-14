@@ -41,7 +41,7 @@ class DashboardScreen extends GetWidget<DashboardController> {
                   children: [
                     IconButton(
                       onPressed: () {
-                        Get.toNamed(AppRoutes.sidebarScreen);
+                        Get.toNamed(AppRoutes.dashboardSidebarScreen);
                       },
                       icon: const Icon(
                         Icons.menu_outlined,

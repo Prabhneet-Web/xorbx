@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/constants/color_constants.dart';
+import 'package:xorbx/routes/app_routes.dart';
 import 'package:xorbx/utils/scaling_utility.dart';
 import 'package:xorbx/widgets/inner_shadow_painter.dart';
 
@@ -83,7 +84,7 @@ class DeviceHealthMonitoringScreen extends GetWidget {
           ),
           SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(15.0),
               child: Column(
                 children: [
                   Padding(
@@ -91,9 +92,15 @@ class DeviceHealthMonitoringScreen extends GetWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Icon(
-                          Icons.menu_outlined,
-                          color: Color.fromRGBO(165, 212, 225, 1),
+                        IconButton(
+                          onPressed: () {
+                            Get.toNamed(
+                                AppRoutes.deviceHealthMonitoringSidebarScreen);
+                          },
+                          icon: const Icon(
+                            Icons.menu_outlined,
+                            color: Color.fromRGBO(165, 212, 225, 1),
+                          ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 18),
@@ -140,8 +147,6 @@ class DeviceHealthMonitoringScreen extends GetWidget {
                     "Summary Cards",
                     style: AppStyle.style1,
                   ),
-                  const SizedBox(height: 10),
-                  _buildSummaryCards(controller),
                   const SizedBox(height: 16),
                   Text(
                     "Real Time Threat Alerts",
@@ -194,20 +199,6 @@ class DeviceHealthMonitoringScreen extends GetWidget {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildSummaryCards(controller) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        _buildSummaryCard(
-            'Total Threats\n', controller.totalThreats, Colors.orange),
-        _buildSummaryCard(
-            'Resolved \nThreats', controller.resolvedThreats, Colors.green),
-        _buildSummaryCard(
-            'Inactive \nThreats', controller.inactiveThreats, Colors.red),
-      ],
     );
   }
 

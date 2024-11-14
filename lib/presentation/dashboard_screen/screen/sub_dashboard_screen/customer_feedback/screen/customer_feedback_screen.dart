@@ -140,8 +140,6 @@ class CustomerFeedbackScreen extends GetWidget {
                     "Summary Cards",
                     style: AppStyle.style1,
                   ),
-                  const SizedBox(height: 10),
-                  _buildSummaryCards(controller),
                   const SizedBox(height: 16),
                   Text(
                     "Real Time Threat Alerts",
@@ -194,20 +192,6 @@ class CustomerFeedbackScreen extends GetWidget {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildSummaryCards(controller) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        _buildSummaryCard(
-            'Total Threats\n', controller.totalThreats, Colors.orange),
-        _buildSummaryCard(
-            'Resolved \nThreats', controller.resolvedThreats, Colors.green),
-        _buildSummaryCard(
-            'Inactive \nThreats', controller.inactiveThreats, Colors.red),
-      ],
     );
   }
 
