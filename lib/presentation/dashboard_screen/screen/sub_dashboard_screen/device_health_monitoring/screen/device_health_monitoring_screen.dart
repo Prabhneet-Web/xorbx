@@ -8,14 +8,10 @@ import 'package:latlong2/latlong.dart';
 import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/constants/color_constants.dart';
 import 'package:xorbx/utils/scaling_utility.dart';
-import 'package:xorbx/presentation/sub_dashboard_screen/real_time_threat_detection/controller/real_time_threat_detection_controller.dart';
 import 'package:xorbx/widgets/inner_shadow_painter.dart';
 
-class RealTimeThreatDetectionScreen extends GetWidget {
-  final RealTimeThreadDetectionController controller =
-      Get.put(RealTimeThreadDetectionController());
-
-  RealTimeThreatDetectionScreen({super.key});
+class DeviceHealthMonitoringScreen extends GetWidget {
+  const DeviceHealthMonitoringScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -145,7 +141,7 @@ class RealTimeThreatDetectionScreen extends GetWidget {
                     style: AppStyle.style1,
                   ),
                   const SizedBox(height: 10),
-                  _buildSummaryCards(),
+                  _buildSummaryCards(controller),
                   const SizedBox(height: 16),
                   Text(
                     "Real Time Threat Alerts",
@@ -201,7 +197,7 @@ class RealTimeThreatDetectionScreen extends GetWidget {
     );
   }
 
-  Widget _buildSummaryCards() {
+  Widget _buildSummaryCards(controller) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [

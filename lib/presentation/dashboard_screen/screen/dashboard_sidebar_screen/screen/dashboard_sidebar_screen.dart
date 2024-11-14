@@ -7,8 +7,8 @@ import 'package:xorbx/widgets/background_effect.dart';
 import 'package:xorbx/widgets/common_network_image.dart';
 import 'package:xorbx/widgets/drop_down_options.dart';
 
-class SidebarScreen extends GetWidget {
-  const SidebarScreen({super.key});
+class DashboardSidebarScreen extends GetWidget {
+  const DashboardSidebarScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
