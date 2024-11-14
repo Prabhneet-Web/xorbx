@@ -27,8 +27,8 @@ class AppPermissionChecker extends StatelessWidget {
             leftTitles: AxisTitles(
               sideTitles: SideTitles(
                 showTitles: true,
-                reservedSize: scale.getScaledHeight(25), // Scaled reserved size
-                interval: 20, // Keep interval as it affects graph readability
+                reservedSize: scale.getScaledHeight(25),
+                interval: 20,
                 getTitlesWidget: (value, meta) {
                   return Text(
                     value.toInt().toString(),
@@ -68,6 +68,16 @@ class AppPermissionChecker extends StatelessWidget {
                 },
               ),
             ),
+            topTitles: const AxisTitles(
+              sideTitles: SideTitles(
+                showTitles: false,
+              ),
+            ),
+            rightTitles: const AxisTitles(
+              sideTitles: SideTitles(
+                showTitles: false,
+              ),
+            ),
           ),
           borderData: FlBorderData(
             show: true,
@@ -102,7 +112,7 @@ class AppPermissionChecker extends StatelessWidget {
             ),
           ],
           minY: scale.getScaledHeight(0),
-          maxY: scale.getScaledHeight(100),
+          maxY: scale.getScaledHeight(80),
         ),
       ),
     );

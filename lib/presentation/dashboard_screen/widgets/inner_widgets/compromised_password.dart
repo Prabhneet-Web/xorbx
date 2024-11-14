@@ -40,6 +40,16 @@ class CompromisedPassword extends StatelessWidget {
                 },
               ),
             ),
+            topTitles: const AxisTitles(
+              sideTitles: SideTitles(
+                showTitles: false,
+              ),
+            ),
+            rightTitles: const AxisTitles(
+              sideTitles: SideTitles(
+                showTitles: false,
+              ),
+            ),
             bottomTitles: AxisTitles(
               sideTitles: SideTitles(
                 showTitles: true,
@@ -102,7 +112,7 @@ class CompromisedPassword extends StatelessWidget {
             ),
           ],
           minY: scale.getScaledHeight(0),
-          maxY: scale.getScaledHeight(100),
+          maxY: scale.getScaledHeight(80),
         ),
       ),
     );

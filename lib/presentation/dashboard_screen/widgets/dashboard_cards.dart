@@ -30,7 +30,7 @@ class DashboardCards extends StatelessWidget {
               letterSpacing: 1,
             ),
           ),
-          SizedBox(height: scale.getScaledHeight(10)),
+          SizedBox(height: scale.getScaledHeight(16)),
           Container(
             decoration: BoxDecoration(
               color: ColorConstant.cardColor,

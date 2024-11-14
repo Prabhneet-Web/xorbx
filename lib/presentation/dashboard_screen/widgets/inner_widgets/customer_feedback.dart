@@ -12,7 +12,6 @@ class CustomerFeedback extends GetWidget {
     var scale = Get.find<ScalingUtility>()..setCurrentDeviceSize(context);
     return Container(
       color: ColorConstant.color1,
-      height: scale.getScaledHeight(130),
       width: scale.fw,
       child: Padding(
         padding: EdgeInsets.symmetric(
