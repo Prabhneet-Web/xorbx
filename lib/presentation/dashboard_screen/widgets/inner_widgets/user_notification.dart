@@ -17,21 +17,56 @@ class UserNotification extends StatelessWidget {
       child: LineChart(
         LineChartData(
           gridData: FlGridData(
-            drawVerticalLine: false,
+            verticalInterval: 1,
             getDrawingHorizontalLine: (value) => FlLine(
               color: Colors.white.withOpacity(0.5),
               strokeWidth: scale.getScaledHeight(1), // Scaled stroke width
             ),
+            getDrawingVerticalLine: (value) => FlLine(
+              color: Colors.white.withOpacity(0.5),
+              strokeWidth: scale.getScaledHeight(1), // Scaled stroke width
+            ),
+            checkToShowHorizontalLine: (value) => value % 20 == 0,
           ),
           titlesData: FlTitlesData(
             leftTitles: AxisTitles(
               sideTitles: SideTitles(
                 showTitles: true,
                 reservedSize: scale.getScaledHeight(25), // Scaled reserved size
-                interval: 20, // Keep interval as it affects graph readability
+                interval: 20,
                 getTitlesWidget: (value, meta) {
                   return Text(
                     value.toInt().toString(),
+                    style: TextStyle(
+                      color: Colors.white70,
+                      fontSize: scale.getScaledHeight(7), // Scaled font size
+                    ),
+                  );
+                },
+              ),
+            ),
+            bottomTitles: AxisTitles(
+              sideTitles: SideTitles(
+                showTitles: true,
+                interval: 1, // Interval for labels
+                getTitlesWidget: (value, meta) {
+                  const labels = [
+                    'Time',
+                    'D1',
+                    'D2',
+                    'D3',
+                    'D4',
+                    'D5',
+                    'D6',
+                    'D7',
+                    'W1',
+                    'W2',
+                    'W3',
+                    'M',
+                    'X'
+                  ];
+                  return Text(
+                    labels[value.toInt() % labels.length],
                     style: TextStyle(
                       color: Colors.white70,
                       fontSize: scale.getScaledHeight(7), // Scaled font size
@@ -50,34 +85,6 @@ class UserNotification extends StatelessWidget {
                 showTitles: false,
               ),
             ),
-            bottomTitles: AxisTitles(
-              sideTitles: SideTitles(
-                showTitles: true,
-                interval: 1, // Interval for labels
-                getTitlesWidget: (value, meta) {
-                  const labels = [
-                    'D1',
-                    'D2',
-                    'D3',
-                    'D4',
-                    'D5',
-                    'D6',
-                    'D7',
-                    'W1',
-                    'W2',
-                    'W3',
-                    'M'
-                  ];
-                  return Text(
-                    labels[value.toInt() % labels.length],
-                    style: TextStyle(
-                      color: Colors.white70,
-                      fontSize: scale.getScaledHeight(7), // Scaled font size
-                    ),
-                  );
-                },
-              ),
-            ),
           ),
           borderData: FlBorderData(
             show: true,
@@ -94,25 +101,134 @@ class UserNotification extends StatelessWidget {
             LineChartBarData(
               isCurved: false,
               spots: [
-                FlSpot(0, scale.getScaledHeight(10)),
-                FlSpot(1, scale.getScaledHeight(20)),
-                FlSpot(2, scale.getScaledHeight(40)),
-                FlSpot(3, scale.getScaledHeight(60)),
-                FlSpot(4, scale.getScaledHeight(70)),
-                FlSpot(5, scale.getScaledHeight(80)),
-                FlSpot(6, scale.getScaledHeight(60)),
-                FlSpot(7, scale.getScaledHeight(85)),
-                FlSpot(8, scale.getScaledHeight(90)),
-                FlSpot(9, scale.getScaledHeight(85)),
-                FlSpot(10, scale.getScaledHeight(70)),
+                FlSpot(1, scale.getScaledHeight(40)),
+                FlSpot(1, scale.getScaledHeight(50)),
+                FlSpot(1, scale.getScaledHeight(60)),
+                FlSpot(1, scale.getScaledHeight(70)),
+                FlSpot(1, scale.getScaledHeight(80)),
               ],
-              dotData: const FlDotData(show: false),
-              color: Colors.transparent,
-              barWidth: scale.getScaledHeight(1), // Scaled bar width
+              color: Colors.yellow,
+              barWidth: scale.getScaledHeight(1), // Thin connecting line
+            ),
+            LineChartBarData(
+              isCurved: false,
+              spots: [
+                FlSpot(2, scale.getScaledHeight(50)),
+                FlSpot(2, scale.getScaledHeight(60)),
+                FlSpot(2, scale.getScaledHeight(70)),
+                FlSpot(2, scale.getScaledHeight(80)),
+                FlSpot(2, scale.getScaledHeight(90)),
+                FlSpot(2, scale.getScaledHeight(100)),
+              ],
+              color: Colors.red,
+              barWidth: scale.getScaledHeight(1), // Thin connecting line
+            ),
+            LineChartBarData(
+              isCurved: false,
+              spots: [
+                FlSpot(3, scale.getScaledHeight(50)),
+                FlSpot(3, scale.getScaledHeight(60)),
+                FlSpot(3, scale.getScaledHeight(70)),
+                FlSpot(3, scale.getScaledHeight(80)),
+                FlSpot(3, scale.getScaledHeight(90)),
+                FlSpot(3, scale.getScaledHeight(100)),
+              ],
+              color: Colors.red,
+              barWidth: scale.getScaledHeight(1), // Thin connecting line
+            ),
+            LineChartBarData(
+              isCurved: false,
+              spots: [
+                FlSpot(4, scale.getScaledHeight(20)),
+                FlSpot(4, scale.getScaledHeight(30)),
+                FlSpot(4, scale.getScaledHeight(40)),
+              ],
+              color: Colors.green,
+              barWidth: scale.getScaledHeight(1), // Thin connecting line
+            ),
+            LineChartBarData(
+              isCurved: false,
+              spots: [
+                FlSpot(5, scale.getScaledHeight(30)),
+                FlSpot(5, scale.getScaledHeight(40)),
+                FlSpot(5, scale.getScaledHeight(50)),
+                FlSpot(5, scale.getScaledHeight(60)),
+              ],
+              color: Colors.orange,
+              barWidth: scale.getScaledHeight(1), // Thin connecting line
+            ),
+            LineChartBarData(
+              isCurved: false,
+              spots: [
+                FlSpot(6, scale.getScaledHeight(30)),
+                FlSpot(6, scale.getScaledHeight(40)),
+                FlSpot(6, scale.getScaledHeight(50)),
+                FlSpot(6, scale.getScaledHeight(60)),
+              ],
+              color: Colors.orange,
+              barWidth: scale.getScaledHeight(1), // Thin connecting line
+            ),
+            LineChartBarData(
+              isCurved: false,
+              spots: [
+                FlSpot(7, scale.getScaledHeight(20)),
+                FlSpot(7, scale.getScaledHeight(30)),
+                FlSpot(7, scale.getScaledHeight(40)),
+              ],
+              color: Colors.green,
+              barWidth: scale.getScaledHeight(1), // Thin connecting line
+            ),
+            LineChartBarData(
+              isCurved: false,
+              spots: [
+                FlSpot(8, scale.getScaledHeight(40)),
+                FlSpot(8, scale.getScaledHeight(50)),
+                FlSpot(8, scale.getScaledHeight(60)),
+                FlSpot(8, scale.getScaledHeight(70)),
+                FlSpot(8, scale.getScaledHeight(80)),
+              ],
+              color: Colors.yellow,
+              barWidth: scale.getScaledHeight(1), // Thin connecting line
+            ),
+            LineChartBarData(
+              isCurved: false,
+              spots: [
+                FlSpot(9, scale.getScaledHeight(50)),
+                FlSpot(9, scale.getScaledHeight(60)),
+                FlSpot(9, scale.getScaledHeight(70)),
+                FlSpot(9, scale.getScaledHeight(80)),
+                FlSpot(9, scale.getScaledHeight(90)),
+                FlSpot(9, scale.getScaledHeight(100)),
+              ],
+              color: Colors.red,
+              barWidth: scale.getScaledHeight(1), // Thin connecting line
+            ),
+            LineChartBarData(
+              isCurved: false,
+              spots: [
+                FlSpot(10, scale.getScaledHeight(20)),
+                FlSpot(10, scale.getScaledHeight(30)),
+                FlSpot(10, scale.getScaledHeight(40)),
+              ],
+              color: Colors.green,
+              barWidth: scale.getScaledHeight(1), // Thin connecting line
+            ),
+            LineChartBarData(
+              isCurved: false,
+              spots: [
+                FlSpot(11, scale.getScaledHeight(30)),
+                FlSpot(11, scale.getScaledHeight(40)),
+                FlSpot(11, scale.getScaledHeight(50)),
+                FlSpot(11, scale.getScaledHeight(60)),
+              ],
+              color: Colors.orange,
+              barWidth: scale.getScaledHeight(1), // Thin connecting line
             ),
           ],
           minY: scale.getScaledHeight(0),
-          maxY: scale.getScaledHeight(80),
+          minX: 0,
+          maxX: 11.1,
+          maxY: scale.getScaledHeight(100), // Adjust based on the maximum value
         ),
       ),
     );

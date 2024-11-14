@@ -2,19 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/constants/color_constants.dart';
-import 'package:xorbx/routes/app_routes.dart';
 import 'package:xorbx/utils/scaling_utility.dart';
 import 'package:xorbx/widgets/shadow_border_card.dart';
 
-class DashboardCards extends GetWidget {
+class DashboardCards extends StatelessWidget {
   final Widget? content;
   final String title;
   final String buttonTitle;
-  const DashboardCards(this.content, this.title, this.buttonTitle, {super.key});
+  final String route;
+
+  const DashboardCards(this.content, this.title, this.buttonTitle, this.route,
+      {super.key});
 
   @override
   Widget build(BuildContext context) {
     var scale = Get.find<ScalingUtility>()..setCurrentDeviceSize(context);
+
     return ShadowBorderCard(
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,14 +46,13 @@ class DashboardCards extends GetWidget {
                   backgroundColor: ColorConstant.color4,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(
-                      Radius.circular(
-                        scale.getScaledHeight(6),
-                      ),
+                      Radius.circular(scale.getScaledHeight(6)),
                     ),
                   ),
                 ),
                 onPressed: () {
-                  Get.toNamed(AppRoutes.realTimeThreadDetectionScreen);
+                  // Navigate to the route specified in the constructor
+                  Get.toNamed(route);
                 },
                 child: Text(
                   buttonTitle,

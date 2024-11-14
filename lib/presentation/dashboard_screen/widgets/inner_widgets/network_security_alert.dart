@@ -106,10 +106,26 @@ class NetworkSecurityAlert extends StatelessWidget {
                 FlSpot(9, scale.getScaledHeight(85)),
                 FlSpot(10, scale.getScaledHeight(70)),
               ],
-              dotData: const FlDotData(
+              dotData: FlDotData(
                 show: true,
+                getDotPainter: (spot, percent, barData, index) {
+                  // Customize the colors of the dots based on index or position
+                  Color dotColor;
+                  if (spot.y >= 70) {
+                    dotColor = Colors.red;
+                  } else if (spot.y >= 50) {
+                    dotColor = Colors.orange;
+                  } else {
+                    dotColor = Colors.green;
+                  }
+                  return FlDotCirclePainter(
+                    radius: scale.getScaledHeight(3), // Adjust circle size
+                    color: dotColor,
+                    strokeWidth: 0,
+                  );
+                },
               ),
-              color: Colors.green,
+              color: Colors.white70,
               barWidth: scale.getScaledHeight(1), // Scaled bar width
             ),
           ],

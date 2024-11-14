@@ -14,21 +14,24 @@ class CompromisedPassword extends StatelessWidget {
       color: ColorConstant.color1,
       height: scale.getScaledHeight(130), // Scaled height
       width: scale.fw,
-      child: LineChart(
-        LineChartData(
+      child: BarChart(
+        BarChartData(
           gridData: FlGridData(
             drawVerticalLine: false,
             getDrawingHorizontalLine: (value) => FlLine(
               color: Colors.white.withOpacity(0.5),
               strokeWidth: scale.getScaledHeight(1), // Scaled stroke width
             ),
+            // checkToShowHorizontalLine: (value) =>
+            //     value % 20 == 0, // Show line every 20 units
           ),
+
           titlesData: FlTitlesData(
             leftTitles: AxisTitles(
               sideTitles: SideTitles(
                 showTitles: true,
                 reservedSize: scale.getScaledHeight(25), // Scaled reserved size
-                interval: 20, // Keep interval as it affects graph readability
+                interval: 20, // Interval to keep readability
                 getTitlesWidget: (value, meta) {
                   return Text(
                     value.toInt().toString(),
@@ -41,14 +44,10 @@ class CompromisedPassword extends StatelessWidget {
               ),
             ),
             topTitles: const AxisTitles(
-              sideTitles: SideTitles(
-                showTitles: false,
-              ),
+              sideTitles: SideTitles(showTitles: false),
             ),
             rightTitles: const AxisTitles(
-              sideTitles: SideTitles(
-                showTitles: false,
-              ),
+              sideTitles: SideTitles(showTitles: false),
             ),
             bottomTitles: AxisTitles(
               sideTitles: SideTitles(
@@ -82,37 +81,147 @@ class CompromisedPassword extends StatelessWidget {
           borderData: FlBorderData(
             show: true,
             border: const Border(
-              left: BorderSide(
-                color: Colors.grey,
-              ),
-              bottom: BorderSide(
-                color: Colors.grey,
-              ),
+              left: BorderSide(color: Colors.grey),
+              bottom: BorderSide(color: Colors.grey),
             ),
           ),
-          lineBarsData: [
-            LineChartBarData(
-              isCurved: false,
-              spots: [
-                FlSpot(0, scale.getScaledHeight(10)),
-                FlSpot(1, scale.getScaledHeight(20)),
-                FlSpot(2, scale.getScaledHeight(40)),
-                FlSpot(3, scale.getScaledHeight(60)),
-                FlSpot(4, scale.getScaledHeight(70)),
-                FlSpot(5, scale.getScaledHeight(80)),
-                FlSpot(6, scale.getScaledHeight(60)),
-                FlSpot(7, scale.getScaledHeight(85)),
-                FlSpot(8, scale.getScaledHeight(90)),
-                FlSpot(9, scale.getScaledHeight(85)),
-                FlSpot(10, scale.getScaledHeight(70)),
+          barGroups: [
+            BarChartGroupData(
+              x: 0,
+              barRods: [
+                BarChartRodData(
+                  toY: scale.getScaledHeight(70),
+                  fromY: scale.getScaledHeight(5),
+                  borderRadius: const BorderRadius.all(Radius.zero),
+                  color: Colors.orange,
+                  width: scale.getScaledHeight(8), // Bar width
+                ),
               ],
-              dotData: const FlDotData(show: false),
-              color: Colors.transparent,
-              barWidth: scale.getScaledHeight(1), // Scaled bar width
+            ),
+            BarChartGroupData(
+              x: 1,
+              barRods: [
+                BarChartRodData(
+                  toY: scale.getScaledHeight(110),
+                  fromY: scale.getScaledHeight(5),
+                  borderRadius: const BorderRadius.all(Radius.zero),
+                  color: Colors.green,
+                  width: scale.getScaledHeight(8),
+                ),
+              ],
+            ),
+            BarChartGroupData(
+              x: 2,
+              barRods: [
+                BarChartRodData(
+                  toY: scale.getScaledHeight(40),
+                  fromY: scale.getScaledHeight(5),
+                  borderRadius: const BorderRadius.all(Radius.zero),
+                  color: Colors.red,
+                  width: scale.getScaledHeight(8),
+                ),
+              ],
+            ),
+            BarChartGroupData(
+              x: 3,
+              barRods: [
+                BarChartRodData(
+                  toY: scale.getScaledHeight(70),
+                  fromY: scale.getScaledHeight(5),
+                  borderRadius: const BorderRadius.all(Radius.zero),
+                  color: Colors.orange,
+                  width: scale.getScaledHeight(8),
+                ),
+              ],
+            ),
+            BarChartGroupData(
+              x: 4,
+              barRods: [
+                BarChartRodData(
+                  toY: scale.getScaledHeight(30),
+                  fromY: scale.getScaledHeight(5),
+                  borderRadius: const BorderRadius.all(Radius.zero),
+                  color: Colors.green,
+                  width: scale.getScaledHeight(8),
+                ),
+              ],
+            ),
+            BarChartGroupData(
+              x: 5,
+              barRods: [
+                BarChartRodData(
+                  toY: scale.getScaledHeight(100),
+                  fromY: scale.getScaledHeight(5),
+                  borderRadius: const BorderRadius.all(Radius.zero),
+                  color: Colors.red,
+                  width: scale.getScaledHeight(8),
+                ),
+              ],
+            ),
+            BarChartGroupData(
+              x: 6,
+              barRods: [
+                BarChartRodData(
+                  toY: scale.getScaledHeight(70),
+                  fromY: scale.getScaledHeight(5),
+                  borderRadius: const BorderRadius.all(Radius.zero),
+                  color: Colors.orange,
+                  width: scale.getScaledHeight(8),
+                ),
+              ],
+            ),
+            BarChartGroupData(
+              x: 7,
+              barRods: [
+                BarChartRodData(
+                  toY: scale.getScaledHeight(40),
+                  fromY: scale.getScaledHeight(5),
+                  borderRadius: const BorderRadius.all(Radius.zero),
+                  color: Colors.green,
+                  width: scale.getScaledHeight(8),
+                ),
+              ],
+            ),
+            BarChartGroupData(
+              x: 8,
+              barRods: [
+                BarChartRodData(
+                  toY: scale.getScaledHeight(110),
+                  fromY: scale.getScaledHeight(5),
+                  borderRadius: const BorderRadius.all(Radius.zero),
+                  color: Colors.red,
+                  width: scale.getScaledHeight(8),
+                ),
+              ],
+            ),
+            BarChartGroupData(
+              x: 9,
+              barRods: [
+                BarChartRodData(
+                  toY: scale.getScaledHeight(50),
+                  fromY: scale.getScaledHeight(5),
+                  borderRadius: const BorderRadius.all(Radius.zero),
+                  color: Colors.orange,
+                  width: scale.getScaledHeight(8),
+                ),
+              ],
+            ),
+            BarChartGroupData(
+              x: 10,
+              barRods: [
+                BarChartRodData(
+                  toY: scale.getScaledHeight(80),
+                  fromY: scale.getScaledHeight(5),
+                  borderRadius: const BorderRadius.all(Radius.zero),
+                  color: Colors.green,
+                  width: scale.getScaledHeight(8),
+                ),
+              ],
             ),
           ],
-          minY: scale.getScaledHeight(0),
-          maxY: scale.getScaledHeight(80),
+          minY: 0,
+          maxY:
+              scale.getScaledHeight(100), // Adjust maxY to show full bar height
         ),
       ),
     );
