@@ -8,11 +8,18 @@ import 'package:xorbx/widgets/shadow_border_card.dart';
 class DashboardCards extends StatelessWidget {
   final Widget? content;
   final String title;
-  final String buttonTitle;
   final String route;
+  final bool isButtonNeed;
+  final String buttonTitle; // Moved to named parameter with default value
 
-  const DashboardCards(this.content, this.title, this.buttonTitle, this.route,
-      {super.key});
+  const DashboardCards(
+    this.content,
+    this.title,
+    this.route, {
+    this.isButtonNeed = false,
+    this.buttonTitle = "Button", // Default value set to "Button"
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -38,32 +45,37 @@ class DashboardCards extends StatelessWidget {
             ),
             child: content,
           ),
-          Center(
-            child: SizedBox(
-              width: scale.getScaledHeight(240),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: ColorConstant.color4,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(scale.getScaledHeight(6)),
-                    ),
-                  ),
-                ),
-                onPressed: () {
-                  // Navigate to the route specified in the constructor
-                  Get.toNamed(route);
-                },
-                child: Text(
-                  buttonTitle,
-                  style: const TextStyle(
-                    color: ColorConstant.color1,
-                  ),
-                ),
+          SizedBox(height: scale.getScaledHeight(16)),
+          isButtonNeed ? _customButton(scale) : const SizedBox.shrink(),
+        ],
+      ),
+    );
+  }
+
+  Widget _customButton(ScalingUtility scale) {
+    return Center(
+      child: SizedBox(
+        width: scale.getScaledHeight(240),
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: ColorConstant.color4,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(scale.getScaledHeight(6)),
               ),
             ),
           ),
-        ],
+          onPressed: () {
+            // Navigate to the route specified in the constructor
+            Get.toNamed(route);
+          },
+          child: Text(
+            buttonTitle, // No need for null check due to default value
+            style: const TextStyle(
+              color: ColorConstant.color1,
+            ),
+          ),
+        ),
       ),
     );
   }
