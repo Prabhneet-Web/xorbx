@@ -18,6 +18,8 @@ import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/
 import 'package:xorbx/presentation/dashboard_screen/screen/dashboard_sidebar_screen/binding/dashboard_sidebar_binding.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/dashboard_sidebar_screen/screen/dashboard_sidebar_screen.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/user_notification/screen/user_notification_sidebar_screen/binding/user_notification_sidebar_binding.dart';
+import 'package:xorbx/presentation/dashboard_screen/screen/user_notification_dashboard_screen/binding/user_notification_dashboard_binding.dart';
+import 'package:xorbx/presentation/dashboard_screen/screen/user_notification_dashboard_screen/screen/user_notification_dashboard_screen.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/user_notification/screen/user_notification_sidebar_screen/screen/user_notification_sidebar_screen.dart';
 import 'package:xorbx/presentation/sign_in_screen/binding/sign_in_binding.dart';
 import 'package:xorbx/presentation/sign_in_screen/screen/sign_in_screen.dart';
@@ -51,6 +53,8 @@ class AppRoutes {
       '/device_health_monitoring_sidebar_screen';
   static const userNotificationSidebarScreen =
       '/user_notification_sidebar_screen';
+  static const userNotificationDashboardScreen =
+      '/user_notification_dashboard_screen';
 
   static List<GetPage> pages = [
     GetPage(
@@ -132,6 +136,11 @@ class AppRoutes {
       name: userNotificationSidebarScreen,
       page: () => const UserNotificationSidebarScreen(),
       bindings: [UserNotificationSidebarBinding()],
+    ),
+    GetPage(
+      name: userNotificationDashboardScreen,
+      page: () => const UserNotificationDashboardScreen(),
+      bindings: [UserNotificationDashboardBinding()],
     ),
   ];
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xorbx/constants/color_constants.dart';
-import 'package:xorbx/widgets/hint_Text_widget.dart';
+import 'package:xorbx/widgets/hint_text_widget.dart';
 
 class CustomTextField extends StatefulWidget {
   final String hintText;

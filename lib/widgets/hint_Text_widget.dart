@@ -6,10 +6,10 @@ class HintTextWidget extends StatelessWidget {
   final Widget content;
 
   const HintTextWidget({
-    Key? key,
+    super.key,
     required this.text,
     required this.content,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +23,17 @@ class HintTextWidget extends StatelessWidget {
           child: content,
         ),
         Positioned(
-          top: -5,
+          top: 0,
           left: 30,
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 5),
             color: ColorConstant.color1,
             child: Text(
               text,
-              style: const TextStyle(color: Colors.grey),
+              style: const TextStyle(
+                color: Colors.grey,
+                fontSize: 10,
+              ),
             ),
           ),
         ),

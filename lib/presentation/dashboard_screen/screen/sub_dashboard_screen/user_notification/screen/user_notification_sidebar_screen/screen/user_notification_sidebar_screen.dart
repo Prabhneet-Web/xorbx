@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xorbx/constants/color_constants.dart';
 import 'package:xorbx/constants/image_constants.dart';
+import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/user_notification/screen/user_notification_sidebar_screen/controller/user_notification_sidebar_controller.dart';
+import 'package:xorbx/routes/app_routes.dart';
 import 'package:xorbx/utils/scaling_utility.dart';
 import 'package:xorbx/widgets/background_effect.dart';
 import 'package:xorbx/widgets/common_network_image.dart';
 import 'package:xorbx/widgets/drop_down_options.dart';
 
-class UserNotificationSidebarScreen extends GetWidget {
+class UserNotificationSidebarScreen
+    extends GetWidget<UserNotificationSidebarController> {
   const UserNotificationSidebarScreen({super.key});
 
   @override

@@ -45,7 +45,7 @@ class DashboardScreen extends GetWidget<DashboardController> {
                       },
                       icon: const Icon(
                         Icons.menu_outlined,
-                        color: Color.fromRGBO(165, 212, 225, 1),
+                        color: ColorConstant.color4,
                       ),
                     ),
                     SizedBox(width: scale.getScaledHeight(5)),
@@ -54,10 +54,15 @@ class DashboardScreen extends GetWidget<DashboardController> {
                       style: AppStyle.style2,
                     ),
                     const Spacer(flex: 1),
-                    const Icon(
-                      Icons.notifications_none_rounded,
-                      color: Colors.white,
-                      size: 26,
+                    IconButton(
+                      onPressed: () {
+                        Get.toNamed(AppRoutes.userNotificationDashboardScreen);
+                      },
+                      icon: const Icon(
+                        Icons.notifications_none_rounded,
+                        color: Colors.white,
+                        size: 26,
+                      ),
                     ),
                     SizedBox(width: scale.getScaledHeight(10)),
                     GestureDetector(
