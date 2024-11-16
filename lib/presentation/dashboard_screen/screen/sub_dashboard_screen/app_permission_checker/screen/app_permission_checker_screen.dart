@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/constants/color_constants.dart';
+import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/app_permission_checker/widgets/alerts_and_notifications.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/app_permission_checker/widgets/app_permission_overview.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/app_permission_checker/widgets/data_sensitivity.dart';
+import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/app_permission_checker/widgets/data_sharing_practices.dart';
+import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/app_permission_checker/widgets/line_graph.dart';
+import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/app_permission_checker/widgets/overall_privacy_score.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/app_permission_checker/widgets/usage_frequency.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/app_permission_checker/widgets/user_control.dart';
 import 'package:xorbx/presentation/dashboard_screen/widgets/dashboard_cards.dart';
@@ -103,6 +107,34 @@ class AppPermissionCheckerScreen extends GetWidget {
                     ),
                   ),
                   SizedBox(height: scale.getScaledHeight(10)),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const DashboardCards(
+                        OverallPrivacyScore(),
+                        'Overall Privacy\nScore',
+                        AppRoutes.realTimeThreadDetectionScreen,
+                      ),
+                      SizedBox(width: scale.getScaledHeight(16)),
+                      const DashboardCards(
+                        LineGraph(),
+                        'Line Graph\n',
+                        AppRoutes.realTimeThreadDetectionScreen,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: scale.getScaledHeight(16)),
+                  const DashboardCards(
+                    AlertsAndNotifications(),
+                    'Alerts and Notifications',
+                    AppRoutes.realTimeThreadDetectionScreen,
+                  ),
+                  SizedBox(height: scale.getScaledHeight(16)),
+                  const DashboardCards(
+                    DataSharingPractices(),
+                    'Data Sharing Practices',
+                    AppRoutes.realTimeThreadDetectionScreen,
+                  ),
                   SizedBox(height: scale.getScaledHeight(50)),
                 ],
               ),
