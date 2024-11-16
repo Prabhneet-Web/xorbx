@@ -84,7 +84,7 @@ class UserNotificationDashboardScreen
                   const MessageCard(
                     hintText: 'Issues',
                     content:
-                        " I’ve found it challenging to quickly locate critical, high-severity alerts, as they’re sometimes mixed in with lower-priority notifications. Navigating to specific threat details could be more streamlined, and filtering options are limited, making it hard to focus on particular types of alerts. Additionally, certain sections, like the alert history, can be slow to load, which disrupts workflow when monitoring for recent activity.",
+                        "I've found it challenging to quickly locate critical, high-severity alerts, as they’re sometimes mixed in with lower-priority notifications. Navigating to specific threat details could be more streamlined, and filtering options are limited, making it hard to focus on particular types of alerts. Additionally, certain sections, like the alert history, can be slow to load, which disrupts workflow when monitoring for recent activity.",
                   ),
                   SizedBox(height: scale.getScaledHeight(16)),
                   _customizeFeedback(),
