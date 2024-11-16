@@ -5,9 +5,12 @@ import 'package:xorbx/constants/color_constants.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/user_notification/controller/user_notification_controller.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/user_notification/widgets/detailed_breakdown.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/user_notification/widgets/immediate_alerts_section.dart';
+import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/user_notification/widgets/last_month_notifications.dart';
+import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/user_notification/widgets/last_week_notifications.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/user_notification/widgets/metric_representation.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/user_notification/widgets/metric_representation_2.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/user_notification/widgets/notification_panel.dart';
+import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/user_notification/widgets/push_notifications.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/user_notification/widgets/total_security_alerts_count.dart';
 import 'package:xorbx/presentation/dashboard_screen/widgets/dashboard_cards.dart';
 import 'package:xorbx/routes/app_routes.dart';
@@ -67,35 +70,7 @@ class UserNotificationScreen extends GetWidget<UserNotificationController> {
                           style: AppStyle.style2,
                         ),
                         const Spacer(),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Row(
-                              children: [
-                                const Icon(
-                                  Icons.refresh,
-                                  size: 13,
-                                  color: Colors.white60,
-                                ),
-                                SizedBox(width: scale.getScaledHeight(2)),
-                                Text(
-                                  "Last Synced:",
-                                  style: AppStyle.style2.copyWith(
-                                      color: Colors.white60,
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 13),
-                                ),
-                              ],
-                            ),
-                            const Text(
-                              "September 01, 2024",
-                              style: TextStyle(
-                                color: Colors.white60,
-                                fontSize: 8,
-                              ),
-                            ),
-                          ],
-                        ),
+                        _overlayText("Last Synced:", "September 01, 2024"),
                       ],
                     ),
                   ),
@@ -126,42 +101,7 @@ class UserNotificationScreen extends GetWidget<UserNotificationController> {
                     ),
                   ),
                   SizedBox(height: scale.getScaledHeight(10)),
-                  Stack(
-                    children: [
-                      const DashboardCards(
-                        TotalSecurityAlertsCount(),
-                        'Total Security Alerts Count',
-                        AppRoutes.realTimeThreadDetectionScreen,
-                      ),
-                      Positioned(
-                        top: scale.getScaledHeight(10),
-                        right: scale.getScaledHeight(10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  "Timestamp:",
-                                  style: AppStyle.style2.copyWith(
-                                      color: Colors.white60,
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 13),
-                                ),
-                              ],
-                            ),
-                            Text(
-                              "November 07, 2024",
-                              style: AppStyle.style3.copyWith(
-                                color: Colors.white60,
-                                fontSize: 8,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                  _totalSecurityAlertCount(),
                   SizedBox(height: scale.getScaledHeight(16)),
                   const DashboardCards(
                     DetailedBreakdown(),
@@ -187,9 +127,130 @@ class UserNotificationScreen extends GetWidget<UserNotificationController> {
                     'Immediate Alerts Section',
                     AppRoutes.realTimeThreadDetectionScreen,
                   ),
-                  SizedBox(height: scale.getScaledHeight(36)),
+                  SizedBox(height: scale.getScaledHeight(16)),
+                  _overlayTextDashboardCards(
+                    const DashboardCards(
+                      PushNotifications(),
+                      'Push Notifications',
+                      AppRoutes.realTimeThreadDetectionScreen,
+                    ),
+                    "Last Synced:",
+                    "November 02, 2024",
+                  ),
+                  SizedBox(height: scale.getScaledHeight(16)),
+                  Text(
+                    "Past Notifications",
+                    style: AppStyle.style2.copyWith(
+                      fontSize: 16,
+                    ),
+                  ),
+                  SizedBox(height: scale.getScaledHeight(10)),
+                  _overlayTextDashboardCards(
+                    const DashboardCards(
+                      LastWeekNotifications(),
+                      'Last Week Notifications',
+                      AppRoutes.realTimeThreadDetectionScreen,
+                    ),
+                    "Last Synced:",
+                    "October 25, 2024",
+                  ),
+                  SizedBox(height: scale.getScaledHeight(16)),
+                  _overlayTextDashboardCards(
+                    const DashboardCards(
+                      LastMonthNotifications(),
+                      'Last Month Notifications',
+                      AppRoutes.realTimeThreadDetectionScreen,
+                    ),
+                    "Last Synced:",
+                    "October 01, 2024",
+                  ),
+                  SizedBox(height: scale.getScaledHeight(50)),
                 ],
               ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _overlayTextDashboardCards(Widget content, String name, String date) {
+    return Stack(
+      children: [
+        content,
+        _overlayText(name, date),
+      ],
+    );
+  }
+
+  Widget _totalSecurityAlertCount() {
+    return Stack(
+      children: [
+        const DashboardCards(
+          TotalSecurityAlertsCount(),
+          'Total Security Alerts Count',
+          AppRoutes.realTimeThreadDetectionScreen,
+        ),
+        Positioned(
+          top: scale.getScaledHeight(10),
+          right: scale.getScaledHeight(10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Row(
+                children: [
+                  Text(
+                    "Timestamp:",
+                    style: AppStyle.style2.copyWith(
+                        color: Colors.white60,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 13),
+                  ),
+                ],
+              ),
+              Text(
+                "November 07, 2024",
+                style: AppStyle.style3.copyWith(
+                  color: Colors.white60,
+                  fontSize: 8,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _overlayText(String name, String date) {
+    return Positioned(
+      top: scale.getScaledHeight(10),
+      right: scale.getScaledHeight(10),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Row(
+            children: [
+              const Icon(
+                Icons.refresh,
+                size: 13,
+                color: Colors.white60,
+              ),
+              SizedBox(width: scale.getScaledHeight(2)),
+              Text(
+                name,
+                style: AppStyle.style2.copyWith(
+                    color: Colors.white60,
+                    fontWeight: FontWeight.normal,
+                    fontSize: 13),
+              ),
+            ],
+          ),
+          Text(
+            date,
+            style: const TextStyle(
+              color: Colors.white60,
+              fontSize: 8,
             ),
           ),
         ],

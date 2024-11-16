@@ -47,7 +47,7 @@ class NotificationPanel extends StatelessWidget {
             const Icon(
               Icons.warning_amber_rounded,
               size: 18,
-              color: Colors.green,
+              color: Colors.orange,
             ),
             scale,
           ),
