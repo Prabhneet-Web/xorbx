@@ -3,11 +3,11 @@ import 'package:get/get.dart';
 import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/constants/color_constants.dart';
 import 'package:xorbx/constants/image_constants.dart';
-import 'package:xorbx/presentation/dashboard_screen/screen/user_notification_dashboard_screen/controller/user_notification_dashboard_controller.dart';
+import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/customer_feedback/controller/customer_feedback_controller.dart';
 import 'package:xorbx/utils/scaling_utility.dart';
 import 'package:xorbx/widgets/common_network_image.dart';
 
-class RatingSystem extends GetWidget<UserNotificationDashboardController> {
+class RatingSystem extends GetWidget<CustomerFeedbackController> {
   const RatingSystem({super.key});
 
   @override

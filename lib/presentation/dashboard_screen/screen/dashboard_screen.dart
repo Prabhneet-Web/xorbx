@@ -16,6 +16,7 @@ import 'package:xorbx/routes/app_routes.dart';
 import 'package:xorbx/utils/scaling_utility.dart';
 import 'package:xorbx/widgets/background_effect.dart';
 import 'package:xorbx/presentation/dashboard_screen/widgets/inner_widgets/heat_map.dart';
+import 'package:xorbx/widgets/shadow_border_card.dart';
 
 class DashboardScreen extends GetWidget<DashboardController> {
   const DashboardScreen({super.key});
@@ -56,7 +57,7 @@ class DashboardScreen extends GetWidget<DashboardController> {
                     const Spacer(flex: 1),
                     IconButton(
                       onPressed: () {
-                        Get.toNamed(AppRoutes.userNotificationDashboardScreen);
+                        Get.toNamed(AppRoutes.customerFeedback);
                       },
                       icon: const Icon(
                         Icons.notifications_none_rounded,
@@ -66,7 +67,9 @@ class DashboardScreen extends GetWidget<DashboardController> {
                     ),
                     SizedBox(width: scale.getScaledHeight(10)),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        _showPopup(context);
+                      },
                       child: CircleAvatar(
                         backgroundImage: AssetImage(ImageConstants.person),
                         radius: scale.getScaledHeight(16),
@@ -152,5 +155,86 @@ class DashboardScreen extends GetWidget<DashboardController> {
         ),
       ]),
     );
+  }
+
+  void _showPopup(BuildContext context) {
+    OverlayEntry? overlayEntry;
+
+    overlayEntry = OverlayEntry(
+      builder: (context) {
+        return GestureDetector(
+          onTap: () {
+            overlayEntry?.remove();
+          },
+          child: Stack(
+            children: [
+              Container(
+                color: Colors.transparent,
+              ),
+              Positioned(
+                top: 90,
+                right: 30,
+                child: GestureDetector(
+                  onTap: () {},
+                  child: SizedBox(
+                    width: 160,
+                    child: ShadowBorderCard(
+                      content: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const SizedBox(height: 20),
+                          Row(
+                            children: [
+                              const SizedBox(width: 10),
+                              const Icon(
+                                Icons.logout_outlined,
+                                color: ColorConstant.color4,
+                                size: 19,
+                              ),
+                              const SizedBox(width: 10),
+                              Text(
+                                "LogOut",
+                                style: AppStyle.style3.copyWith(
+                                  fontSize: 12,
+                                  color: Colors.white70,
+                                  decoration: TextDecoration.none,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 10),
+                          Row(
+                            children: [
+                              const SizedBox(width: 10),
+                              const Icon(
+                                Icons.settings,
+                                color: ColorConstant.color4,
+                                size: 18,
+                              ),
+                              const SizedBox(width: 10),
+                              Text(
+                                "Settings",
+                                style: AppStyle.style3.copyWith(
+                                  fontSize: 12,
+                                  color: Colors.white70,
+                                  decoration: TextDecoration.none,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 20),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+
+    Navigator.of(context).overlay!.insert(overlayEntry);
   }
 }

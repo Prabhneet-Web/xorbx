@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:xorbx/presentation/dashboard_screen/screen/user_notification_dashboard_screen/widgets/message_container.dart';
+import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/customer_feedback/widgets/message_container.dart';
 import 'package:xorbx/widgets/shadow_border_card.dart';
 
 class MessageCard extends StatelessWidget {

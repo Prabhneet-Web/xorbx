@@ -9,6 +9,7 @@ import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/constants/color_constants.dart';
 import 'package:xorbx/utils/scaling_utility.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/real_time_threat_detection/controller/real_time_threat_detection_controller.dart';
+import 'package:xorbx/widgets/heat_map_details.dart';
 import 'package:xorbx/widgets/inner_shadow_painter.dart';
 
 class RealTimeThreatDetectionScreen extends GetWidget {
@@ -800,75 +801,18 @@ class RealTimeThreatDetectionScreen extends GetWidget {
     return Container(
       decoration: _cardDecoration(),
       padding: const EdgeInsets.all(16),
-      child: Column(
+      child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'Vulnerability Heat Map',
             style: TextStyle(fontSize: 16, color: Colors.white),
           ),
-          const SizedBox(height: 10),
-          SizedBox(
-            height: 150, // Adjust the height of the map as needed
-            child: FlutterMap(
-              options: const MapOptions(
-                initialCenter:
-                    LatLng(40.0, 48.0), // Center at a general world view
-                initialZoom:
-                    1.5, // Adjust zoom level to show most of the world map
-                // interactiveFlags: InteractiveFlag
-                //     .none, // Disable interactions for static display
-              ),
-              children: [
-                TileLayer(
-                  urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                  subdomains: const ['a', 'b', 'c'],
-                ),
-                MarkerLayer(
-                  markers: _buildVulnerabilityMarkers(),
-                ),
-              ],
-            ),
-          ),
+          SizedBox(height: 10),
+          HeatMapDetails(),
         ],
       ),
     );
-  }
-
-  List<Marker> _buildVulnerabilityMarkers() {
-    // Sample data: list of vulnerability locations with respective colors
-    final locations = [
-      {'lat': 40.7128, 'lon': -74.0060, 'color': Colors.red}, // New York
-      {'lat': 34.0522, 'lon': -118.2437, 'color': Colors.green}, // Los Angeles
-      {'lat': 51.5074, 'lon': -0.1278, 'color': Colors.red}, // London
-      {'lat': 35.6895, 'lon': 139.6917, 'color': Colors.green}, // Tokyo
-      {'lat': -33.8688, 'lon': 151.2093, 'color': Colors.red}, // Sydney
-      {'lat': 28.6139, 'lon': 77.2090, 'color': Colors.green}, // New Delhi
-      {'lat': 28.6139, 'lon': 77.2090, 'color': Colors.red},
-      {'lat': 45.6139, 'lon': 78.2090, 'color': Colors.red},
-      {'lat': 31.6139, 'lon': 81.2090, 'color': Colors.red},
-      {'lat': 38.6139, 'lon': 83.2090, 'color': Colors.green},
-      {'lat': 65.6139, 'lon': 77.2090, 'color': Colors.red},
-      {'lat': 45.6139, 'lon': 78.2090, 'color': Colors.red},
-      {'lat': 68.6139, 'lon': 81.2090, 'color': Colors.red},
-      {'lat': 39.6139, 'lon': 34.2090, 'color': Colors.green},
-      {'lat': 55.7558, 'lon': 37.6173, 'color': Colors.red}, // Moscow
-    ];
-
-    // Map the locations into Marker widgets
-    return locations.map((location) {
-      return Marker(
-        width: 10,
-        height: 10,
-        point: LatLng(location['lat'] as double, location['lon'] as double),
-        child: Container(
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: location['color'] as Color,
-          ),
-        ),
-      );
-    }).toList();
   }
 
   Widget _buildUserActivityMonitoring() {

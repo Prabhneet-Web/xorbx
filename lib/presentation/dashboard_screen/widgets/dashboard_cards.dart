@@ -66,7 +66,6 @@ class DashboardCards extends StatelessWidget {
             ),
           ),
           onPressed: () {
-            // Navigate to the route specified in the constructor
             Get.toNamed(route);
           },
           child: Text(

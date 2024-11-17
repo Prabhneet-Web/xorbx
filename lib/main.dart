@@ -16,7 +16,7 @@ class App extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.theme,
-      initialRoute: AppRoutes.signInScreen,
+      initialRoute: AppRoutes.dashboardScreen,
       getPages: AppRoutes.pages,
       defaultTransition: Transition.fade,
       initialBinding: AppBinding(),

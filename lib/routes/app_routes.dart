@@ -5,8 +5,6 @@ import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/app_permission_checker/screen/app_permission_checker_screen.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/compromised_password/binding/compromised_password_binding.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/compromised_password/screen/compromised_password_screen.dart';
-import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/customer_feedback/binding/customer_feedback_binding.dart';
-import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/customer_feedback/screen/customer_feedback_screen.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/device_health_monitoring/binding/device_health_monitoring_binding.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/device_health_monitoring/screen/device_health_monitoring_screen.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/device_health_monitoring/screen/device_health_monitoring_sidebar_screen/binding/device_health_monitoring_sidebar_binding.dart';
@@ -18,8 +16,8 @@ import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/
 import 'package:xorbx/presentation/dashboard_screen/screen/dashboard_sidebar_screen/binding/dashboard_sidebar_binding.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/dashboard_sidebar_screen/screen/dashboard_sidebar_screen.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/user_notification/screen/user_notification_sidebar_screen/binding/user_notification_sidebar_binding.dart';
-import 'package:xorbx/presentation/dashboard_screen/screen/user_notification_dashboard_screen/binding/user_notification_dashboard_binding.dart';
-import 'package:xorbx/presentation/dashboard_screen/screen/user_notification_dashboard_screen/screen/user_notification_dashboard_screen.dart';
+import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/customer_feedback/binding/customer_feedback_binding.dart';
+import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/customer_feedback/screen/customer_feedback_screen.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/user_notification/screen/user_notification_sidebar_screen/screen/user_notification_sidebar_screen.dart';
 import 'package:xorbx/presentation/sign_in_screen/binding/sign_in_binding.dart';
 import 'package:xorbx/presentation/sign_in_screen/screen/sign_in_screen.dart';
@@ -44,17 +42,15 @@ class AppRoutes {
   static const appPermissionChecker = '/app_permission_checker';
   static const phisingDetectionScreen = '/phishing_detection';
   static const compromisedPassword = '/compromised_password';
-  static const customerFeedback = '/customer_feedback';
   static const deviceHealthMonitoring = '/device_health_monitoring';
   static const networkSecurityAlert = '/network_security_alert';
   static const userNotification = '/user_notification';
+  static const customerFeedback = '/customer_feedback';
   static const dashboardSidebarScreen = '/dashboard_sidebar_screen';
   static const deviceHealthMonitoringSidebarScreen =
       '/device_health_monitoring_sidebar_screen';
   static const userNotificationSidebarScreen =
       '/user_notification_sidebar_screen';
-  static const userNotificationDashboardScreen =
-      '/user_notification_dashboard_screen';
 
   static List<GetPage> pages = [
     GetPage(
@@ -103,11 +99,6 @@ class AppRoutes {
       bindings: [CompromisedPasswordBinding()],
     ),
     GetPage(
-      name: customerFeedback,
-      page: () => const CustomerFeedbackScreen(),
-      bindings: [CustomerFeedbackBinding()],
-    ),
-    GetPage(
       name: deviceHealthMonitoring,
       page: () => const DeviceHealthMonitoringScreen(),
       bindings: [DeviceHealthMonitoringBinding()],
@@ -138,9 +129,9 @@ class AppRoutes {
       bindings: [UserNotificationSidebarBinding()],
     ),
     GetPage(
-      name: userNotificationDashboardScreen,
-      page: () => const UserNotificationDashboardScreen(),
-      bindings: [UserNotificationDashboardBinding()],
+      name: customerFeedback,
+      page: () => const CustomerFeedbackScreen(),
+      bindings: [CustomerFeedbackBinding()],
     ),
   ];
 }
