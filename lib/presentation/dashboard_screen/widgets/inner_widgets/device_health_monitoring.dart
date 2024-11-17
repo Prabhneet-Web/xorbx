@@ -40,8 +40,10 @@ class DeviceHealthMonitoring extends GetWidget {
                 ),
               ],
             ),
-            _buildSliderRow('CPU Usage:', Colors.red),
-            _buildSliderRow('Memory Usage:', Colors.green),
+            SizedBox(height: scale.getScaledHeight(15)),
+            _buildSliderRow('CPU Usage:', Colors.red, 80, context),
+            SizedBox(height: scale.getScaledHeight(5)),
+            _buildSliderRow('Memory Usage:', Colors.green, 70, context),
           ],
         ),
       ),
@@ -49,7 +51,7 @@ class DeviceHealthMonitoring extends GetWidget {
   }
 }
 
-Widget _buildSliderRow(String label, Color color) {
+Widget _buildSliderRow(String label, Color color, double value, context) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -60,12 +62,20 @@ Widget _buildSliderRow(String label, Color color) {
           color: Colors.white70,
         ),
       ),
-      Slider(
-        value: 0.7,
-        onChanged: (value) {},
-        activeColor: color,
-        thumbColor: color,
-      ),
+      SliderTheme(
+        data: SliderTheme.of(context).copyWith(
+          thumbShape: const RoundSliderThumbShape(
+              enabledThumbRadius: 0), // Set radius to 0 to make it rectangular
+          overlayShape: const RoundSliderOverlayShape(overlayRadius: 2),
+          thumbColor: ColorConstant.color3, // Thumb color
+        ),
+        child: Slider(
+          max: 100,
+          value: value,
+          onChanged: (value) {},
+          activeColor: color,
+        ),
+      )
     ],
   );
 }

@@ -172,26 +172,26 @@ class DashboardScreen extends GetWidget<DashboardController> {
                 color: Colors.transparent,
               ),
               Positioned(
-                top: 90,
-                right: 30,
+                top: scale.getScaledHeight(90),
+                right: scale.getScaledHeight(30),
                 child: GestureDetector(
                   onTap: () {},
                   child: SizedBox(
-                    width: 160,
+                    width: scale.getScaledHeight(160),
                     child: ShadowBorderCard(
                       content: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const SizedBox(height: 20),
+                          SizedBox(height: scale.getScaledHeight(20)),
                           Row(
                             children: [
-                              const SizedBox(width: 10),
+                              SizedBox(width: scale.getScaledHeight(10)),
                               const Icon(
                                 Icons.logout_outlined,
                                 color: ColorConstant.color4,
                                 size: 19,
                               ),
-                              const SizedBox(width: 10),
+                              SizedBox(width: scale.getScaledHeight(10)),
                               Text(
                                 "LogOut",
                                 style: AppStyle.style3.copyWith(
@@ -202,16 +202,16 @@ class DashboardScreen extends GetWidget<DashboardController> {
                               ),
                             ],
                           ),
-                          const SizedBox(height: 10),
+                          SizedBox(height: scale.getScaledHeight(10)),
                           Row(
                             children: [
-                              const SizedBox(width: 10),
+                              SizedBox(width: scale.getScaledHeight(10)),
                               const Icon(
                                 Icons.settings,
                                 color: ColorConstant.color4,
                                 size: 18,
                               ),
-                              const SizedBox(width: 10),
+                              SizedBox(width: scale.getScaledHeight(10)),
                               Text(
                                 "Settings",
                                 style: AppStyle.style3.copyWith(
@@ -222,7 +222,7 @@ class DashboardScreen extends GetWidget<DashboardController> {
                               ),
                             ],
                           ),
-                          const SizedBox(height: 20),
+                          SizedBox(height: scale.getScaledHeight(20)),
                         ],
                       ),
                     ),

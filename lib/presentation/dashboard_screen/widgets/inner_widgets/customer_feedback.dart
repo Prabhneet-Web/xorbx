@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/constants/color_constants.dart';
 import 'package:xorbx/utils/scaling_utility.dart';
+import 'package:xorbx/widgets/custom_slider.dart';
 
 class CustomerFeedback extends GetWidget {
   const CustomerFeedback({super.key});
@@ -19,10 +20,13 @@ class CustomerFeedback extends GetWidget {
         ),
         child: Column(
           children: [
-            _buildSliderRow('Ratings:', Colors.yellow.shade600),
-            _buildSliderRow('Issues:', Colors.orange.shade700),
-            _buildSliderRow('Alerts:', Colors.red),
-            _buildSliderRow('informational:', Colors.green),
+            _buildSliderRow('Ratings:', Colors.yellow.shade600, 50, context),
+            SizedBox(height: scale.getScaledHeight(10)),
+            _buildSliderRow('Issues:', Colors.orange.shade700, 70, context),
+            SizedBox(height: scale.getScaledHeight(10)),
+            _buildSliderRow('Alerts:', Colors.red, 50, context),
+            SizedBox(height: scale.getScaledHeight(10)),
+            _buildSliderRow('informational:', Colors.green, 80, context),
           ],
         ),
       ),
@@ -30,7 +34,7 @@ class CustomerFeedback extends GetWidget {
   }
 }
 
-Widget _buildSliderRow(String label, Color color) {
+Widget _buildSliderRow(String label, Color color, double value, context) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -41,12 +45,24 @@ Widget _buildSliderRow(String label, Color color) {
           color: Colors.white70,
         ),
       ),
-      Slider(
-        value: 0.7,
-        onChanged: (value) {},
-        activeColor: color,
-        thumbColor: ColorConstant.color3,
-      ),
+      Row(
+        children: [
+          const Icon(
+            Icons.arrow_left_outlined,
+            size: 15,
+            color: Colors.white54,
+          ),
+          CustomSlider(
+            color: color,
+            value: value,
+          ),
+          const Icon(
+            Icons.arrow_right_outlined,
+            size: 15,
+            color: Colors.white54,
+          ),
+        ],
+      )
     ],
   );
 }
