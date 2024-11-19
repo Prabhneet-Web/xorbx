@@ -11,7 +11,7 @@ class InnerShadowPainter extends CustomPainter {
     canvas.drawRRect(
       RRect.fromRectAndRadius(
         Rect.fromLTWH(0, 0, size.width, size.height),
-        const Radius.circular(12),
+        const Radius.circular(9),
       ),
       paint,
     );

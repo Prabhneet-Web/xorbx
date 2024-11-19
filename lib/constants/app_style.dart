@@ -16,7 +16,7 @@ class AppStyle {
   static TextStyle style2 = TextStyle(
     color: Colors.white,
     fontSize: getFontSize(
-      17,
+      18,
     ),
     fontFamily: 'Helvetica',
     fontWeight: FontWeight.w600,

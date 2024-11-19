@@ -10,14 +10,14 @@ class DashboardCards extends StatelessWidget {
   final String title;
   final String route;
   final bool isButtonNeed;
-  final String buttonTitle; // Moved to named parameter with default value
+  final String buttonTitle;
 
   const DashboardCards(
     this.content,
     this.title,
     this.route, {
     this.isButtonNeed = false,
-    this.buttonTitle = "Button", // Default value set to "Button"
+    this.buttonTitle = "Button",
     super.key,
   });
 
@@ -40,7 +40,7 @@ class DashboardCards extends StatelessWidget {
           SizedBox(height: scale.getScaledHeight(16)),
           Container(
             decoration: BoxDecoration(
-              color: ColorConstant.cardColor,
+              color: ColorConstant.color1,
               borderRadius: BorderRadius.circular(scale.getScaledHeight(8)),
             ),
             child: content,
@@ -69,7 +69,7 @@ class DashboardCards extends StatelessWidget {
             Get.toNamed(route);
           },
           child: Text(
-            buttonTitle, // No need for null check due to default value
+            buttonTitle,
             style: const TextStyle(
               color: ColorConstant.color1,
             ),
