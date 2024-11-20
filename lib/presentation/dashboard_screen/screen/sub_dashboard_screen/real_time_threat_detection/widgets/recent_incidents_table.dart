@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/real_time_threat_detection/controller/real_time_threat_detection_controller.dart';
 import 'package:xorbx/widgets/container_decoration.dart';
 import 'package:xorbx/widgets/inner_shadow_painter.dart';
+import 'package:xorbx/widgets/overlay_text.dart';
 
 class RecentIncidentsTable
     extends GetWidget<RealTimeThreadDetectionController> {
@@ -53,78 +55,130 @@ class RecentIncidentsTable
   }
 
   Widget _buildIncidentTable() {
-    return Column(
-      children: [
-        CustomPaint(
-          painter: InnerShadowPainter(),
-          child: Container(
-            decoration: cardDecoration(),
-            child: Center(
-              child: DataTable(
-                border: const TableBorder(
-                  verticalInside: BorderSide(color: Colors.white38),
-                ),
-                columnSpacing: 10,
-                columns: const [
-                  DataColumn(
-                      label: Text('Timestamp',
-                          style: TextStyle(color: Colors.white, fontSize: 10))),
-                  DataColumn(
-                      label: Text('Severity',
-                          style: TextStyle(color: Colors.white, fontSize: 10))),
-                  DataColumn(
-                      label: Text('Type of Threat',
-                          style: TextStyle(color: Colors.white, fontSize: 10))),
-                  DataColumn(
-                      label: Text('Action Taken',
-                          style: TextStyle(color: Colors.white, fontSize: 10))),
-                ],
-                rows: const [
-                  DataRow(cells: [
-                    DataCell(Text('2024-09-07',
-                        style: TextStyle(color: Colors.white, fontSize: 10))),
-                    DataCell(Text('High',
-                        style: TextStyle(color: Colors.white, fontSize: 10))),
-                    DataCell(Text('Malware',
-                        style: TextStyle(color: Colors.white, fontSize: 10))),
-                    DataCell(Text('In Progress',
-                        style: TextStyle(color: Colors.white, fontSize: 10))),
-                  ]),
-                  DataRow(cells: [
-                    DataCell(Text('2024-09-07',
-                        style: TextStyle(color: Colors.white, fontSize: 10))),
-                    DataCell(Text('High',
-                        style: TextStyle(color: Colors.white, fontSize: 10))),
-                    DataCell(Text('Malware',
-                        style: TextStyle(color: Colors.white, fontSize: 10))),
-                    DataCell(Text('In Progress',
-                        style: TextStyle(color: Colors.white, fontSize: 10))),
-                  ]),
-                  DataRow(cells: [
-                    DataCell(Text('2024-09-07',
-                        style: TextStyle(color: Colors.white, fontSize: 10))),
-                    DataCell(Text('High',
-                        style: TextStyle(color: Colors.white, fontSize: 10))),
-                    DataCell(Text('Malware',
-                        style: TextStyle(color: Colors.white, fontSize: 10))),
-                    DataCell(Text('In Progress',
-                        style: TextStyle(color: Colors.white, fontSize: 10))),
-                  ]),
-                  DataRow(
-                    cells: [
-                      DataCell(Text('2024-09-07',
-                          style: TextStyle(color: Colors.white, fontSize: 10))),
-                      DataCell(Text('High',
-                          style: TextStyle(color: Colors.white, fontSize: 10))),
-                      DataCell(Text('Malware',
-                          style: TextStyle(color: Colors.white, fontSize: 10))),
-                      DataCell(Text('In Progress',
-                          style: TextStyle(color: Colors.white, fontSize: 10))),
-                    ],
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.white38, width: 1.5),
+      ),
+      child: Center(
+        child: DataTable(
+          border: const TableBorder(
+            verticalInside: BorderSide(color: Colors.white38, width: 1.5),
+            horizontalInside: BorderSide.none, // Horizontal borders removed
+          ),
+          columnSpacing: 12,
+          horizontalMargin: 3,
+          columns: const [
+            DataColumn(
+                label: Text('Timestamp',
+                    style: TextStyle(color: Colors.white, fontSize: 9))),
+            DataColumn(
+              label: Row(
+                children: [
+                  Text('Severity',
+                      style: TextStyle(color: Colors.white, fontSize: 9)),
+                  Icon(
+                    Icons.arrow_drop_down_rounded,
+                    size: 20,
+                    color: Colors.white,
                   ),
                 ],
               ),
             ),
+            DataColumn(
+              label: Row(
+                children: [
+                  Text('Type of Threat',
+                      style: TextStyle(color: Colors.white, fontSize: 9)),
+                  Icon(
+                    Icons.arrow_drop_down_rounded,
+                    size: 20,
+                    color: Colors.white,
+                  ),
+                ],
+              ),
+            ),
+            DataColumn(
+                label: Text('Action Taken',
+                    style: TextStyle(color: Colors.white, fontSize: 9))),
+          ],
+          rows: [
+            DataRow(cells: [
+              DataCell(
+                _overlayText("Last Synced:", "September 01, 2024"),
+              ),
+              const DataCell(Text('High',
+                  style: TextStyle(color: Colors.white, fontSize: 8))),
+              const DataCell(Text('Malware',
+                  style: TextStyle(color: Colors.white, fontSize: 8))),
+              const DataCell(Text('In Progress',
+                  style: TextStyle(color: Colors.white, fontSize: 8))),
+            ]),
+            DataRow(cells: [
+              DataCell(
+                _overlayText("Last Synced:", "September 01, 2024"),
+              ),
+              const DataCell(Text('Medium',
+                  style: TextStyle(color: Colors.white, fontSize: 8))),
+              const DataCell(Text('Phishing',
+                  style: TextStyle(color: Colors.white, fontSize: 8))),
+              const DataCell(Text('Resolved',
+                  style: TextStyle(color: Colors.white, fontSize: 8))),
+            ]),
+            DataRow(cells: [
+              DataCell(
+                _overlayText("Last Synced:", "September 01, 2024"),
+              ),
+              const DataCell(Text('Low',
+                  style: TextStyle(color: Colors.white, fontSize: 8))),
+              const DataCell(Text('Spam',
+                  style: TextStyle(color: Colors.white, fontSize: 8))),
+              const DataCell(Text('Ignored',
+                  style: TextStyle(color: Colors.white, fontSize: 8))),
+            ]),
+            DataRow(cells: [
+              DataCell(
+                _overlayText("Last Synced:", "September 01, 2024"),
+              ),
+              const DataCell(Text('Critical',
+                  style: TextStyle(color: Colors.white, fontSize: 8))),
+              const DataCell(Text('Ransomware',
+                  style: TextStyle(color: Colors.white, fontSize: 8))),
+              const DataCell(Text('Quarantined',
+                  style: TextStyle(color: Colors.white, fontSize: 8))),
+            ]),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _overlayText(String name, String date) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Row(
+          children: [
+            const Icon(
+              Icons.refresh,
+              size: 8,
+              color: Colors.white60,
+            ),
+            SizedBox(width: scale.getScaledHeight(2)),
+            Text(
+              name,
+              style: AppStyle.style2.copyWith(
+                  color: Colors.white60,
+                  fontWeight: FontWeight.normal,
+                  fontSize: 8),
+            ),
+          ],
+        ),
+        Text(
+          date,
+          style: const TextStyle(
+            color: Colors.white60,
+            fontSize: 6,
           ),
         ),
       ],

@@ -64,7 +64,7 @@ class RealTimeThreatDetectionScreen
                           ],
                         ),
                         const Spacer(),
-                        overlayText("Last Synced:", "September 01, 2024"),
+                        _overlayText("Last Synced:", "September 01, 2024"),
                       ],
                     ),
                   ),
@@ -192,6 +192,14 @@ class RealTimeThreatDetectionScreen
           ),
         ],
       ),
+    );
+  }
+
+  Widget _overlayText(String name, String date) {
+    return Positioned(
+      top: scale.getScaledHeight(10),
+      right: scale.getScaledHeight(10),
+      child: overlayText(name, date),
     );
   }
 }
