@@ -16,7 +16,7 @@ class NetworkTrafficAnalysis
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
-          height: 170,
+          height: scale.getScaledHeight(170),
           width: scale.fw,
           child: LineChart(
             LineChartData(
@@ -24,7 +24,7 @@ class NetworkTrafficAnalysis
                 drawVerticalLine: false,
                 getDrawingHorizontalLine: (value) => FlLine(
                   color: Colors.white.withOpacity(0.5),
-                  strokeWidth: scale.getScaledHeight(1), // Scaled stroke width
+                  strokeWidth: scale.getScaledHeight(1),
                 ),
               ),
               titlesData: FlTitlesData(
@@ -32,14 +32,13 @@ class NetworkTrafficAnalysis
                   sideTitles: SideTitles(
                     showTitles: true,
                     reservedSize: scale.getScaledHeight(25),
-                    interval: 20,
+                    interval: scale.getScaledHeight(20),
                     getTitlesWidget: (value, meta) {
                       return Text(
                         value.toInt().toString(),
                         style: TextStyle(
                           color: Colors.white70,
-                          fontSize:
-                              scale.getScaledHeight(7), // Scaled font size
+                          fontSize: scale.getScaledHeight(7),
                         ),
                       );
                     },
@@ -48,7 +47,7 @@ class NetworkTrafficAnalysis
                 bottomTitles: AxisTitles(
                   sideTitles: SideTitles(
                     showTitles: true,
-                    interval: 1, // Interval for labels
+                    interval: scale.getScaledHeight(1),
                     getTitlesWidget: (value, meta) {
                       const labels = [
                         'D1',
@@ -67,8 +66,7 @@ class NetworkTrafficAnalysis
                         labels[value.toInt() % labels.length],
                         style: TextStyle(
                           color: Colors.white70,
-                          fontSize:
-                              scale.getScaledHeight(7), // Scaled font size
+                          fontSize: scale.getScaledHeight(7),
                         ),
                       );
                     },
@@ -100,40 +98,42 @@ class NetworkTrafficAnalysis
                 LineChartBarData(
                   isCurved: false,
                   spots: [
-                    const FlSpot(0, 10),
-                    const FlSpot(1, 20),
-                    const FlSpot(2, 40),
-                    const FlSpot(3, 60),
-                    const FlSpot(4, 70),
-                    const FlSpot(5, 80),
-                    const FlSpot(6, 60),
-                    const FlSpot(7, 63),
-                    const FlSpot(8, 74),
-                    const FlSpot(9, 65),
-                    const FlSpot(10, 60),
+                    FlSpot(scale.getScaledHeight(0), scale.getScaledHeight(10)),
+                    FlSpot(scale.getScaledHeight(1), scale.getScaledHeight(20)),
+                    FlSpot(scale.getScaledHeight(2), scale.getScaledHeight(40)),
+                    FlSpot(scale.getScaledHeight(3), scale.getScaledHeight(60)),
+                    FlSpot(scale.getScaledHeight(4), scale.getScaledHeight(70)),
+                    FlSpot(scale.getScaledHeight(5), scale.getScaledHeight(80)),
+                    FlSpot(scale.getScaledHeight(6), scale.getScaledHeight(60)),
+                    FlSpot(scale.getScaledHeight(7), scale.getScaledHeight(63)),
+                    FlSpot(scale.getScaledHeight(8), scale.getScaledHeight(74)),
+                    FlSpot(scale.getScaledHeight(9), scale.getScaledHeight(65)),
+                    FlSpot(
+                        scale.getScaledHeight(10), scale.getScaledHeight(60)),
                   ],
                   dotData: const FlDotData(show: false),
                   color: Colors.red,
-                  barWidth: 1,
+                  barWidth: scale.getScaledHeight(1),
                 ),
                 LineChartBarData(
                   isCurved: false,
                   spots: [
-                    const FlSpot(0, 20),
-                    const FlSpot(1, 30),
-                    const FlSpot(2, 45),
-                    const FlSpot(3, 65),
-                    const FlSpot(4, 50),
-                    const FlSpot(5, 60),
-                    const FlSpot(6, 50),
-                    const FlSpot(7, 65),
-                    const FlSpot(8, 70),
-                    const FlSpot(9, 60),
-                    const FlSpot(10, 70),
+                    FlSpot(scale.getScaledHeight(0), scale.getScaledHeight(20)),
+                    FlSpot(scale.getScaledHeight(1), scale.getScaledHeight(30)),
+                    FlSpot(scale.getScaledHeight(2), scale.getScaledHeight(45)),
+                    FlSpot(scale.getScaledHeight(3), scale.getScaledHeight(65)),
+                    FlSpot(scale.getScaledHeight(4), scale.getScaledHeight(50)),
+                    FlSpot(scale.getScaledHeight(5), scale.getScaledHeight(60)),
+                    FlSpot(scale.getScaledHeight(6), scale.getScaledHeight(50)),
+                    FlSpot(scale.getScaledHeight(7), scale.getScaledHeight(65)),
+                    FlSpot(scale.getScaledHeight(8), scale.getScaledHeight(70)),
+                    FlSpot(scale.getScaledHeight(9), scale.getScaledHeight(60)),
+                    FlSpot(
+                        scale.getScaledHeight(10), scale.getScaledHeight(70)),
                   ],
                   dotData: const FlDotData(show: false),
                   color: Colors.green,
-                  barWidth: 1,
+                  barWidth: scale.getScaledHeight(1),
                 ),
               ],
               minY: scale.getScaledHeight(0),
@@ -141,8 +141,8 @@ class NetworkTrafficAnalysis
             ),
           ),
         ),
-        const SizedBox(
-          height: 10,
+        SizedBox(
+          height: scale.getScaledHeight(10),
         ),
         Text(
           "Suspicious Connections List",
@@ -150,16 +150,16 @@ class NetworkTrafficAnalysis
             fontSize: scale.getScaledHeight(16),
           ),
         ),
-        const SizedBox(
-          height: 10,
+        SizedBox(
+          height: scale.getScaledHeight(10),
         ),
         _networkTrafficCards(
           'Timestamps',
           Colors.red,
           _networkTrafficCardsDetails1(),
         ),
-        const SizedBox(
-          height: 12,
+        SizedBox(
+          height: scale.getScaledHeight(12),
         ),
         _networkTrafficCards(
           'IP Addresses',
@@ -176,19 +176,22 @@ class NetworkTrafficAnalysis
       child: Container(
         decoration: cardDecoration(),
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+          padding: EdgeInsets.symmetric(
+            vertical: scale.getScaledHeight(15),
+            horizontal: scale.getScaledHeight(10),
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const SizedBox(
-                width: 20,
+              SizedBox(
+                width: scale.getScaledHeight(20),
               ),
               CircleAvatar(
-                radius: 5,
+                radius: scale.getScaledHeight(5),
                 backgroundColor: color,
               ),
-              const SizedBox(
-                width: 15,
+              SizedBox(
+                width: scale.getScaledHeight(15),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -196,7 +199,7 @@ class NetworkTrafficAnalysis
                   Text(
                     name,
                     style: AppStyle.style1.copyWith(
-                      fontSize: 12,
+                      fontSize: scale.getScaledHeight(12),
                     ),
                   ),
                 ],
@@ -205,8 +208,8 @@ class NetworkTrafficAnalysis
                 flex: 1,
               ),
               details,
-              const SizedBox(
-                width: 10,
+              SizedBox(
+                width: scale.getScaledHeight(10),
               ),
             ],
           ),
@@ -221,28 +224,28 @@ class NetworkTrafficAnalysis
       children: [
         Row(
           children: [
-            const Icon(
+            Icon(
               Icons.refresh,
-              size: 11,
+              size: scale.getScaledHeight(11),
               color: Colors.white60,
             ),
-            const SizedBox(
-              width: 2,
+            SizedBox(
+              width: scale.getScaledHeight(2),
             ),
             Text(
               "Last Synced:",
               style: AppStyle.style2.copyWith(
                   color: Colors.white60,
                   fontWeight: FontWeight.normal,
-                  fontSize: 11),
+                  fontSize: scale.getScaledHeight(11)),
             ),
           ],
         ),
-        const Text(
+        Text(
           "September 01, 2024",
           style: TextStyle(
             color: Colors.white60,
-            fontSize: 7,
+            fontSize: scale.getScaledHeight(7),
           ),
         ),
       ],
@@ -258,13 +261,13 @@ class NetworkTrafficAnalysis
           style: AppStyle.style1.copyWith(
               color: Colors.white60,
               fontWeight: FontWeight.normal,
-              fontSize: 13),
+              fontSize: scale.getScaledHeight(13)),
         ),
-        const Text(
+        Text(
           "Protocols",
           style: TextStyle(
             color: Colors.white60,
-            fontSize: 9,
+            fontSize: scale.getScaledHeight(9),
           ),
         ),
       ],

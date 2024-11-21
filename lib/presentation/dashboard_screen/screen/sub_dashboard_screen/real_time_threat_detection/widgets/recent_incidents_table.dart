@@ -4,7 +4,6 @@ import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/real_time_threat_detection/controller/real_time_threat_detection_controller.dart';
 import 'package:xorbx/widgets/container_decoration.dart';
 import 'package:xorbx/widgets/inner_shadow_painter.dart';
-import 'package:xorbx/widgets/overlay_text.dart';
 
 class RecentIncidentsTable
     extends GetWidget<RealTimeThreadDetectionController> {
@@ -16,8 +15,8 @@ class RecentIncidentsTable
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _buildIncidentTable(),
-        const SizedBox(
-          height: 20,
+        SizedBox(
+          height: scale.getScaledHeight(20),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -36,12 +35,12 @@ class RecentIncidentsTable
 
   Widget _pagecard(String item) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 4.0),
+      padding: EdgeInsets.symmetric(horizontal: scale.getScaledHeight(4.0)),
       child: CustomPaint(
         painter: InnerShadowPainter(),
         child: Container(
-          height: 25,
-          width: 25,
+          height: scale.getScaledHeight(25),
+          width: scale.getScaledHeight(25),
           decoration: cardDecoration(),
           child: Center(
             child: Text(
@@ -57,17 +56,19 @@ class RecentIncidentsTable
   Widget _buildIncidentTable() {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.white38, width: 1.5),
+        borderRadius: BorderRadius.circular(scale.getScaledHeight(12)),
+        border: Border.all(
+            color: Colors.white38, width: scale.getScaledHeight(1.5)),
       ),
       child: Center(
         child: DataTable(
-          border: const TableBorder(
-            verticalInside: BorderSide(color: Colors.white38, width: 1.5),
-            horizontalInside: BorderSide.none, // Horizontal borders removed
+          border: TableBorder(
+            verticalInside: BorderSide(
+                color: Colors.white38, width: scale.getScaledHeight(1.5)),
+            horizontalInside: BorderSide.none,
           ),
-          columnSpacing: 12,
-          horizontalMargin: 3,
+          columnSpacing: scale.getScaledHeight(12),
+          horizontalMargin: scale.getScaledHeight(3),
           columns: const [
             DataColumn(
                 label: Text('Timestamp',
@@ -176,9 +177,9 @@ class RecentIncidentsTable
         ),
         Text(
           date,
-          style: const TextStyle(
+          style: TextStyle(
             color: Colors.white60,
-            fontSize: 6,
+            fontSize: scale.getScaledHeight(6),
           ),
         ),
       ],

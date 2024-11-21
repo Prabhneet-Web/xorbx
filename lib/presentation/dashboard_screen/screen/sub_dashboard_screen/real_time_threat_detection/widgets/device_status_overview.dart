@@ -15,7 +15,7 @@ class DeviceStatusOverview
     return Column(
       children: [
         _deviceStatusCards('Secure', Colors.green),
-        const SizedBox(height: 15),
+        SizedBox(height: scale.getScaledHeight(15)),
         _deviceStatusCards('Vulnerabilities', Colors.red),
       ],
     );
@@ -26,19 +26,22 @@ class DeviceStatusOverview
       content: Stack(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+            padding: EdgeInsets.symmetric(
+              vertical: scale.getScaledHeight(8),
+              horizontal: scale.getScaledHeight(10),
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const SizedBox(
-                  width: 20,
+                SizedBox(
+                  width: scale.getScaledHeight(20),
                 ),
                 CircleAvatar(
-                  radius: 5,
+                  radius: scale.getScaledHeight(5),
                   backgroundColor: color,
                 ),
-                const SizedBox(
-                  width: 15,
+                SizedBox(
+                  width: scale.getScaledHeight(15),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,7 +49,7 @@ class DeviceStatusOverview
                     Text(
                       name,
                       style: AppStyle.style1.copyWith(
-                        fontSize: 11,
+                        fontSize: scale.getScaledHeight(11),
                       ),
                     ),
                   ],
@@ -58,18 +61,18 @@ class DeviceStatusOverview
             ),
           ),
           Positioned(
-            top: 2,
-            right: 15,
+            top: scale.getScaledHeight(2),
+            right: scale.getScaledHeight(15),
             child: CustomPaint(
               painter: InnerShadowPainter(),
               child: Container(
-                height: 30,
-                width: 30,
+                height: scale.getScaledHeight(30),
+                width: scale.getScaledHeight(30),
                 decoration: cardDecoration(),
-                child: const Center(
+                child: Center(
                   child: Icon(
                     Icons.verified_outlined,
-                    size: 18,
+                    size: scale.getScaledHeight(18),
                     color: Colors.white54,
                   ),
                 ),

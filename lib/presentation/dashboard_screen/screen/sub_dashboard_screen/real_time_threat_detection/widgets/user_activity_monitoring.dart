@@ -12,10 +12,11 @@ class UserActivityMonitoring
     return Column(
       children: [
         RangeSlider(
-          values: const RangeValues(0.2, 0.8),
+          values: RangeValues(
+              scale.getScaledHeight(0.2), scale.getScaledHeight(0.8)),
           onChanged: (RangeValues values) {},
-          min: 0.0,
-          max: 1.0,
+          min: scale.getScaledHeight(0.0),
+          max: scale.getScaledHeight(1.0),
           activeColor: const Color.fromRGBO(165, 212, 225, 1),
           inactiveColor: const Color.fromRGBO(165, 212, 225, 1),
         ),
@@ -25,7 +26,7 @@ class UserActivityMonitoring
             Text(
               'unauthorized access\n attempts',
               style: AppStyle.style1.copyWith(
-                fontSize: 8,
+                fontSize: scale.getScaledHeight(8),
                 fontWeight: FontWeight.normal,
                 color: Colors.white60,
               ),
@@ -33,7 +34,7 @@ class UserActivityMonitoring
             Text(
               'unusual\n behavior',
               style: AppStyle.style1.copyWith(
-                fontSize: 8,
+                fontSize: scale.getScaledHeight(8),
                 fontWeight: FontWeight.normal,
                 color: Colors.white60,
               ),

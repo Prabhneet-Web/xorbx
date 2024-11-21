@@ -11,8 +11,9 @@ class ComplianceOverview extends GetWidget<RealTimeThreadDetectionController> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        _buildComplianceSlider('GDPR', 70, Colors.orange),
-        _buildComplianceSlider('HIPAA', 40, Colors.red),
+        _buildComplianceSlider(
+            'GDPR', scale.getScaledHeight(70), Colors.orange),
+        _buildComplianceSlider('HIPAA', scale.getScaledHeight(40), Colors.red),
       ],
     );
   }
@@ -27,7 +28,7 @@ class ComplianceOverview extends GetWidget<RealTimeThreadDetectionController> {
         Icon(
           Icons.circle,
           color: color,
-          size: 11,
+          size: scale.getScaledHeight(11),
         ),
         const SizedBox(
           width: 10,
@@ -35,7 +36,7 @@ class ComplianceOverview extends GetWidget<RealTimeThreadDetectionController> {
         Text(
           label,
           style: AppStyle.style1.copyWith(
-            fontSize: 12,
+            fontSize: scale.getScaledHeight(12),
           ),
         ),
         const SizedBox(
@@ -45,18 +46,18 @@ class ComplianceOverview extends GetWidget<RealTimeThreadDetectionController> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(
+              Icon(
                 Icons.arrow_left_outlined,
-                size: 20,
+                size: scale.getScaledHeight(20),
                 color: Colors.white54,
               ),
               CustomSlider(
                 value: value,
                 color: color,
               ),
-              const Icon(
+              Icon(
                 Icons.arrow_right_outlined,
-                size: 20,
+                size: scale.getScaledHeight(20),
                 color: Colors.white54,
               ),
             ],

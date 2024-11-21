@@ -14,7 +14,7 @@ class UpdateStatus extends GetWidget<RealTimeThreadDetectionController> {
       children: [
         _updateStatusCards(
             'Software Updates', Colors.green, 'V 1.0', 'November 02, 2024'),
-        const SizedBox(height: 16),
+        SizedBox(height: scale.getScaledHeight(16)),
         _updateStatusCards(
             'Antivirus Updates', Colors.red, 'V 2.0', 'November 02, 2024'),
       ],
@@ -27,73 +27,80 @@ class UpdateStatus extends GetWidget<RealTimeThreadDetectionController> {
       painter: InnerShadowPainter(),
       child: Container(
         decoration: cardDecoration(),
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+        padding: EdgeInsets.symmetric(
+            vertical: scale.getScaledHeight(20),
+            horizontal: scale.getScaledHeight(10)),
         child: Column(
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const SizedBox(width: 20),
+                SizedBox(width: scale.getScaledWidth(20)),
                 CircleAvatar(
-                  radius: 5,
+                  radius: scale.getScaledHeight(5),
                   backgroundColor: color,
                 ),
-                const SizedBox(width: 10),
+                SizedBox(width: scale.getScaledWidth(10)),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       name,
-                      style: AppStyle.style1.copyWith(fontSize: 12),
+                      style: AppStyle.style1
+                          .copyWith(fontSize: scale.getScaledHeight(12)),
                     ),
                   ],
                 ),
                 const Spacer(),
               ],
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: scale.getScaledHeight(10)),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const SizedBox(width: 20),
+                SizedBox(width: scale.getScaledWidth(20)),
                 SizedBox(
-                  width: scale.fw - 200,
-                  height: 10,
+                  width: scale.getScaledWidth(scale.fw - 200),
+                  height: scale.getScaledHeight(10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         "Latest version: ",
-                        style: AppStyle.style1.copyWith(fontSize: 8),
+                        style: AppStyle.style1
+                            .copyWith(fontSize: scale.getScaledHeight(8)),
                       ),
                       Text(
                         version,
-                        style: AppStyle.style1.copyWith(fontSize: 8),
+                        style: AppStyle.style1
+                            .copyWith(fontSize: scale.getScaledHeight(8)),
                       ),
                     ],
                   ),
                 ),
               ],
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: scale.getScaledHeight(10)),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const SizedBox(width: 20),
+                SizedBox(width: scale.getScaledWidth(20)),
                 SizedBox(
-                  width: scale.fw - 140,
-                  height: 10,
+                  width: scale.getScaledWidth(scale.fw - 140),
+                  height: scale.getScaledHeight(10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Text(
                         "Last updated timestamp: ",
-                        style: AppStyle.style1.copyWith(fontSize: 8),
+                        style: AppStyle.style1
+                            .copyWith(fontSize: scale.getScaledHeight(8)),
                       ),
                       Text(
                         date,
-                        style: AppStyle.style1.copyWith(fontSize: 8),
+                        style: AppStyle.style1
+                            .copyWith(fontSize: scale.getScaledHeight(8)),
                       ),
                     ],
                   ),

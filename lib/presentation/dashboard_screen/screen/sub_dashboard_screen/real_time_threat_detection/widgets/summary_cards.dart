@@ -15,10 +15,10 @@ class SummaryCards extends GetWidget<RealTimeThreadDetectionController> {
       children: [
         _buildSummaryCard(
             'Total\nThreats', controller.totalThreats, Colors.orange),
-        const SizedBox(width: 8),
+        SizedBox(width: scale.getScaledWidth(8)),
         _buildSummaryCard(
             'Resolved\nThreats', controller.resolvedThreats, Colors.green),
-        const SizedBox(width: 8),
+        SizedBox(width: scale.getScaledWidth(8)),
         _buildSummaryCard(
             'Inactive\nThreats', controller.inactiveThreats, Colors.red),
       ],
@@ -30,9 +30,9 @@ class SummaryCards extends GetWidget<RealTimeThreadDetectionController> {
       painter: InnerShadowPainter(),
       child: Obx(
         () => Container(
-          width: 102,
-          height: 100,
-          padding: const EdgeInsets.all(16),
+          width: scale.getScaledWidth(102),
+          height: scale.getScaledHeight(100),
+          padding: EdgeInsets.all(scale.getScaledHeight(16)),
           decoration: cardDecoration(),
           child: Column(
             children: [
@@ -50,20 +50,20 @@ class SummaryCards extends GetWidget<RealTimeThreadDetectionController> {
                   ),
                 ],
               ),
-              const SizedBox(height: 5),
+              SizedBox(height: scale.getScaledHeight(5)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CircleAvatar(
-                    radius: 6,
+                    radius: scale.getScaledHeight(6),
                     backgroundColor: color,
                   ),
-                  const SizedBox(width: 8),
+                  SizedBox(width: scale.getScaledWidth(8)),
                   Text(
                     '${count.value}',
-                    style: const TextStyle(
+                    style: TextStyle(
                         color: Colors.white,
-                        fontSize: 12,
+                        fontSize: scale.getScaledHeight(12),
                         fontWeight: FontWeight.bold),
                   ),
                 ],

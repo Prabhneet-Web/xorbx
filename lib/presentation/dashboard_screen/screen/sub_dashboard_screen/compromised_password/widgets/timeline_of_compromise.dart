@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:xorbx/constants/color_constants.dart';
 import 'package:xorbx/utils/scaling_utility.dart';
 
-class ThreatTrendGraph extends StatelessWidget {
-  const ThreatTrendGraph({super.key});
+class TimelineOfCompromise extends StatelessWidget {
+  const TimelineOfCompromise({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +28,13 @@ class ThreatTrendGraph extends StatelessWidget {
               sideTitles: SideTitles(
                 showTitles: true,
                 reservedSize: scale.getScaledHeight(25),
-                interval: scale.getScaledHeight(20),
+                interval: 20,
                 getTitlesWidget: (value, meta) {
                   return Text(
                     value.toInt().toString(),
                     style: TextStyle(
                       color: Colors.white70,
-                      fontSize: scale.getScaledHeight(7),
+                      fontSize: scale.getScaledHeight(7), // Scaled font size
                     ),
                   );
                 },
@@ -43,7 +43,7 @@ class ThreatTrendGraph extends StatelessWidget {
             bottomTitles: AxisTitles(
               sideTitles: SideTitles(
                 showTitles: true,
-                interval: scale.getScaledHeight(1),
+                interval: 1, // Interval for labels
                 getTitlesWidget: (value, meta) {
                   const labels = [
                     'D1',
@@ -94,17 +94,17 @@ class ThreatTrendGraph extends StatelessWidget {
             LineChartBarData(
               isCurved: false,
               spots: [
-                FlSpot(0, scale.getScaledHeight(10)),
-                FlSpot(1, scale.getScaledHeight(20)),
-                FlSpot(2, scale.getScaledHeight(40)),
-                FlSpot(3, scale.getScaledHeight(60)),
-                FlSpot(4, scale.getScaledHeight(70)),
-                FlSpot(5, scale.getScaledHeight(80)),
-                FlSpot(6, scale.getScaledHeight(60)),
-                FlSpot(7, scale.getScaledHeight(85)),
-                FlSpot(8, scale.getScaledHeight(90)),
-                FlSpot(9, scale.getScaledHeight(85)),
-                FlSpot(10, scale.getScaledHeight(70)),
+                FlSpot(scale.getScaledHeight(0), scale.getScaledHeight(20)),
+                FlSpot(scale.getScaledHeight(1), scale.getScaledHeight(30)),
+                FlSpot(scale.getScaledHeight(2), scale.getScaledHeight(45)),
+                FlSpot(scale.getScaledHeight(3), scale.getScaledHeight(65)),
+                FlSpot(scale.getScaledHeight(4), scale.getScaledHeight(50)),
+                FlSpot(scale.getScaledHeight(5), scale.getScaledHeight(60)),
+                FlSpot(scale.getScaledHeight(6), scale.getScaledHeight(50)),
+                FlSpot(scale.getScaledHeight(7), scale.getScaledHeight(65)),
+                FlSpot(scale.getScaledHeight(8), scale.getScaledHeight(70)),
+                FlSpot(scale.getScaledHeight(9), scale.getScaledHeight(60)),
+                FlSpot(scale.getScaledHeight(10), scale.getScaledHeight(70)),
               ],
               dotData: const FlDotData(show: false),
               color: Colors.red,

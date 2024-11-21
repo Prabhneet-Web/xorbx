@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 class CompromisedPasswordController extends GetxController {
-  var totalThreats = 45.obs;
+  var totalThreats = 100.obs;
   var resolvedThreats = 25.obs;
   var inactiveThreats = 45.obs;
 

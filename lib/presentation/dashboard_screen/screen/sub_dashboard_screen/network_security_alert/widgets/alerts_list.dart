@@ -4,8 +4,8 @@ import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/utils/scaling_utility.dart';
 import 'package:xorbx/widgets/shadow_border_card.dart';
 
-class ThreatsAlert extends StatelessWidget {
-  const ThreatsAlert({super.key});
+class AlertsList extends StatelessWidget {
+  const AlertsList({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,28 +13,65 @@ class ThreatsAlert extends StatelessWidget {
     return Column(
       children: [
         _threatAlertCards(
-          'Malware Attack',
+          'Students_XI',
+          'WiFi',
           Colors.red,
         ),
         SizedBox(
-          height: scale.getScaledHeight(12),
+          height: scale.getScaledHeight(6),
         ),
-        _threatAlertCards(
-          'Phishing Attack',
-          Colors.orange,
+        Text(
+          'Switch to a secure network',
+          style: AppStyle.style1.copyWith(
+            fontSize: scale.getScaledHeight(9),
+            color: Colors.white54,
+          ),
         ),
         SizedBox(
           height: scale.getScaledHeight(12),
         ),
         _threatAlertCards(
-          'Cyber Attack',
-          Colors.green,
+          'Infinix hot 8',
+          'Cellular',
+          Colors.red,
+        ),
+        SizedBox(
+          height: scale.getScaledHeight(6),
+        ),
+        Text(
+          'Switch to a secure networkt',
+          style: AppStyle.style1.copyWith(
+            fontSize: scale.getScaledHeight(9),
+            color: Colors.white54,
+          ),
+        ),
+        SizedBox(
+          height: scale.getScaledHeight(12),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+              "Alerts Summary:",
+              style: AppStyle.style2.copyWith(
+                fontSize: scale.getScaledHeight(16),
+                color: Colors.white,
+                letterSpacing: 1,
+              ),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: scale.getScaledHeight(12),
+        ),
+        _threatAlertCards2(
+          '2 high Alerts Categorized.',
         ),
       ],
     );
   }
 
-  Widget _threatAlertCards(String name, Color color) {
+  Widget _threatAlertCards(String name, String txt, Color color) {
     return ShadowBorderCard(
       content: Stack(
         children: [
@@ -46,35 +83,26 @@ class ThreatsAlert extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    const Icon(
-                      Icons.refresh,
-                      size: 11,
-                      color: Colors.white60,
-                    ),
-                    SizedBox(
-                      width: scale.getScaledHeight(2),
-                    ),
                     Text(
-                      "Last Synced:",
+                      "Last accessed:",
                       style: AppStyle.style2.copyWith(
                           color: Colors.white60,
                           fontWeight: FontWeight.normal,
-                          fontSize: scale.getScaledHeight(11)),
+                          fontSize: scale.getScaledHeight(8)),
                     ),
                   ],
                 ),
                 Text(
-                  "September 01, 2024",
+                  "2:30 PM",
                   style: TextStyle(
                     color: Colors.white60,
-                    fontSize: scale.getScaledHeight(7),
+                    fontSize: scale.getScaledHeight(8),
                   ),
                 ),
               ],
             ),
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               CircleAvatar(
                 radius: scale.getScaledHeight(5),
@@ -96,7 +124,7 @@ class ThreatsAlert extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'A Malware Attack infiltrates and damages systems',
+                    'Network Type: $txt',
                     style: AppStyle.style1.copyWith(
                       fontSize: scale.getScaledHeight(9),
                       color: Colors.white54,
@@ -104,12 +132,27 @@ class ThreatsAlert extends StatelessWidget {
                   ),
                 ],
               ),
-              const Spacer(
-                flex: 1,
-              ),
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _threatAlertCards2(String name) {
+    return ShadowBorderCard(
+      content: Padding(
+        padding: EdgeInsets.all(scale.getScaledHeight(8)),
+        child: Row(
+          children: [
+            Text(
+              name,
+              style: AppStyle.style1.copyWith(
+                fontSize: scale.getScaledHeight(12),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

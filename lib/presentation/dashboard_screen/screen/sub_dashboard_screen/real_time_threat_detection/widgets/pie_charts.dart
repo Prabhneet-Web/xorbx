@@ -1,14 +1,18 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/constants/color_constants.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/real_time_threat_detection/controller/real_time_threat_detection_controller.dart';
+import 'package:xorbx/utils/scaling_utility.dart';
 
 class PieCharts extends GetWidget<RealTimeThreadDetectionController> {
   const PieCharts({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var scale = Get.find<ScalingUtility>()..setCurrentDeviceSize(context);
+
     return Container(
       color: ColorConstant.color1,
       child: Column(
@@ -23,8 +27,8 @@ class PieCharts extends GetWidget<RealTimeThreadDetectionController> {
                 Colors.green,
                 Colors.grey,
               ),
-              const SizedBox(
-                width: 8,
+              SizedBox(
+                width: scale.getScaledHeight(8),
               ),
               _buildPieChartCard(
                 'Device Status Distribution:',
@@ -44,17 +48,17 @@ class PieCharts extends GetWidget<RealTimeThreadDetectionController> {
       String title, int percentage, Color color1, Color color2, Color color3) {
     return Expanded(
       child: Container(
-        height: 140,
+        height: scale.getScaledHeight(140),
         decoration: BoxDecoration(
           color: ColorConstant.color1,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(scale.getScaledHeight(12)),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: 80,
-              height: 80,
+              width: scale.getScaledHeight(80),
+              height: scale.getScaledHeight(80),
               child: Stack(
                 alignment: Alignment.center,
                 children: [
@@ -62,15 +66,15 @@ class PieCharts extends GetWidget<RealTimeThreadDetectionController> {
                     PieChartData(
                       sections: _buildPieChartSections(
                           percentage, color1, color2, color3),
-                      centerSpaceRadius: 30,
-                      sectionsSpace: 2,
-                      startDegreeOffset: 270,
+                      centerSpaceRadius: scale.getScaledHeight(30),
+                      sectionsSpace: scale.getScaledHeight(2),
+                      startDegreeOffset: scale.getScaledHeight(270),
                     ),
                   ),
                   Text(
                     "$percentage%",
-                    style: const TextStyle(
-                      fontSize: 11,
+                    style: TextStyle(
+                      fontSize: scale.getScaledHeight(11),
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
@@ -78,11 +82,11 @@ class PieCharts extends GetWidget<RealTimeThreadDetectionController> {
                 ],
               ),
             ),
-            const SizedBox(height: 38),
+            SizedBox(height: scale.getScaledHeight(38)),
             Text(
               title,
-              style: const TextStyle(
-                fontSize: 9,
+              style: TextStyle(
+                fontSize: scale.getScaledHeight(9),
                 color: Colors.white,
               ),
               textAlign: TextAlign.center,
@@ -99,21 +103,19 @@ class PieCharts extends GetWidget<RealTimeThreadDetectionController> {
       PieChartSectionData(
         value: percentage.toDouble(),
         color: color1,
-        radius: 20,
+        radius: scale.getScaledHeight(20),
         showTitle: false,
       ),
       PieChartSectionData(
-        value: (100 - percentage) *
-            0.6, // Adjusts the visual weight of the remaining section
+        value: (100 - percentage) * 0.6,
         color: color2,
-        radius: 20,
+        radius: scale.getScaledHeight(20),
         showTitle: false,
       ),
       PieChartSectionData(
-        value: (100 - percentage) *
-            0.4, // A minor section for another visual layer
+        value: (100 - percentage) * 0.4,
         color: color3,
-        radius: 20,
+        radius: scale.getScaledHeight(20),
         showTitle: false,
       ),
     ];

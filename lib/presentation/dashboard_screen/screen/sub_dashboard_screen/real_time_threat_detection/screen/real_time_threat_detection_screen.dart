@@ -34,7 +34,7 @@ class RealTimeThreatDetectionScreen
         dynamicChildren: [
           SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(scale.getScaledHeight(16)),
               child: Column(
                 children: [
                   Padding(
@@ -75,16 +75,16 @@ class RealTimeThreatDetectionScreen
                       fontSize: scale.getScaledHeight(16),
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: scale.getScaledHeight(10)),
                   const SummaryCards(),
-                  const SizedBox(height: 16),
+                  SizedBox(height: scale.getScaledHeight(16)),
                   Text(
                     "Real Time Threat Alerts",
                     style: AppStyle.style2.copyWith(
                       fontSize: scale.getScaledHeight(16),
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: scale.getScaledHeight(10)),
                   const DashboardCards(
                     ThreatsAlert(),
                     'Threats Alert',
@@ -108,14 +108,14 @@ class RealTimeThreatDetectionScreen
                     'Device Status Overview',
                     AppRoutes.realTimeThreadDetectionScreen,
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: scale.getScaledHeight(16)),
                   Text(
                     'Incident Log',
                     style: AppStyle.style2.copyWith(
                       fontSize: scale.getScaledHeight(16),
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: scale.getScaledHeight(10)),
                   const DashboardCards(
                     RecentIncidentsTable(),
                     'Recent Incidents Table',
@@ -127,7 +127,7 @@ class RealTimeThreatDetectionScreen
                     'Vulnerability Heat Map',
                     AppRoutes.realTimeThreadDetectionScreen,
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: scale.getScaledHeight(16)),
                   Stack(
                     children: [
                       const DashboardCards(
@@ -146,7 +146,7 @@ class RealTimeThreatDetectionScreen
                       ),
                     ],
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: scale.getScaledHeight(16)),
                   Text(
                     'Network Traffic Analysis',
                     style: AppStyle.style2.copyWith(
@@ -159,7 +159,7 @@ class RealTimeThreatDetectionScreen
                     'Network Traffic Overview Panel',
                     AppRoutes.realTimeThreadDetectionScreen,
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: scale.getScaledHeight(16)),
                   Text(
                     'Update Status',
                     style: AppStyle.style2.copyWith(
@@ -172,7 +172,7 @@ class RealTimeThreatDetectionScreen
                     'Device Status Overview',
                     AppRoutes.realTimeThreadDetectionScreen,
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: scale.getScaledHeight(16)),
                   Text(
                     'Compliance Status',
                     style: AppStyle.style2.copyWith(
@@ -185,7 +185,7 @@ class RealTimeThreatDetectionScreen
                     'Compliance Overview',
                     AppRoutes.realTimeThreadDetectionScreen,
                   ),
-                  const SizedBox(height: 36),
+                  SizedBox(height: scale.getScaledHeight(36)),
                 ],
               ),
             ),
