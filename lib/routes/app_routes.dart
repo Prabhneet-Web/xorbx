@@ -11,6 +11,8 @@ import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/device_health_monitoring/screen/device_health_monitoring_sidebar_screen/screen/device_health_monitoring_sidebar_screen.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/network_security_alert/binding/network_security_alert_binding.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/network_security_alert/screen/network_security_alert_screen.dart';
+import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/phising_detection/screen/phishing_detection_sidebar/binding/phishing_detection_sidebar_binding.dart';
+import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/phising_detection/screen/phishing_detection_sidebar/screen/phishing_detection_sidebar_screen.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/user_notification/binding/user_notification_binding.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/sub_dashboard_screen/user_notification/screen/user_notification_screen.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/dashboard_sidebar_screen/binding/dashboard_sidebar_binding.dart';
@@ -51,6 +53,8 @@ class AppRoutes {
       '/device_health_monitoring_sidebar_screen';
   static const userNotificationSidebarScreen =
       '/user_notification_sidebar_screen';
+  static const phishingDetectionSidebarScreen =
+      '/user_notification_sidebar_screen';
 
   static List<GetPage> pages = [
     GetPage(
@@ -80,13 +84,18 @@ class AppRoutes {
     ),
     GetPage(
       name: realTimeThreadDetectionScreen,
-      page: () => RealTimeThreatDetectionScreen(),
+      page: () => const RealTimeThreatDetectionScreen(),
       bindings: [RealTimeThreatDetectionBinding()],
     ),
     GetPage(
       name: phisingDetectionScreen,
       page: () => const PhishingDetectionScreen(),
       bindings: [PhishingDetectionBinding()],
+    ),
+    GetPage(
+      name: phishingDetectionSidebarScreen,
+      page: () => const PhishingDetectionSidebarScreen(),
+      bindings: [PhishingDetectionSidebarBinding()],
     ),
     GetPage(
       name: appPermissionChecker,

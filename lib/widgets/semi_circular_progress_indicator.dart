@@ -1,11 +1,12 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 class SemiCircularProgressIndicator extends StatelessWidget {
   final double progress;
+  final Color color;
 
-  const SemiCircularProgressIndicator({super.key, required this.progress});
+  const SemiCircularProgressIndicator(
+      {super.key, required this.progress, this.color = Colors.orange});
 
   @override
   Widget build(BuildContext context) {
@@ -14,13 +15,13 @@ class SemiCircularProgressIndicator extends StatelessWidget {
       children: [
         CustomPaint(
           size: const Size(120, 120),
-          painter: _SemiCircularPainter(progress),
+          painter: _SemiCircularPainter(progress, color: color),
         ),
         Text(
           '${(progress * 100).toInt()}%',
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 16,
-            color: Colors.orange,
+            color: color,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -31,8 +32,9 @@ class SemiCircularProgressIndicator extends StatelessWidget {
 
 class _SemiCircularPainter extends CustomPainter {
   final double progress;
+  final Color color;
 
-  _SemiCircularPainter(this.progress);
+  _SemiCircularPainter(this.progress, {this.color = Colors.orange});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -47,7 +49,7 @@ class _SemiCircularPainter extends CustomPainter {
     for (int i = 0; i < totalSegments; i++) {
       final double opacity = (i + 1) / totalSegments;
       final paint = Paint()
-        ..color = Colors.orange.withOpacity(opacity * progress.clamp(0.0, 1.0))
+        ..color = color.withOpacity(opacity * progress.clamp(0.0, 1.0))
         ..style = PaintingStyle.fill;
 
       if (i / totalSegments <= progress) {

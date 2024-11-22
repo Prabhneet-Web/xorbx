@@ -64,8 +64,8 @@ class RatingSystem extends GetWidget<CustomerFeedbackController> {
               icon: Obx(
                 () => Icon(
                   index < controller.selectedRating.value
-                      ? Icons.star
-                      : Icons.star_outline,
+                      ? Icons.star_rate_rounded
+                      : Icons.star_border_rounded,
                   color: Colors.orange,
                   size: scale.getScaledHeight(30),
                 ),

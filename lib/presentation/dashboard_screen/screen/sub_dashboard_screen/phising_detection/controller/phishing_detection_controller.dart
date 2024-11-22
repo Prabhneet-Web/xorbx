@@ -24,8 +24,13 @@ class PhishingDetectionController extends GetxController {
     },
   ].obs;
 
-  var threatTrendData =
-      [10, 30, 45, 70, 65, 80, 55, 60].obs; // Sample data for graph
-  var threatTypeDistribution = 65.obs; // Percentage for threat type
-  var deviceStatusDistribution = 85.obs; // Percentage for device status
+  var threatTrendData = [10, 30, 45, 70, 65, 80, 55, 60].obs;
+  var threatTypeDistribution = 65.obs;
+  var deviceStatusDistribution = 85.obs;
+
+  var selectedRating = 0.obs;
+
+  void updateRating(int rating) {
+    selectedRating.value = rating;
+  }
 }
