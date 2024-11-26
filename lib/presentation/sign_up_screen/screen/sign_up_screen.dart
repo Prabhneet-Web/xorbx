@@ -12,10 +12,8 @@ import 'package:xorbx/widgets/custom_text_field.dart';
 import 'package:xorbx/widgets/divider_with_text.dart';
 import 'package:xorbx/widgets/social_button.dart';
 
-class SignUpScreen extends StatelessWidget {
-  final SignUpController controller = Get.find();
-
-  SignUpScreen({super.key});
+class SignUpScreen extends GetWidget<SignUpController> {
+  const SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

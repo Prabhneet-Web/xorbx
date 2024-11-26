@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xorbx/routes/app_routes.dart';
@@ -13,10 +12,8 @@ import 'package:xorbx/widgets/custom_text_field.dart';
 import 'package:xorbx/widgets/divider_with_text.dart';
 import 'package:xorbx/widgets/social_button.dart';
 
-class SignInScreen extends StatelessWidget {
-  final SignInController controller = Get.find();
-
-  SignInScreen({super.key});
+class SignInScreen extends GetWidget<SignInController> {
+  const SignInScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
