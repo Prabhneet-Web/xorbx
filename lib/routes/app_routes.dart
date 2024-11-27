@@ -7,6 +7,10 @@ import 'package:xorbx/presentation/security_screen/capture_fingerprint/binding/c
 import 'package:xorbx/presentation/security_screen/capture_fingerprint/screen/capture_fingerprint_screen.dart';
 import 'package:xorbx/presentation/security_screen/capture_voice/binding/capture_voice_binding.dart';
 import 'package:xorbx/presentation/security_screen/capture_voice/screen/capture_voice_screen.dart';
+import 'package:xorbx/presentation/sidebar_screen_details/dashboard_sidebar_details/overview_screen/binding/overview_binding.dart';
+import 'package:xorbx/presentation/sidebar_screen_details/dashboard_sidebar_details/overview_screen/screen/overview_screen.dart';
+import 'package:xorbx/presentation/sidebar_screen_details/dashboard_sidebar_details/privacy_policy_screen/binding/privacy_policy_binding.dart';
+import 'package:xorbx/presentation/sidebar_screen_details/dashboard_sidebar_details/privacy_policy_screen/screen/privacy_policy_screen.dart';
 import 'package:xorbx/presentation/sub_dashboard_screen/app_permission_checker/binding/app_permission_checker_binding.dart';
 import 'package:xorbx/presentation/sub_dashboard_screen/app_permission_checker/screen/app_permission_checker_screen.dart';
 import 'package:xorbx/presentation/sub_dashboard_screen/compromised_password/binding/compromised_password_binding.dart';
@@ -67,6 +71,8 @@ class AppRoutes {
   static const captureEyeScreen = '/capture_eye';
   static const captureFingerprintScreen = '/capture_fingerprint';
   static const captureVoiceScreen = '/capture_voice';
+  static const overviewScreen = '/dashboard_sidebar_details';
+  static const privacyPolicyScreen = '/privacy_policy_screen';
 
   static List<GetPage> pages = [
     // Flow 1
@@ -105,11 +111,6 @@ class AppRoutes {
       name: phisingDetectionScreen,
       page: () => const PhishingDetectionScreen(),
       bindings: [PhishingDetectionBinding()],
-    ),
-    GetPage(
-      name: phishingDetectionSidebarScreen,
-      page: () => const PhishingDetectionSidebarScreen(),
-      bindings: [PhishingDetectionSidebarBinding()],
     ),
     GetPage(
       name: appPermissionChecker,
@@ -153,12 +154,18 @@ class AppRoutes {
       bindings: [DeviceHealthMonitoringSidebarBinding()],
     ),
     GetPage(
+      name: phishingDetectionSidebarScreen,
+      page: () => const PhishingDetectionSidebarScreen(),
+      bindings: [PhishingDetectionSidebarBinding()],
+    ),
+    GetPage(
       name: userNotificationSidebarScreen,
       page: () => const UserNotificationSidebarScreen(),
       bindings: [UserNotificationSidebarBinding()],
     ),
 
     // Flow 2
+    // security screens
     GetPage(
       name: captureEyeScreen,
       page: () => const CaptureEyeScreen(),
@@ -173,6 +180,17 @@ class AppRoutes {
       name: captureVoiceScreen,
       page: () => const CaptureVoiceScreen(),
       bindings: [CaptureVoiceBinding()],
+    ),
+    // sidebar details screens
+    GetPage(
+      name: overviewScreen,
+      page: () => const OverviewScreen(),
+      bindings: [OverviewBinding()],
+    ),
+    GetPage(
+      name: privacyPolicyScreen,
+      page: () => const PrivacyPolicyScreen(),
+      bindings: [PrivacyPolicyBinding()],
     ),
   ];
 }

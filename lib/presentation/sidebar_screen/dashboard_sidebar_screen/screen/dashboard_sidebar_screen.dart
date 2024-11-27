@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:xorbx/constants/color_constants.dart';
 import 'package:xorbx/constants/image_constants.dart';
 import 'package:xorbx/presentation/sidebar_screen/dashboard_sidebar_screen/controller/dashboard_sidebar_controller.dart';
+import 'package:xorbx/routes/app_routes.dart';
 import 'package:xorbx/utils/scaling_utility.dart';
 import 'package:xorbx/widgets/background_effect.dart';
 import 'package:xorbx/widgets/common_network_image.dart';
@@ -56,6 +57,9 @@ class DashboardSidebarScreen extends GetWidget<DashboardSidebarController> {
                           title: "Overview",
                           items: const [],
                           scale: scale,
+                          onTap: () {
+                            Get.toNamed(AppRoutes.overviewScreen);
+                          },
                         ),
                         DropDownOptions(
                           icon: Icons.warning_amber_rounded,
@@ -72,6 +76,11 @@ class DashboardSidebarScreen extends GetWidget<DashboardSidebarController> {
                             "Data Provider Attribution"
                           ],
                           scale: scale,
+                          onItemTap: (item) {
+                            if (item == "Copyright Policy") {
+                              Get.toNamed(AppRoutes.privacyPolicyScreen);
+                            }
+                          },
                         ),
                         DropDownOptions(
                           icon: Icons.settings_outlined,

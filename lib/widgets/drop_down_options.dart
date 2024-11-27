@@ -5,19 +5,25 @@ import 'package:xorbx/utils/scaling_utility.dart';
 class DropDownOptions extends StatelessWidget {
   final IconData icon;
   final String title;
-  final List<String> items;
+  final List<String>? items;
   final ScalingUtility scale;
+  final VoidCallback? onTap;
+  final void Function(String)? onItemTap;
 
   const DropDownOptions({
     super.key,
     required this.icon,
     required this.title,
-    required this.items,
+    this.items,
     required this.scale,
+    this.onTap,
+    this.onItemTap,
   });
 
   @override
   Widget build(BuildContext context) {
+    final isItemsAvailable = items != null && items!.isNotEmpty;
+
     return ExpansionTile(
       leading: Icon(
         icon,
@@ -44,37 +50,51 @@ class DropDownOptions extends StatelessWidget {
           color: Colors.white30,
         ),
       ),
-      children: items
-          .map(
-            (item) => Padding(
-              padding: EdgeInsets.only(
-                left: scale.getScaledHeight(60),
-                bottom: scale.getScaledHeight(8),
-              ),
-              child: Align(
-                alignment: Alignment.bottomLeft,
-                child: Row(
-                  children: [
-                    const CircleAvatar(
-                      radius: 2,
-                      backgroundColor: Colors.white,
-                    ),
-                    SizedBox(
-                      width: scale.getScaledHeight(8),
-                    ),
-                    Text(
-                      item,
-                      style: TextStyle(
-                        color: Colors.white70,
-                        fontSize: scale.getScaledHeight(12),
+      onExpansionChanged: (isExpanded) {
+        if (!isItemsAvailable && isExpanded) {
+          onTap?.call();
+        }
+      },
+      children: isItemsAvailable
+          ? items!
+              .map(
+                (item) => Padding(
+                  padding: EdgeInsets.only(
+                    left: scale.getScaledHeight(60),
+                    bottom: scale.getScaledHeight(8),
+                  ),
+                  child: GestureDetector(
+                    onTap: () {
+                      if (onItemTap != null) {
+                        onItemTap!(item);
+                      }
+                    },
+                    child: Align(
+                      alignment: Alignment.bottomLeft,
+                      child: Row(
+                        children: [
+                          const CircleAvatar(
+                            radius: 2,
+                            backgroundColor: Colors.white,
+                          ),
+                          SizedBox(
+                            width: scale.getScaledHeight(8),
+                          ),
+                          Text(
+                            item,
+                            style: TextStyle(
+                              color: Colors.white70,
+                              fontSize: scale.getScaledHeight(12),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            ),
-          )
-          .toList(),
+              )
+              .toList()
+          : [],
     );
   }
 }
