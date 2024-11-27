@@ -19,7 +19,7 @@ class HeatMapDetails extends StatelessWidget {
           child: FlutterMap(
             options: const MapOptions(
               backgroundColor: ColorConstant.color1,
-              initialCenter: LatLng(30.0, 0.0),
+              initialCenter: LatLng(40.0, 0.0),
               initialZoom: 0,
               interactionOptions:
                   InteractionOptions(flags: InteractiveFlag.none),
@@ -27,7 +27,7 @@ class HeatMapDetails extends StatelessWidget {
             children: [
               TileLayer(
                 urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                subdomains: const ['a', 'b', 'c'],
+                subdomains: const ['d', 'b', 'c'],
                 tileDisplay: const TileDisplay.instantaneous(),
               ),
               MarkerLayer(
