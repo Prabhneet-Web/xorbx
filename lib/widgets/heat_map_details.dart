@@ -16,24 +16,27 @@ class HeatMapDetails extends StatelessWidget {
       children: [
         SizedBox(
           height: scale.getScaledHeight(130),
-          child: FlutterMap(
-            options: const MapOptions(
-              backgroundColor: ColorConstant.color1,
-              initialCenter: LatLng(40.0, 0.0),
-              initialZoom: 0,
-              interactionOptions:
-                  InteractionOptions(flags: InteractiveFlag.none),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(12.0),
+            child: FlutterMap(
+              options: const MapOptions(
+                backgroundColor: ColorConstant.color1,
+                initialCenter: LatLng(40.0, 0.0),
+                initialZoom: 0,
+                interactionOptions:
+                    InteractionOptions(flags: InteractiveFlag.none),
+              ),
+              children: [
+                TileLayer(
+                  urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                  subdomains: const ['d', 'b', 'c'],
+                  tileDisplay: const TileDisplay.instantaneous(),
+                ),
+                MarkerLayer(
+                  markers: _buildVulnerabilityMarkers(scale),
+                ),
+              ],
             ),
-            children: [
-              TileLayer(
-                urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                subdomains: const ['d', 'b', 'c'],
-                tileDisplay: const TileDisplay.instantaneous(),
-              ),
-              MarkerLayer(
-                markers: _buildVulnerabilityMarkers(scale),
-              ),
-            ],
           ),
         ),
       ],
