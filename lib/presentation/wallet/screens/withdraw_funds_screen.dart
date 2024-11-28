@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/constants/color_constants.dart';
-import 'package:xorbx/presentation/wallet/controllers/add_funds_controller.dart';
+import 'package:xorbx/presentation/wallet/controllers/withdraw_funds_controller.dart';
 import 'package:xorbx/utils/scaling_utility.dart';
 import 'package:xorbx/widgets/background_effect.dart';
 import 'package:xorbx/widgets/custom_text_field.dart';
 import 'package:xorbx/widgets/funds_successfully_widget.dart';
 import 'package:xorbx/widgets/shadow_card.dart';
 
-class AddFundsScreen extends GetWidget<AddFundsController> {
-  const AddFundsScreen({super.key});
+class WithdrawFundsScreen extends GetWidget<WithdrawFundsController> {
+  const WithdrawFundsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     var scale = Get.find<ScalingUtility>()..setCurrentDeviceSize(context);
     return Scaffold(
+      backgroundColor: ColorConstant.color1,
       resizeToAvoidBottomInset: false,
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton: Column(
@@ -42,7 +43,6 @@ class AddFundsScreen extends GetWidget<AddFundsController> {
           SizedBox(height: scale.getScaledHeight(150)),
         ],
       ),
-      backgroundColor: ColorConstant.color1,
       body: BackgroundEffect(dynamicChildren: [
         SingleChildScrollView(
           child: SafeArea(
@@ -58,7 +58,7 @@ class AddFundsScreen extends GetWidget<AddFundsController> {
                       const Icon(Icons.arrow_back_ios,
                           color: ColorConstant.buttonBorder),
                       Expanded(
-                          child: Text("Add Funds to Wallet",
+                          child: Text("Withdraw Funds",
                               textAlign: TextAlign.center,
                               style: AppStyle.style5.copyWith(
                                   letterSpacing: 1.2,
@@ -69,21 +69,21 @@ class AddFundsScreen extends GetWidget<AddFundsController> {
                   Padding(
                     padding: scale.getPadding(horizontal: 14),
                     child: Text(
-                      "Add money to your wallet securely using your preferred payment method.",
+                      "Transfer funds securely from your wallet to a linked bank account.",
                       style:
-                          AppStyle.style1.copyWith(fontWeight: FontWeight.w500),
+                      AppStyle.style1.copyWith(fontWeight: FontWeight.w500),
                     ),
                   ),
                   SizedBox(height: scale.getScaledHeight(26)),
                   CommonShadowWidget(
                       dynamicChild: CustomTextField(
-                    hintText: 'Amount',
-                    onChanged: (value) => controller.amount.value = value,
-                  )),
+                        hintText: 'Amount',
+                        onChanged: (value) => controller.amount.value = value,
+                      )),
                   SizedBox(height: scale.getScaledHeight(26)),
                   Theme(
                     data:
-                        ThemeData().copyWith(dividerColor: Colors.transparent),
+                    ThemeData().copyWith(dividerColor: Colors.transparent),
                     child: ExpansionTile(
                       tilePadding: EdgeInsets.zero,
                       iconColor: ColorConstant.buttonBorder,
@@ -94,7 +94,7 @@ class AddFundsScreen extends GetWidget<AddFundsController> {
                       children: [
                         Padding(
                           padding:
-                              scale.getPadding(vertical: 10, horizontal: 8),
+                          scale.getPadding(vertical: 10, horizontal: 8),
                           child: Row(
                             children: [
                               Icon(Icons.food_bank_outlined,
@@ -112,7 +112,7 @@ class AddFundsScreen extends GetWidget<AddFundsController> {
                             color: ColorConstant.buttonBorder, thickness: 0.6),
                         Padding(
                           padding:
-                              scale.getPadding(vertical: 10, horizontal: 8),
+                          scale.getPadding(vertical: 10, horizontal: 8),
                           child: Row(
                             children: [
                               Icon(Icons.paypal,
@@ -130,7 +130,7 @@ class AddFundsScreen extends GetWidget<AddFundsController> {
                             color: ColorConstant.buttonBorder, thickness: 0.6),
                         Padding(
                           padding:
-                              scale.getPadding(vertical: 10, horizontal: 8),
+                          scale.getPadding(vertical: 10, horizontal: 8),
                           child: Row(
                             children: [
                               Icon(Icons.payment,
@@ -148,7 +148,7 @@ class AddFundsScreen extends GetWidget<AddFundsController> {
                             color: ColorConstant.buttonBorder, thickness: 0.2),
                         Padding(
                           padding:
-                              scale.getPadding(vertical: 10, horizontal: 8),
+                          scale.getPadding(vertical: 10, horizontal: 8),
                           child: Row(
                             children: [
                               Icon(Icons.wallet,
@@ -170,12 +170,12 @@ class AddFundsScreen extends GetWidget<AddFundsController> {
                   SizedBox(height: scale.getScaledHeight(70)),
                   ElevatedButton(
                     onPressed: () {
-                      Get.dialog(FundsSuccessfullyWidget(title: "Funds Successfully\nAdded!"));
+                      Get.dialog(FundsSuccessfullyWidget(title: "Funds Successfully\nWithdraw!"));
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: ColorConstant.color4,
                       fixedSize: Size(scale.fh - scale.getScaledHeight(100),
-                          scale.getScaledHeight(60)),
+                          scale.getScaledHeight(50)),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(
                           Radius.circular(scale.getScaledHeight(12)),
@@ -183,7 +183,7 @@ class AddFundsScreen extends GetWidget<AddFundsController> {
                       ),
                     ),
                     child: Text(
-                      'Confirmed Payment',
+                      'Confirmed Withdrawal',
                       style: AppStyle.style3.copyWith(
                         fontSize: scale.getScaledHeight(20),
                         fontWeight: FontWeight.w700,

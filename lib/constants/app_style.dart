@@ -33,6 +33,24 @@ class AppStyle {
     fontFeatures: const [FontFeature.proportionalFigures()],
   );
 
+  static TextStyle style5 = TextStyle(
+    color: Colors.white,
+    fontSize: getFontSize(
+      16,
+    ),
+    fontFamily: 'Helvetica',
+    fontFeatures: const [FontFeature.proportionalFigures()],
+  );
+
+  static TextStyle style6 = TextStyle(
+      color: Colors.white,
+      fontSize: getFontSize(
+        20,
+      ),
+      fontFamily: 'HelveticaMedium',
+      fontFeatures: const [FontFeature.proportionalFigures()],
+    );
+
   static TextStyle style3 = const TextStyle(
     fontSize: 16,
     color: Colors.white,

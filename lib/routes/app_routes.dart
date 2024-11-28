@@ -44,7 +44,11 @@ import 'package:xorbx/presentation/sub_dashboard_screen/real_time_threat_detecti
 import 'package:xorbx/presentation/verification_screen/binding/verification_binding.dart';
 import 'package:xorbx/presentation/verification_screen/screen/verification_screen.dart';
 import 'package:xorbx/presentation/wallet/bindings/add_funds_binding.dart';
+import 'package:xorbx/presentation/wallet/bindings/transfer_funds_binding.dart';
+import 'package:xorbx/presentation/wallet/bindings/withdraw_funds_binding.dart';
 import 'package:xorbx/presentation/wallet/screens/add_funds_screen.dart';
+import 'package:xorbx/presentation/wallet/screens/transfer_funds_screen.dart';
+import 'package:xorbx/presentation/wallet/screens/withdraw_funds_screen.dart';
 
 class AppRoutes {
   // Flow 1
@@ -76,6 +80,8 @@ class AppRoutes {
   static const overviewScreen = '/dashboard_sidebar_details';
   static const privacyPolicyScreen = '/privacy_policy_screen';
   static const addFunds = '/add_funds';
+  static const withdrawFunds = '/withdraw_funds';
+  static const transferFunds = '/transfer_funds';
 
   static List<GetPage> pages = [
     // Flow 1
@@ -199,6 +205,16 @@ class AppRoutes {
       name: addFunds,
       page: () => const AddFundsScreen(),
       bindings: [AddFundsBinding()],
+    ),
+    GetPage(
+      name: withdrawFunds,
+      page: () => const WithdrawFundsScreen(),
+      bindings: [WithdrawFundsBindings()],
+    ),
+    GetPage(
+      name: transferFunds,
+      page: () => const TransferFundsScreen(),
+      bindings: [TransferFundsBinding()],
     ),
   ];
 }

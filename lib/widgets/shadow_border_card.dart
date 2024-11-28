@@ -14,7 +14,6 @@ class ShadowBorderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var scale = Get.find<ScalingUtility>()..setCurrentDeviceSize(context);
-
     return CustomPaint(
       painter: InnerShadowPainter(),
       child: Container(
