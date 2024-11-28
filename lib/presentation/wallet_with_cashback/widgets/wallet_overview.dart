@@ -60,8 +60,8 @@ class WalletOverview extends StatelessWidget {
                   children: [
                     _customButton(scale, "Add Funds", AppRoutes.addFunds),
                     SizedBox(width: scale.getScaledHeight(10)),
-                    _customButton(
-                        scale, "Transaction History", AppRoutes.addFunds),
+                    _customButton(scale, "Transaction History",
+                        AppRoutes.transactionHistory),
                   ],
                 ),
               ],

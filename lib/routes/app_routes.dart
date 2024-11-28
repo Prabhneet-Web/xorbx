@@ -48,10 +48,12 @@ import 'package:xorbx/presentation/sub_dashboard_screen/real_time_threat_detecti
 import 'package:xorbx/presentation/verification_screen/binding/verification_binding.dart';
 import 'package:xorbx/presentation/verification_screen/screen/verification_screen.dart';
 import 'package:xorbx/presentation/wallet_with_cashback/screen/wallet/bindings/add_funds_binding.dart';
+import 'package:xorbx/presentation/wallet_with_cashback/screen/wallet/bindings/transaction_history_binding.dart';
 import 'package:xorbx/presentation/wallet_with_cashback/screen/wallet/bindings/transfer_funds_binding.dart';
 import 'package:xorbx/presentation/wallet_with_cashback/screen/wallet/bindings/withdraw_funds_binding.dart';
 import 'package:xorbx/presentation/wallet_with_cashback/screen/wallet/screens/add_funds_screen.dart';
 import 'package:xorbx/presentation/wallet_with_cashback/binding/wallet_with_cashback_binding.dart';
+import 'package:xorbx/presentation/wallet_with_cashback/screen/wallet/screens/transaction_history_screen.dart';
 import 'package:xorbx/presentation/wallet_with_cashback/screen/wallet_with_cashback_screen.dart';
 import 'package:xorbx/presentation/wallet_with_cashback/screen/wallet/screens/transfer_funds_screen.dart';
 import 'package:xorbx/presentation/wallet_with_cashback/screen/wallet/screens/withdraw_funds_screen.dart';
@@ -91,6 +93,7 @@ class AppRoutes {
   static const addFunds = '/add_funds';
   static const withdrawFunds = '/withdraw_funds';
   static const transferFunds = '/transfer_funds';
+  static const transactionHistory = '/transaction_history';
 
   static List<GetPage> pages = [
     // Flow 1
@@ -241,6 +244,11 @@ class AppRoutes {
       name: transferFunds,
       page: () => const TransferFundsScreen(),
       bindings: [TransferFundsBinding()],
+    ),
+    GetPage(
+      name: transactionHistory,
+      page: () => const TransactionHistoryScreen(),
+      bindings: [TransactionHistoryBinding()],
     ),
   ];
 }

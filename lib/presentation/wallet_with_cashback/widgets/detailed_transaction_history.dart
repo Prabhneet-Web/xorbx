@@ -14,7 +14,7 @@ class DetailedTransactionHistory extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(scale.getScaledHeight(8)),
       child: Container(
-        color: ColorConstant.color1,
+        color: Colors.transparent,
         child: Column(
           children: [
             _itemTextField(scale),
