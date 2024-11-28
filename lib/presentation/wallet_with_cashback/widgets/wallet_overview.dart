@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/constants/color_constants.dart';
+import 'package:xorbx/routes/app_routes.dart';
 import 'package:xorbx/utils/scaling_utility.dart';
 import 'package:xorbx/widgets/shadow_border_card.dart';
 
@@ -46,18 +47,21 @@ class WalletOverview extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    _customButton(scale, "Transfer Funds"),
+                    _customButton(
+                        scale, "Transfer Funds", AppRoutes.transferFunds),
                     SizedBox(width: scale.getScaledHeight(10)),
-                    _customButton(scale, "Withdraw Funds"),
+                    _customButton(
+                        scale, "Withdraw Funds", AppRoutes.withdrawFunds),
                   ],
                 ),
                 SizedBox(height: scale.getScaledHeight(10)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    _customButton(scale, "Add Funds"),
+                    _customButton(scale, "Add Funds", AppRoutes.addFunds),
                     SizedBox(width: scale.getScaledHeight(10)),
-                    _customButton(scale, "Transaction History"),
+                    _customButton(
+                        scale, "Transaction History", AppRoutes.addFunds),
                   ],
                 ),
               ],
@@ -68,25 +72,30 @@ class WalletOverview extends StatelessWidget {
     );
   }
 
-  Widget _customButton(ScalingUtility scale, String buttonTitle) {
+  Widget _customButton(ScalingUtility scale, String buttonTitle, String route) {
     return Center(
-      child: Container(
-        decoration: BoxDecoration(
-          color: ColorConstant.color4, // Use 'color' for background color
-          borderRadius: BorderRadius.all(
-            Radius.circular(scale.getScaledHeight(6)),
+      child: GestureDetector(
+        onTap: () {
+          Get.toNamed(route);
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            color: ColorConstant.color4,
+            borderRadius: BorderRadius.all(
+              Radius.circular(scale.getScaledHeight(6)),
+            ),
           ),
-        ),
-        padding: EdgeInsets.symmetric(
-          vertical: scale.getScaledHeight(10),
-          horizontal: scale.getScaledHeight(20),
-        ),
-        child: Text(
-          buttonTitle,
-          style: AppStyle.style3.copyWith(
-            color: ColorConstant.color1,
-            fontSize: scale.getScaledHeight(9),
-            fontWeight: FontWeight.bold,
+          padding: EdgeInsets.symmetric(
+            vertical: scale.getScaledHeight(10),
+            horizontal: scale.getScaledHeight(20),
+          ),
+          child: Text(
+            buttonTitle,
+            style: AppStyle.style3.copyWith(
+              color: ColorConstant.color1,
+              fontSize: scale.getScaledHeight(9),
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),

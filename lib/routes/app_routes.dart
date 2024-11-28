@@ -47,14 +47,14 @@ import 'package:xorbx/presentation/sub_dashboard_screen/real_time_threat_detecti
 import 'package:xorbx/presentation/sub_dashboard_screen/real_time_threat_detection/screen/real_time_threat_detection_screen.dart';
 import 'package:xorbx/presentation/verification_screen/binding/verification_binding.dart';
 import 'package:xorbx/presentation/verification_screen/screen/verification_screen.dart';
-import 'package:xorbx/presentation/wallet/bindings/add_funds_binding.dart';
-import 'package:xorbx/presentation/wallet/bindings/transfer_funds_binding.dart';
-import 'package:xorbx/presentation/wallet/bindings/withdraw_funds_binding.dart';
-import 'package:xorbx/presentation/wallet/screens/add_funds_screen.dart';
+import 'package:xorbx/presentation/wallet_with_cashback/screen/wallet/bindings/add_funds_binding.dart';
+import 'package:xorbx/presentation/wallet_with_cashback/screen/wallet/bindings/transfer_funds_binding.dart';
+import 'package:xorbx/presentation/wallet_with_cashback/screen/wallet/bindings/withdraw_funds_binding.dart';
+import 'package:xorbx/presentation/wallet_with_cashback/screen/wallet/screens/add_funds_screen.dart';
 import 'package:xorbx/presentation/wallet_with_cashback/binding/wallet_with_cashback_binding.dart';
 import 'package:xorbx/presentation/wallet_with_cashback/screen/wallet_with_cashback_screen.dart';
-import 'package:xorbx/presentation/wallet/screens/transfer_funds_screen.dart';
-import 'package:xorbx/presentation/wallet/screens/withdraw_funds_screen.dart';
+import 'package:xorbx/presentation/wallet_with_cashback/screen/wallet/screens/transfer_funds_screen.dart';
+import 'package:xorbx/presentation/wallet_with_cashback/screen/wallet/screens/withdraw_funds_screen.dart';
 
 class AppRoutes {
   // Flow 1
