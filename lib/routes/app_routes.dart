@@ -43,6 +43,8 @@ import 'package:xorbx/presentation/sub_dashboard_screen/real_time_threat_detecti
 import 'package:xorbx/presentation/sub_dashboard_screen/real_time_threat_detection/screen/real_time_threat_detection_screen.dart';
 import 'package:xorbx/presentation/verification_screen/binding/verification_binding.dart';
 import 'package:xorbx/presentation/verification_screen/screen/verification_screen.dart';
+import 'package:xorbx/presentation/wallet/bindings/add_funds_binding.dart';
+import 'package:xorbx/presentation/wallet/screens/add_funds_screen.dart';
 
 class AppRoutes {
   // Flow 1
@@ -73,6 +75,7 @@ class AppRoutes {
   static const captureVoiceScreen = '/capture_voice';
   static const overviewScreen = '/dashboard_sidebar_details';
   static const privacyPolicyScreen = '/privacy_policy_screen';
+  static const addFunds = '/add_funds';
 
   static List<GetPage> pages = [
     // Flow 1
@@ -191,6 +194,11 @@ class AppRoutes {
       name: privacyPolicyScreen,
       page: () => const PrivacyPolicyScreen(),
       bindings: [PrivacyPolicyBinding()],
+    ),
+    GetPage(
+      name: addFunds,
+      page: () => const AddFundsScreen(),
+      bindings: [AddFundsBinding()],
     ),
   ];
 }
