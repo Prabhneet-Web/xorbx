@@ -7,10 +7,14 @@ import 'package:xorbx/presentation/security_screen/capture_fingerprint/binding/c
 import 'package:xorbx/presentation/security_screen/capture_fingerprint/screen/capture_fingerprint_screen.dart';
 import 'package:xorbx/presentation/security_screen/capture_voice/binding/capture_voice_binding.dart';
 import 'package:xorbx/presentation/security_screen/capture_voice/screen/capture_voice_screen.dart';
+import 'package:xorbx/presentation/sidebar_screen/wallet_sidebar_screen/binding/wallet_sidebar_binding.dart';
+import 'package:xorbx/presentation/sidebar_screen/wallet_sidebar_screen/screen/wallet_sidebar_screen.dart';
 import 'package:xorbx/presentation/sidebar_screen_details/dashboard_sidebar_details/overview_screen/binding/overview_binding.dart';
 import 'package:xorbx/presentation/sidebar_screen_details/dashboard_sidebar_details/overview_screen/screen/overview_screen.dart';
 import 'package:xorbx/presentation/sidebar_screen_details/dashboard_sidebar_details/privacy_policy_screen/binding/privacy_policy_binding.dart';
 import 'package:xorbx/presentation/sidebar_screen_details/dashboard_sidebar_details/privacy_policy_screen/screen/privacy_policy_screen.dart';
+import 'package:xorbx/presentation/sidebar_screen_details/dashboard_sidebar_details/terms_and_conditions/binding/terms_and_conditions_binding.dart';
+import 'package:xorbx/presentation/sidebar_screen_details/dashboard_sidebar_details/terms_and_conditions/screen/terms_and_conditions_screen.dart';
 import 'package:xorbx/presentation/sub_dashboard_screen/app_permission_checker/binding/app_permission_checker_binding.dart';
 import 'package:xorbx/presentation/sub_dashboard_screen/app_permission_checker/screen/app_permission_checker_screen.dart';
 import 'package:xorbx/presentation/sub_dashboard_screen/compromised_password/binding/compromised_password_binding.dart';
@@ -48,6 +52,8 @@ import 'package:xorbx/presentation/wallet/bindings/payment_methods_binding.dart'
 import 'package:xorbx/presentation/wallet/bindings/transfer_funds_binding.dart';
 import 'package:xorbx/presentation/wallet/bindings/withdraw_funds_binding.dart';
 import 'package:xorbx/presentation/wallet/screens/add_funds_screen.dart';
+import 'package:xorbx/presentation/wallet_with_cashback/binding/wallet_with_cashback_binding.dart';
+import 'package:xorbx/presentation/wallet_with_cashback/screen/wallet_with_cashback_screen.dart';
 import 'package:xorbx/presentation/wallet/screens/payment_methods_screen.dart';
 import 'package:xorbx/presentation/wallet/screens/transfer_funds_screen.dart';
 import 'package:xorbx/presentation/wallet/screens/withdraw_funds_screen.dart';
@@ -81,6 +87,9 @@ class AppRoutes {
   static const captureVoiceScreen = '/capture_voice';
   static const overviewScreen = '/dashboard_sidebar_details';
   static const privacyPolicyScreen = '/privacy_policy_screen';
+  static const termsAndConditionsScreen = '/terms_and_conditions';
+  static const walletWithCashbackScreen = '/wallet_with_cashback';
+  static const walletSidebarScreen = '/wallet_sidebar_screen';
   static const addFunds = '/add_funds';
   static const withdrawFunds = '/withdraw_funds';
   static const transferFunds = '/transfer_funds';
@@ -193,6 +202,12 @@ class AppRoutes {
       page: () => const CaptureVoiceScreen(),
       bindings: [CaptureVoiceBinding()],
     ),
+    // sidebar screens
+    GetPage(
+      name: walletSidebarScreen,
+      page: () => const WalletSidebarScreen(),
+      bindings: [WalletSidebarBinding()],
+    ),
     // sidebar details screens
     GetPage(
       name: overviewScreen,
@@ -203,6 +218,17 @@ class AppRoutes {
       name: privacyPolicyScreen,
       page: () => const PrivacyPolicyScreen(),
       bindings: [PrivacyPolicyBinding()],
+    ),
+    GetPage(
+      name: termsAndConditionsScreen,
+      page: () => const TermsAndConditionsScreen(),
+      bindings: [TermsAndConditionsBinding()],
+    ),
+    // wallet
+    GetPage(
+      name: walletWithCashbackScreen,
+      page: () => const WalletWithCashbackScreen(),
+      bindings: [WalletWithCashbackBinding()],
     ),
     GetPage(
       name: addFunds,
