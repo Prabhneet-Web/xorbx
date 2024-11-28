@@ -79,6 +79,8 @@ class DashboardSidebarScreen extends GetWidget<DashboardSidebarController> {
                           onItemTap: (item) {
                             if (item == "Copyright Policy") {
                               Get.toNamed(AppRoutes.privacyPolicyScreen);
+                            } else if (item == "Terms & Conditions") {
+                              Get.toNamed(AppRoutes.termsAndConditionsScreen);
                             }
                           },
                         ),
@@ -133,9 +135,15 @@ class DashboardSidebarScreen extends GetWidget<DashboardSidebarController> {
                           title: "Account Management",
                           items: const [
                             "Subscription Information",
-                            "Payment Methods"
+                            "Payment Methods",
+                            "Wallet with cashback",
                           ],
                           scale: scale,
+                          onItemTap: (item) {
+                            if (item == "Wallet with cashback") {
+                              Get.toNamed(AppRoutes.walletWithCashbackScreen);
+                            }
+                          },
                         ),
                         DropDownOptions(
                           icon: Icons.message_outlined,
