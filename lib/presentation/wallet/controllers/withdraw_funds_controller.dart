@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
 
-class AddFundsController extends GetxController {
+class WithdrawFundsController extends GetxController {
   var amount = ''.obs;
 }

@@ -68,9 +68,15 @@ flutter:
         - asset: assets/fonts/DmSansLight.ttf
           style: italic
         - asset: assets/fonts/DmSansRegular.ttf
-    - family: Helvetica
+    - family: HelveticaCompressed
       fonts:
         - asset: assets/fonts/helvetica-compressed.otf
+    - family: Helvetica
+      fonts:
+        - asset: assets/fonts/helvetica.otf
+    - family: HelveticaMedium
+      fonts:
+        - asset: assets/fonts/HelveticaNeueMedium.otf
     # - family: Helvetica_neue
     #     - asset: assets/fonts/HelveticaNeueMedium.otf
   # For details regarding fonts from package dependencies,
