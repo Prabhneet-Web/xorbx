@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/constants/color_constants.dart';
 import 'package:xorbx/constants/image_constants.dart';
-import 'package:xorbx/presentation/wallet/controllers/payment_methods_controller.dart';
+import 'package:xorbx/presentation/wallet_with_cashback/screen/wallet/controllers/payment_methods_controller.dart';
 import 'package:xorbx/routes/app_routes.dart';
 import 'package:xorbx/utils/scaling_utility.dart';
 import 'package:xorbx/widgets/background_effect.dart';

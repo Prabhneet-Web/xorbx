@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/constants/color_constants.dart';
-import 'package:xorbx/presentation/wallet/controllers/add_payment_methods_controller.dart';
+import 'package:xorbx/presentation/wallet_with_cashback/screen/wallet/controllers/add_payment_methods_controller.dart';
 import 'package:xorbx/utils/scaling_utility.dart';
 import 'package:xorbx/widgets/background_effect.dart';
 import 'package:xorbx/widgets/custom_text_field.dart';
@@ -184,7 +184,7 @@ class AddPaymentMethodsScreen extends GetWidget<AddPaymentMethodsController> {
                             children: [
                               TextButton(
                                 onPressed: () {
-                                  Get.dialog(FundsSuccessfullyWidget(title: "Payment Method\nAdded\nSuccessfully"));
+                                  Get.dialog(fundsSuccessfullyWidget(title: "Payment Method\nAdded\nSuccessfully"));
                                 },
                                 style: TextButton.styleFrom(
                                   fixedSize: Size(
