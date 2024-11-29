@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/constants/color_constants.dart';
-import 'package:xorbx/presentation/password_management/widgets/overview.dart';
 import 'package:xorbx/presentation/dashboard_screen/widgets/dashboard_cards.dart';
 import 'package:xorbx/presentation/password_management/widgets/password_list.dart';
-import 'package:xorbx/presentation/password_management/widgets/settings.dart';
 import 'package:xorbx/presentation/subscription_plan/controller/subscription_plan_controller.dart';
+import 'package:xorbx/presentation/subscription_plan/widgets/faqs.dart';
+import 'package:xorbx/presentation/subscription_plan/widgets/payment_methods.dart';
+import 'package:xorbx/presentation/subscription_plan/widgets/subscriptions_plans_card.dart';
+import 'package:xorbx/presentation/subscription_plan/widgets/user_testimonials.dart';
 import 'package:xorbx/routes/app_routes.dart';
 import 'package:xorbx/utils/scaling_utility.dart';
 import 'package:xorbx/widgets/background_effect.dart';
+import 'package:xorbx/widgets/shadow_border_card.dart';
 
 class SubscriptionPlanScreen extends GetWidget<SubscriptionPlanController> {
   const SubscriptionPlanScreen({super.key});
@@ -48,28 +51,49 @@ class SubscriptionPlanScreen extends GetWidget<SubscriptionPlanController> {
                           'Subscription Plans',
                           style: AppStyle.style2,
                         ),
-                        const Spacer(),
-                        _overlayText("Last Synced:", "September 01, 2024"),
+                        // const Spacer(),
+                        // _overlayText("Last Synced:", "September 01, 2024"),
                       ],
                     ),
                   ),
                   SizedBox(height: scale.getScaledHeight(5)),
                   const DashboardCards(
-                    Overview(),
-                    'Overview',
+                    SubscriptionsPlansCard(),
+                    'Subscriptions Plans',
                     AppRoutes.realTimeThreadDetectionScreen,
                   ),
                   SizedBox(height: scale.getScaledHeight(16)),
                   const DashboardCards(
-                    PasswordList(),
-                    'Password List',
+                    PaymentMethods(),
+                    'Payment Methods',
                     AppRoutes.realTimeThreadDetectionScreen,
                   ),
                   SizedBox(height: scale.getScaledHeight(16)),
                   const DashboardCards(
-                    Settings(),
-                    'Settings',
+                    Faqs(),
+                    'FAQs',
                     AppRoutes.realTimeThreadDetectionScreen,
+                  ),
+                  SizedBox(height: scale.getScaledHeight(16)),
+                  const DashboardCards(
+                    UserTestimonials(),
+                    'Users Testimonials',
+                    AppRoutes.realTimeThreadDetectionScreen,
+                  ),
+                  SizedBox(height: scale.getScaledHeight(16)),
+                  ShadowBorderCard(
+                    content: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _itemsSection(
+                          "Terms and Conditions",
+                        ),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        _itemsSection(
+                          "Contact Support",
+                        ),
+                      ],
+                    ),
                   ),
                   SizedBox(height: scale.getScaledHeight(50)),
                 ],
@@ -81,35 +105,21 @@ class SubscriptionPlanScreen extends GetWidget<SubscriptionPlanController> {
     );
   }
 
-  Widget _overlayText(String name, String date) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        Row(
+  Widget _itemsSection(String name) {
+    return ShadowBorderCard(
+      content: Padding(
+        padding: EdgeInsets.symmetric(vertical: scale.getScaledHeight(5)),
+        child: Row(
           children: [
-            const Icon(
-              Icons.refresh,
-              size: 13,
-              color: Colors.white60,
-            ),
-            SizedBox(width: scale.getScaledHeight(2)),
             Text(
               name,
-              style: AppStyle.style2.copyWith(
-                  color: Colors.white60,
-                  fontWeight: FontWeight.normal,
-                  fontSize: 13),
+              style: AppStyle.style1.copyWith(
+                fontSize: scale.getScaledHeight(11),
+              ),
             ),
           ],
         ),
-        Text(
-          date,
-          style: const TextStyle(
-            color: Colors.white60,
-            fontSize: 8,
-          ),
-        ),
-      ],
+      ),
     );
   }
 }

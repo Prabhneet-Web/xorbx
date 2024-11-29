@@ -22,7 +22,7 @@ class App extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.theme,
-      initialRoute: AppRoutes.verificationScreen,
+      initialRoute: AppRoutes.dashboardSidebarScreen,
       getPages: AppRoutes.pages,
       defaultTransition: Transition.fade,
       initialBinding: AppBinding(),
