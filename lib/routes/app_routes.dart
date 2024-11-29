@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:xorbx/presentation/biometric_management/bindings/biometric_management_binding.dart';
+import 'package:xorbx/presentation/biometric_management/screens/biometric_management_screen.dart';
 import 'package:xorbx/presentation/dashboard_screen/binding/dashboard_binding.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/dashboard_screen.dart';
 import 'package:xorbx/presentation/data_usage_screen/binding/data_usage_binding.dart';
@@ -121,6 +123,7 @@ class AppRoutes {
   static const subscriptionPlan = '/subscription_plan';
   static const multiFactorAuthenticationScreen = '/multi_factor_authentication';
   static const deviceManagement = '/device_management';
+  static const biometricManagementScreen = '/biometric_management';
 
   static List<GetPage> pages = [
     // Flow 1
@@ -275,6 +278,11 @@ class AppRoutes {
       name: passwordManagement,
       page: () => const PasswordManagementScreen(),
       bindings: [PasswordManagementBinding()],
+    ),
+    GetPage(
+      name: biometricManagementScreen,
+      page: () => const BiometricManagementScreen(),
+      bindings: [BiometricManagementBinding()],
     ),
     GetPage(
       name: subscriptionPlan,

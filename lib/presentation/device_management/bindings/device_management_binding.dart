@@ -4,6 +4,6 @@ import 'package:xorbx/presentation/device_management/controllers/device_manageme
 class DeviceManagementBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => DeviceManagementController());
+    Get.lazyPut<DeviceManagementController>(() => DeviceManagementController());
   }
 }

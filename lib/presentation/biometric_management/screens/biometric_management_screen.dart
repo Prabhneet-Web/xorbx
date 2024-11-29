@@ -2,18 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/constants/color_constants.dart';
+import 'package:xorbx/constants/image_constants.dart';
+import 'package:xorbx/presentation/biometric_management/controllers/biometric_management_controller.dart';
+import 'package:xorbx/presentation/biometric_management/widgets/add_user.dart';
+import 'package:xorbx/presentation/biometric_management/widgets/enrolled_user.dart';
+import 'package:xorbx/presentation/biometric_management/widgets/notification_alerts_card.dart';
+import 'package:xorbx/presentation/biometric_management/widgets/recent_logins.dart';
 import 'package:xorbx/presentation/dashboard_screen/widgets/dashboard_cards.dart';
-import 'package:xorbx/presentation/device_management/controllers/device_management_controller.dart';
-import 'package:xorbx/presentation/device_management/widgets/device_details.dart';
-import 'package:xorbx/presentation/device_management/widgets/device_list.dart';
 import 'package:xorbx/routes/app_routes.dart';
 import 'package:xorbx/utils/scaling_utility.dart';
 import 'package:xorbx/widgets/background_effect.dart';
-import 'package:xorbx/widgets/inner_shadow_painter.dart';
 import 'package:xorbx/widgets/shadow_border_card.dart';
 
-class DeviceManagementScreen extends GetWidget<DeviceManagementController> {
-  const DeviceManagementScreen({super.key});
+class BiometricManagementScreen
+    extends GetWidget<BiometricManagementController> {
+  const BiometricManagementScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,57 +38,25 @@ class DeviceManagementScreen extends GetWidget<DeviceManagementController> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     IconButton(
-                      onPressed: () {
-                        Get.back();
-                      },
+                      onPressed: () {},
                       icon: const Icon(
-                        Icons.chevron_left_outlined,
-                        color: Colors.white,
+                        Icons.menu_outlined,
+                        color: ColorConstant.color4,
                       ),
                     ),
                     SizedBox(width: scale.getScaledHeight(5)),
                     Text(
-                      'Data Usage',
+                      'Biometric',
                       style: AppStyle.style2,
                     ),
                     const Spacer(flex: 1),
-                    CustomPaint(
-                      painter: InnerShadowPainter(),
-                      child: Container(
-                        height: scale.getScaledHeight(30),
-                        width: scale.getScaledHeight(30),
-                        decoration: BoxDecoration(
-                          color: ColorConstant.color1,
-                          borderRadius:
-                              BorderRadius.circular(scale.getScaledHeight(10)),
-                        ),
-                        child: const Center(
-                          child: Icon(
-                            Icons.home_outlined,
-                            color: Colors.white,
-                            size: 20,
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: scale.getScaledHeight(10)),
-                    CustomPaint(
-                      painter: InnerShadowPainter(),
-                      child: Container(
-                        height: scale.getScaledHeight(30),
-                        width: scale.getScaledHeight(30),
-                        decoration: BoxDecoration(
-                          color: ColorConstant.color1,
-                          borderRadius:
-                              BorderRadius.circular(scale.getScaledHeight(10)),
-                        ),
-                        child: const Center(
-                          child: Icon(
-                            Icons.settings_outlined,
-                            color: Colors.white,
-                            size: 20,
-                          ),
-                        ),
+                    GestureDetector(
+                      onTap: () {
+                        showPopup(context);
+                      },
+                      child: CircleAvatar(
+                        backgroundImage: AssetImage(ImageConstants.person),
+                        radius: scale.getScaledHeight(16),
                       ),
                     ),
                     SizedBox(width: scale.getScaledHeight(10)),
@@ -97,14 +68,37 @@ class DeviceManagementScreen extends GetWidget<DeviceManagementController> {
                 child: Column(
                   children: [
                     const DashboardCards(
-                      DeviceList(),
-                      'Device List',
+                      AddUser(),
+                      'Add User',
+                      AppRoutes.realTimeThreadDetectionScreen,
+                    ),
+                    SizedBox(height: scale.getScaledHeight(16)),
+                    Row(
+                      children: [
+                        Text(
+                          "User Activity Overview",
+                          style: AppStyle.style2.copyWith(
+                            fontSize: scale.getScaledHeight(16),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: scale.getScaledHeight(10)),
+                    const DashboardCards(
+                      RecentLogins(),
+                      'Recent Logins',
                       AppRoutes.realTimeThreadDetectionScreen,
                     ),
                     SizedBox(height: scale.getScaledHeight(16)),
                     const DashboardCards(
-                      DeviceDetails(),
-                      'Device Details',
+                      NotificationAlertsCard(),
+                      'Notification Alerts',
+                      AppRoutes.realTimeThreadDetectionScreen,
+                    ),
+                    SizedBox(height: scale.getScaledHeight(16)),
+                    const DashboardCards(
+                      EnrolledUser(),
+                      'Enrolled User',
                       AppRoutes.realTimeThreadDetectionScreen,
                     ),
                     SizedBox(height: scale.getScaledHeight(20)),

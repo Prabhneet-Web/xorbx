@@ -137,6 +137,8 @@ class DashboardSidebarScreen extends GetWidget<DashboardSidebarController> {
                               Get.toNamed(AppRoutes.passwordManagement);
                             } else if (item == "Device Management") {
                               Get.toNamed(AppRoutes.deviceManagement);
+                            } else if (item == "Biometric Security") {
+                              Get.toNamed(AppRoutes.biometricManagementScreen);
                             }
                           },
                         ),
