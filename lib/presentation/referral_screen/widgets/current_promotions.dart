@@ -4,7 +4,6 @@ import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/constants/color_constants.dart';
 import 'package:xorbx/constants/image_constants.dart';
 import 'package:xorbx/utils/scaling_utility.dart';
-import 'package:xorbx/widgets/inner_shadow_painter.dart';
 import 'package:xorbx/widgets/shadow_border_card.dart';
 
 class CurrentPromotions extends StatelessWidget {

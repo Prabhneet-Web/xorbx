@@ -3,6 +3,8 @@ import 'package:xorbx/presentation/dashboard_screen/binding/dashboard_binding.da
 import 'package:xorbx/presentation/dashboard_screen/screen/dashboard_screen.dart';
 import 'package:xorbx/presentation/data_usage_screen/binding/data_usage_binding.dart';
 import 'package:xorbx/presentation/data_usage_screen/screen/data_usage_screen.dart';
+import 'package:xorbx/presentation/password_management/binding/password_management_binding.dart';
+import 'package:xorbx/presentation/password_management/screen/password_management_screen.dart';
 import 'package:xorbx/presentation/referral_screen/binding/referral_binding.dart';
 import 'package:xorbx/presentation/referral_screen/screen/referral_screen.dart';
 import 'package:xorbx/presentation/security_screen/capture_eye/binding/capture_eye_binding.dart';
@@ -51,6 +53,8 @@ import 'package:xorbx/presentation/sub_dashboard_screen/phising_detection/bindin
 import 'package:xorbx/presentation/sub_dashboard_screen/phising_detection/screen/phishing_detection_screen.dart';
 import 'package:xorbx/presentation/sub_dashboard_screen/real_time_threat_detection/binding/real_time_threat_detection_binding.dart';
 import 'package:xorbx/presentation/sub_dashboard_screen/real_time_threat_detection/screen/real_time_threat_detection_screen.dart';
+import 'package:xorbx/presentation/subscription_plan/binding/subscription_plan_binding.dart';
+import 'package:xorbx/presentation/subscription_plan/screen/subscription_plan_screen.dart';
 import 'package:xorbx/presentation/verification_screen/binding/verification_binding.dart';
 import 'package:xorbx/presentation/verification_screen/screen/verification_screen.dart';
 import 'package:xorbx/presentation/wallet_with_cashback/screen/wallet/bindings/add_funds_binding.dart';
@@ -109,6 +113,8 @@ class AppRoutes {
   static const referralScreen = '/referral_screen';
   static const paymentMethods = '/payment_methods';
   static const addPaymentMethods = '/add_payment_methods';
+  static const passwordManagement = '/password_management';
+  static const subscriptionPlan = '/subscription_plan';
 
   static List<GetPage> pages = [
     // Flow 1
@@ -253,6 +259,16 @@ class AppRoutes {
       name: referralScreen,
       page: () => const ReferralScreen(),
       bindings: [ReferralBinding()],
+    ),
+    GetPage(
+      name: passwordManagement,
+      page: () => const PasswordManagementScreen(),
+      bindings: [PasswordManagementBinding()],
+    ),
+    GetPage(
+      name: subscriptionPlan,
+      page: () => const SubscriptionPlanScreen(),
+      bindings: [SubscriptionPlanBinding()],
     ),
     // wallet
     GetPage(
