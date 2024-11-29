@@ -5,4 +5,6 @@ class ImageConstants {
   static String bgImage = 'assets/images/bg_image.png';
   static String person = 'assets/images/person.png';
   static String thankYouPerson = 'assets/images/thank_you_person.png';
+  static String paypalLogo = 'assets/images/paypal_logo.png';
+  static String masterCardLogo = 'assets/images/mastercard_logo.png';
 }
