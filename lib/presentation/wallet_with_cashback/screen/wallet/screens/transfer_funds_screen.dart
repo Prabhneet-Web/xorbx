@@ -58,7 +58,7 @@ class TransferFundsScreen extends GetWidget<TransferFundsController> {
                       const Icon(Icons.arrow_back_ios,
                           color: ColorConstant.buttonBorder),
                       Expanded(
-                          child: Text("Withdraw Funds",
+                          child: Text("Transfer Funds",
                               textAlign: TextAlign.center,
                               style: AppStyle.style5.copyWith(
                                   letterSpacing: 1.2,
