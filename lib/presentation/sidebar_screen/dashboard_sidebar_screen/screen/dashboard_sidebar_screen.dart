@@ -135,8 +135,8 @@ class DashboardSidebarScreen extends GetWidget<DashboardSidebarController> {
                           onItemTap: (item) {
                             if (item == "Password Management") {
                               Get.toNamed(AppRoutes.passwordManagement);
-                            } else if (item == "Referral") {
-                              Get.toNamed(AppRoutes.referralScreen);
+                            } else if (item == "Device Management") {
+                              Get.toNamed(AppRoutes.deviceManagement);
                             }
                           },
                         ),
@@ -172,6 +172,8 @@ class DashboardSidebarScreen extends GetWidget<DashboardSidebarController> {
                               Get.toNamed(AppRoutes.referralScreen);
                             } else if (item == "Subscription Information") {
                               Get.toNamed(AppRoutes.subscriptionPlan);
+                            } else if (item == "Payment Methods") {
+                              Get.toNamed(AppRoutes.paymentMethods);
                             }
                           },
                         ),

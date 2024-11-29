@@ -3,15 +3,19 @@ import 'package:get/get.dart';
 import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/constants/color_constants.dart';
 import 'package:xorbx/constants/image_constants.dart';
-import 'package:xorbx/presentation/wallet_with_cashback/screen/wallet/controllers/transaction_history_controller.dart';
+import 'package:xorbx/presentation/dashboard_screen/widgets/dashboard_cards.dart';
+import 'package:xorbx/presentation/device_management/controllers/device_management_controller.dart';
+import 'package:xorbx/presentation/device_management/widgets/device_details.dart';
+import 'package:xorbx/presentation/device_management/widgets/device_list.dart';
 import 'package:xorbx/presentation/wallet_with_cashback/widgets/detailed_transaction_history.dart';
 import 'package:xorbx/routes/app_routes.dart';
 import 'package:xorbx/utils/scaling_utility.dart';
 import 'package:xorbx/widgets/background_effect.dart';
+import 'package:xorbx/widgets/inner_shadow_painter.dart';
 import 'package:xorbx/widgets/shadow_border_card.dart';
 
-class TransactionHistoryScreen extends GetWidget<TransactionHistoryController> {
-  const TransactionHistoryScreen({super.key});
+class DeviceManagementScreen extends GetWidget<DeviceManagementController> {
+  const DeviceManagementScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,37 +38,56 @@ class TransactionHistoryScreen extends GetWidget<TransactionHistoryController> {
                   children: [
                     IconButton(
                       onPressed: () {
-                        Get.toNamed(AppRoutes.walletSidebarScreen);
+                        Get.back();
                       },
                       icon: const Icon(
-                        Icons.menu_outlined,
-                        color: ColorConstant.color4,
+                        Icons.chevron_left_outlined,
+                        color: Colors.white,
                       ),
                     ),
                     SizedBox(width: scale.getScaledHeight(5)),
                     Text(
-                      'Wallet with Cash-back',
+                      'Data Usage',
                       style: AppStyle.style2,
                     ),
                     const Spacer(flex: 1),
-                    IconButton(
-                      onPressed: () {
-                        Get.toNamed(AppRoutes.customerFeedback);
-                      },
-                      icon: const Icon(
-                        Icons.notifications_none_rounded,
-                        color: Colors.white,
-                        size: 26,
+                    CustomPaint(
+                      painter: InnerShadowPainter(),
+                      child: Container(
+                        height: scale.getScaledHeight(30),
+                        width: scale.getScaledHeight(30),
+                        decoration: BoxDecoration(
+                          color: ColorConstant.color1,
+                          borderRadius:
+                              BorderRadius.circular(scale.getScaledHeight(10)),
+                        ),
+                        child: const Center(
+                          child: Icon(
+                            Icons.home_outlined,
+                            color: Colors.white,
+                            size: 20,
+                          ),
+                        ),
                       ),
                     ),
                     SizedBox(width: scale.getScaledHeight(10)),
-                    GestureDetector(
-                      onTap: () {
-                        showPopup(context);
-                      },
-                      child: CircleAvatar(
-                        backgroundImage: AssetImage(ImageConstants.person),
-                        radius: scale.getScaledHeight(16),
+                    CustomPaint(
+                      painter: InnerShadowPainter(),
+                      child: Container(
+                        height: scale.getScaledHeight(30),
+                        width: scale.getScaledHeight(30),
+                        decoration: BoxDecoration(
+                          color: ColorConstant.color1,
+                          borderRadius:
+                              BorderRadius.circular(scale.getScaledHeight(10)),
+                        ),
+                        child: const Center(
+                          child: Icon(
+                            Icons.settings_outlined,
+                            color: Colors.white,
+                            size: 20,
+                          ),
+                        ),
                       ),
                     ),
                     SizedBox(width: scale.getScaledHeight(10)),
@@ -75,7 +98,17 @@ class TransactionHistoryScreen extends GetWidget<TransactionHistoryController> {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
                   children: [
-                    const DetailedTransactionHistory(),
+                    const DashboardCards(
+                      DeviceList(),
+                      'Device List',
+                      AppRoutes.realTimeThreadDetectionScreen,
+                    ),
+                    SizedBox(height: scale.getScaledHeight(16)),
+                    const DashboardCards(
+                      DeviceDetails(),
+                      'Device Details',
+                      AppRoutes.realTimeThreadDetectionScreen,
+                    ),
                     SizedBox(height: scale.getScaledHeight(20)),
                   ],
                 ),

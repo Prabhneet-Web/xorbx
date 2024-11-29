@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:xorbx/presentation/security_screen/capture_voice/controller/capture_voice_controller.dart';
 import 'package:xorbx/routes/app_routes.dart';
 import 'package:xorbx/constants/app_style.dart';

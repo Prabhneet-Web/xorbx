@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/constants/color_constants.dart';
 import 'package:xorbx/presentation/dashboard_screen/widgets/dashboard_cards.dart';
-import 'package:xorbx/presentation/password_management/widgets/password_list.dart';
 import 'package:xorbx/presentation/subscription_plan/controller/subscription_plan_controller.dart';
 import 'package:xorbx/presentation/subscription_plan/widgets/faqs.dart';
 import 'package:xorbx/presentation/subscription_plan/widgets/payment_methods.dart';

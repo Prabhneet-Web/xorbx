@@ -3,6 +3,8 @@ import 'package:xorbx/presentation/dashboard_screen/binding/dashboard_binding.da
 import 'package:xorbx/presentation/dashboard_screen/screen/dashboard_screen.dart';
 import 'package:xorbx/presentation/data_usage_screen/binding/data_usage_binding.dart';
 import 'package:xorbx/presentation/data_usage_screen/screen/data_usage_screen.dart';
+import 'package:xorbx/presentation/device_management/bindings/device_management_binding.dart';
+import 'package:xorbx/presentation/device_management/screens/device_management_screen.dart';
 import 'package:xorbx/presentation/multi_factor_authentication/binding/multi_factor_authentication_binding.dart';
 import 'package:xorbx/presentation/multi_factor_authentication/screen/multi_factor_authentication_screen.dart';
 import 'package:xorbx/presentation/password_management/binding/password_management_binding.dart';
@@ -118,6 +120,7 @@ class AppRoutes {
   static const passwordManagement = '/password_management';
   static const subscriptionPlan = '/subscription_plan';
   static const multiFactorAuthenticationScreen = '/multi_factor_authentication';
+  static const deviceManagement = '/device_management';
 
   static List<GetPage> pages = [
     // Flow 1
@@ -277,6 +280,11 @@ class AppRoutes {
       name: subscriptionPlan,
       page: () => const SubscriptionPlanScreen(),
       bindings: [SubscriptionPlanBinding()],
+    ),
+    GetPage(
+      name: deviceManagement,
+      page: () => const DeviceManagementScreen(),
+      bindings: [DeviceManagementBinding()],
     ),
     // wallet
     GetPage(

@@ -7,7 +7,7 @@ import 'package:xorbx/utils/scaling_utility.dart';
 import 'package:xorbx/widgets/background_effect.dart';
 import 'package:xorbx/widgets/custom_text_field.dart';
 import 'package:xorbx/widgets/funds_successfully_widget.dart';
-import 'package:xorbx/widgets/shadow_card.dart';
+import 'package:xorbx/widgets/shadow_border_card.dart';
 
 class AddPaymentMethodsScreen extends GetWidget<AddPaymentMethodsController> {
   const AddPaymentMethodsScreen({super.key});
@@ -20,7 +20,7 @@ class AddPaymentMethodsScreen extends GetWidget<AddPaymentMethodsController> {
       body: BackgroundEffect(
         dynamicChildren: [
           Container(
-            padding: scale.getPadding(left: 14, right: 14, top: 8),
+            padding: scale.getPadding(left: 16, right: 16, top: 8),
             width: scale.fw,
             child: SingleChildScrollView(
               child: SafeArea(
@@ -46,25 +46,27 @@ class AddPaymentMethodsScreen extends GetWidget<AddPaymentMethodsController> {
                       ],
                     ),
                     SizedBox(height: scale.getScaledHeight(20)),
-                    CommonShadowWidget(
-                        dynamicChild: SizedBox(
+                    ShadowBorderCard(
+                        content: SizedBox(
                       width: double.infinity,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text("Enter Card Details",
                               textAlign: TextAlign.center,
-                              style: AppStyle.style6.copyWith(
-                                  fontSize: scale.getScaledFont(14))),
+                              style: AppStyle.style6
+                                  .copyWith(fontSize: scale.getScaledFont(14))),
                           SizedBox(height: scale.getScaledHeight(14)),
                           CustomTextField(
                             hintText: 'CardHolder Name',
-                            onChanged: (value) => controller.cardHolderName?.value = value,
+                            onChanged: (value) =>
+                                controller.cardHolderName?.value = value,
                           ),
                           SizedBox(height: scale.getScaledHeight(12)),
                           CustomTextField(
                             hintText: 'Card Name',
-                            onChanged: (value) => controller.cardHolderName?.value = value,
+                            onChanged: (value) =>
+                                controller.cardHolderName?.value = value,
                           ),
                           SizedBox(height: scale.getScaledHeight(12)),
                           Row(
@@ -73,7 +75,8 @@ class AddPaymentMethodsScreen extends GetWidget<AddPaymentMethodsController> {
                                 child: CustomTextField(
                                   icon: Icons.calendar_month,
                                   hintText: 'Expiry Date',
-                                  onChanged: (value) => controller.expiry?.value = value,
+                                  onChanged: (value) =>
+                                      controller.expiry?.value = value,
                                 ),
                               ),
                               SizedBox(width: scale.getScaledWidth(16)),
@@ -81,7 +84,8 @@ class AddPaymentMethodsScreen extends GetWidget<AddPaymentMethodsController> {
                                 child: CustomTextField(
                                   icon: Icons.payment,
                                   hintText: 'CVV',
-                                  onChanged: (value) => controller.cvv?.value = value,
+                                  onChanged: (value) =>
+                                      controller.cvv?.value = value,
                                 ),
                               ),
                             ],
@@ -89,23 +93,24 @@ class AddPaymentMethodsScreen extends GetWidget<AddPaymentMethodsController> {
                           SizedBox(height: scale.getScaledHeight(12)),
                           CustomTextField(
                             hintText: 'Billing Address',
-                            onChanged: (value) => controller.billingAddress?.value = value,
+                            onChanged: (value) =>
+                                controller.billingAddress?.value = value,
                           ),
                           SizedBox(height: scale.getScaledHeight(12)),
                           Theme(
-                            data:
-                            ThemeData().copyWith(dividerColor: Colors.transparent),
+                            data: ThemeData()
+                                .copyWith(dividerColor: Colors.transparent),
                             child: ExpansionTile(
                               tilePadding: EdgeInsets.zero,
                               iconColor: ColorConstant.buttonBorder,
                               initiallyExpanded: true,
                               title: Text("Choose payment method",
-                                  style: AppStyle.style6
-                                      .copyWith(fontSize: scale.getScaledFont(16))),
+                                  style: AppStyle.style6.copyWith(
+                                      fontSize: scale.getScaledFont(16))),
                               children: [
                                 Padding(
-                                  padding:
-                                  scale.getPadding(vertical: 10, horizontal: 8),
+                                  padding: scale.getPadding(
+                                      vertical: 10, horizontal: 8),
                                   child: Row(
                                     children: [
                                       Icon(Icons.food_bank_outlined,
@@ -120,10 +125,11 @@ class AddPaymentMethodsScreen extends GetWidget<AddPaymentMethodsController> {
                                   ),
                                 ),
                                 const Divider(
-                                    color: ColorConstant.buttonBorder, thickness: 0.6),
+                                    color: ColorConstant.buttonBorder,
+                                    thickness: 0.6),
                                 Padding(
-                                  padding:
-                                  scale.getPadding(vertical: 10, horizontal: 8),
+                                  padding: scale.getPadding(
+                                      vertical: 10, horizontal: 8),
                                   child: Row(
                                     children: [
                                       Icon(Icons.paypal,
@@ -138,10 +144,11 @@ class AddPaymentMethodsScreen extends GetWidget<AddPaymentMethodsController> {
                                   ),
                                 ),
                                 const Divider(
-                                    color: ColorConstant.buttonBorder, thickness: 0.6),
+                                    color: ColorConstant.buttonBorder,
+                                    thickness: 0.6),
                                 Padding(
-                                  padding:
-                                  scale.getPadding(vertical: 10, horizontal: 8),
+                                  padding: scale.getPadding(
+                                      vertical: 10, horizontal: 8),
                                   child: Row(
                                     children: [
                                       Icon(Icons.payment,
@@ -156,10 +163,11 @@ class AddPaymentMethodsScreen extends GetWidget<AddPaymentMethodsController> {
                                   ),
                                 ),
                                 const Divider(
-                                    color: ColorConstant.buttonBorder, thickness: 0.2),
+                                    color: ColorConstant.buttonBorder,
+                                    thickness: 0.2),
                                 Padding(
-                                  padding:
-                                  scale.getPadding(vertical: 10, horizontal: 8),
+                                  padding: scale.getPadding(
+                                      vertical: 10, horizontal: 8),
                                   child: Row(
                                     children: [
                                       Icon(Icons.wallet,
@@ -174,7 +182,8 @@ class AddPaymentMethodsScreen extends GetWidget<AddPaymentMethodsController> {
                                   ),
                                 ),
                                 const Divider(
-                                    color: ColorConstant.buttonBorder, thickness: 0.8),
+                                    color: ColorConstant.buttonBorder,
+                                    thickness: 0.8),
                               ],
                             ),
                           ),
@@ -184,14 +193,17 @@ class AddPaymentMethodsScreen extends GetWidget<AddPaymentMethodsController> {
                             children: [
                               TextButton(
                                 onPressed: () {
-                                  Get.dialog(fundsSuccessfullyWidget(title: "Payment Method\nAdded\nSuccessfully"));
+                                  Get.dialog(fundsSuccessfullyWidget(
+                                      title:
+                                          "Payment Method\nAdded\nSuccessfully"));
                                 },
                                 style: TextButton.styleFrom(
-                                  fixedSize: Size(
-                                      scale.getScaledWidth(80), scale.getScaledHeight(30)),
+                                  fixedSize: Size(scale.getScaledWidth(80),
+                                      scale.getScaledHeight(30)),
                                   backgroundColor: ColorConstant.color3,
                                   shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
                                   ),
                                 ),
                                 child: Text(
@@ -204,11 +216,12 @@ class AddPaymentMethodsScreen extends GetWidget<AddPaymentMethodsController> {
                               TextButton(
                                 onPressed: () {},
                                 style: TextButton.styleFrom(
-                                  fixedSize: Size(
-                                      scale.getScaledWidth(80), scale.getScaledHeight(30)),
+                                  fixedSize: Size(scale.getScaledWidth(80),
+                                      scale.getScaledHeight(30)),
                                   backgroundColor: ColorConstant.greyButton,
                                   shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
                                   ),
                                 ),
                                 child: Text(
