@@ -48,10 +48,12 @@ import 'package:xorbx/presentation/sub_dashboard_screen/real_time_threat_detecti
 import 'package:xorbx/presentation/verification_screen/binding/verification_binding.dart';
 import 'package:xorbx/presentation/verification_screen/screen/verification_screen.dart';
 import 'package:xorbx/presentation/wallet/bindings/add_funds_binding.dart';
+import 'package:xorbx/presentation/wallet/bindings/add_payment_methods_binding.dart';
 import 'package:xorbx/presentation/wallet/bindings/payment_methods_binding.dart';
 import 'package:xorbx/presentation/wallet/bindings/transfer_funds_binding.dart';
 import 'package:xorbx/presentation/wallet/bindings/withdraw_funds_binding.dart';
 import 'package:xorbx/presentation/wallet/screens/add_funds_screen.dart';
+import 'package:xorbx/presentation/wallet/screens/add_payment_methods_screen.dart';
 import 'package:xorbx/presentation/wallet_with_cashback/binding/wallet_with_cashback_binding.dart';
 import 'package:xorbx/presentation/wallet_with_cashback/screen/wallet_with_cashback_screen.dart';
 import 'package:xorbx/presentation/wallet/screens/payment_methods_screen.dart';
@@ -94,6 +96,7 @@ class AppRoutes {
   static const withdrawFunds = '/withdraw_funds';
   static const transferFunds = '/transfer_funds';
   static const paymentMethods = '/payment_methods';
+  static const addPaymentMethods = '/add_payment_methods';
 
   static List<GetPage> pages = [
     // Flow 1
@@ -249,6 +252,11 @@ class AppRoutes {
       name: paymentMethods,
       page: () => const PaymentMethodsScreen(),
       bindings: [PaymentMethodsBinding()],
+    ),
+    GetPage(
+      name: addPaymentMethods,
+      page: () => const AddPaymentMethodsScreen(),
+      bindings: [AddPaymentMethodsBinding()],
     ),
   ];
 }

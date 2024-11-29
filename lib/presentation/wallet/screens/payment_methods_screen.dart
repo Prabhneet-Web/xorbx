@@ -4,6 +4,7 @@ import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/constants/color_constants.dart';
 import 'package:xorbx/constants/image_constants.dart';
 import 'package:xorbx/presentation/wallet/controllers/payment_methods_controller.dart';
+import 'package:xorbx/routes/app_routes.dart';
 import 'package:xorbx/utils/scaling_utility.dart';
 import 'package:xorbx/widgets/background_effect.dart';
 import 'package:xorbx/widgets/common_network_image.dart';
@@ -103,7 +104,9 @@ class PaymentMethodsScreen extends GetWidget<PaymentMethodsController> {
                     SizedBox(height: scale.getScaledHeight(60),),
                     Center(
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.toNamed(AppRoutes.addPaymentMethods);
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: ColorConstant.color4,
                           fixedSize: Size(scale.fw,
