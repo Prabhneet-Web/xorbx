@@ -14,4 +14,5 @@ class ColorConstant {
   static const cardColor = Color(0xFF0D283E);
   static const white = Color(0xFFFFFFFF);
   static const greyButton = Color(0xFF95A5A8);
+  static const black = Color(0xFF000000);
 }
