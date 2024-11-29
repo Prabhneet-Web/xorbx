@@ -9,8 +9,5 @@ class SignInController extends GetxController {
     rememberMe.value = !rememberMe.value;
   }
 
-  void signIn() {
-    // Add sign-in logic here
-    print("Email: ${email.value}, Password: ${password.value}");
-  }
+  void signIn() {}
 }

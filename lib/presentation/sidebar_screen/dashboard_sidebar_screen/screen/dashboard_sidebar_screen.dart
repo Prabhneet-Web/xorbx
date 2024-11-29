@@ -129,6 +129,11 @@ class DashboardSidebarScreen extends GetWidget<DashboardSidebarController> {
                             "Clear Cache/Data"
                           ],
                           scale: scale,
+                          onItemTap: (item) {
+                            if (item == "Data Usage") {
+                              Get.toNamed(AppRoutes.dataUsageScreen);
+                            }
+                          },
                         ),
                         DropDownOptions(
                           icon: Icons.person_pin_outlined,

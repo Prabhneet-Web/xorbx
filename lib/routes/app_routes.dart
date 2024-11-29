@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:xorbx/presentation/dashboard_screen/binding/dashboard_binding.dart';
 import 'package:xorbx/presentation/dashboard_screen/screen/dashboard_screen.dart';
+import 'package:xorbx/presentation/data_usage_screen/binding/data_usage_binding.dart';
+import 'package:xorbx/presentation/data_usage_screen/screen/data_usage_screen.dart';
 import 'package:xorbx/presentation/security_screen/capture_eye/binding/capture_eye_binding.dart';
 import 'package:xorbx/presentation/security_screen/capture_eye/screen/capture_eye_screen.dart';
 import 'package:xorbx/presentation/security_screen/capture_fingerprint/binding/capture_fingerprint_binding.dart';
@@ -94,6 +96,7 @@ class AppRoutes {
   static const withdrawFunds = '/withdraw_funds';
   static const transferFunds = '/transfer_funds';
   static const transactionHistory = '/transaction_history';
+  static const dataUsageScreen = '/data_usage_screen';
 
   static List<GetPage> pages = [
     // Flow 1
@@ -223,6 +226,11 @@ class AppRoutes {
       name: termsAndConditionsScreen,
       page: () => const TermsAndConditionsScreen(),
       bindings: [TermsAndConditionsBinding()],
+    ),
+    GetPage(
+      name: dataUsageScreen,
+      page: () => const DataUsageScreen(),
+      bindings: [DataUsageBinding()],
     ),
     // wallet
     GetPage(
