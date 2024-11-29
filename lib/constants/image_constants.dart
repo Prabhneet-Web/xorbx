@@ -7,4 +7,8 @@ class ImageConstants {
   static String scanModel = 'assets/images/scan_model.png';
   static String frame = 'assets/images/frame.png';
   static String thankYouPerson = 'assets/images/thank_you_person.png';
+  static String whatsapp = 'assets/images/whatsapp.png';
+  static String linkedin = 'assets/images/linkedin.png';
+  static String twitter = 'assets/images/twitter.png';
+  static String facebook = 'assets/images/facebook.png';
 }

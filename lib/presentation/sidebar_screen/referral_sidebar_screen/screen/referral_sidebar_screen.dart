@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xorbx/constants/color_constants.dart';
 import 'package:xorbx/constants/image_constants.dart';
-import 'package:xorbx/presentation/sidebar_screen/wallet_sidebar_screen/controller/wallet_sidebar_controller.dart';
+import 'package:xorbx/presentation/sidebar_screen/referral_sidebar_screen/controller/referral_sidebar_controller.dart';
 import 'package:xorbx/utils/scaling_utility.dart';
 import 'package:xorbx/widgets/background_effect.dart';
 import 'package:xorbx/widgets/common_network_image.dart';
 import 'package:xorbx/widgets/drop_down_options.dart';
 
-class WalletSidebarScreen extends GetWidget<WalletSidebarController> {
-  const WalletSidebarScreen({super.key});
+class ReferralSidebarScreen extends GetWidget<ReferralSidebarController> {
+  const ReferralSidebarScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +58,12 @@ class WalletSidebarScreen extends GetWidget<WalletSidebarController> {
                           scale: scale,
                         ),
                         DropDownOptions(
+                          icon: Icons.person,
+                          title: "Referrals",
+                          items: const [],
+                          scale: scale,
+                        ),
+                        DropDownOptions(
                           icon: Icons.wallet_outlined,
                           title: "Wallet",
                           items: const [],
@@ -65,31 +71,13 @@ class WalletSidebarScreen extends GetWidget<WalletSidebarController> {
                         ),
                         DropDownOptions(
                           icon: Icons.monetization_on_outlined,
-                          title: "Cashback",
-                          items: const [],
-                          scale: scale,
-                        ),
-                        DropDownOptions(
-                          icon: Icons.monetization_on_rounded,
-                          title: "Transactions",
-                          items: const [],
-                          scale: scale,
-                        ),
-                        DropDownOptions(
-                          icon: Icons.candlestick_chart_outlined,
-                          title: "Security Settings",
+                          title: "Rewards",
                           items: const [],
                           scale: scale,
                         ),
                         DropDownOptions(
                           icon: Icons.message_outlined,
-                          title: "Help/Support",
-                          items: const [],
-                          scale: scale,
-                        ),
-                        DropDownOptions(
-                          icon: Icons.logout_outlined,
-                          title: "Logout",
+                          title: "Support",
                           items: const [],
                           scale: scale,
                         ),

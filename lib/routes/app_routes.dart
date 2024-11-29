@@ -3,12 +3,16 @@ import 'package:xorbx/presentation/dashboard_screen/binding/dashboard_binding.da
 import 'package:xorbx/presentation/dashboard_screen/screen/dashboard_screen.dart';
 import 'package:xorbx/presentation/data_usage_screen/binding/data_usage_binding.dart';
 import 'package:xorbx/presentation/data_usage_screen/screen/data_usage_screen.dart';
+import 'package:xorbx/presentation/referral_screen/binding/referral_binding.dart';
+import 'package:xorbx/presentation/referral_screen/screen/referral_screen.dart';
 import 'package:xorbx/presentation/security_screen/capture_eye/binding/capture_eye_binding.dart';
 import 'package:xorbx/presentation/security_screen/capture_eye/screen/capture_eye_screen.dart';
 import 'package:xorbx/presentation/security_screen/capture_fingerprint/binding/capture_fingerprint_binding.dart';
 import 'package:xorbx/presentation/security_screen/capture_fingerprint/screen/capture_fingerprint_screen.dart';
 import 'package:xorbx/presentation/security_screen/capture_voice/binding/capture_voice_binding.dart';
 import 'package:xorbx/presentation/security_screen/capture_voice/screen/capture_voice_screen.dart';
+import 'package:xorbx/presentation/sidebar_screen/referral_sidebar_screen/binding/referral_sidebar_binding.dart';
+import 'package:xorbx/presentation/sidebar_screen/referral_sidebar_screen/screen/referral_sidebar_screen.dart';
 import 'package:xorbx/presentation/sidebar_screen/wallet_sidebar_screen/binding/wallet_sidebar_binding.dart';
 import 'package:xorbx/presentation/sidebar_screen/wallet_sidebar_screen/screen/wallet_sidebar_screen.dart';
 import 'package:xorbx/presentation/sidebar_screen_details/dashboard_sidebar_details/overview_screen/binding/overview_binding.dart';
@@ -97,6 +101,8 @@ class AppRoutes {
   static const transferFunds = '/transfer_funds';
   static const transactionHistory = '/transaction_history';
   static const dataUsageScreen = '/data_usage_screen';
+  static const referralSidebarScreen = '/referral_sidebar_screen';
+  static const referralScreen = '/referral_screen';
 
   static List<GetPage> pages = [
     // Flow 1
@@ -211,6 +217,11 @@ class AppRoutes {
       page: () => const WalletSidebarScreen(),
       bindings: [WalletSidebarBinding()],
     ),
+    GetPage(
+      name: referralSidebarScreen,
+      page: () => const ReferralSidebarScreen(),
+      bindings: [ReferralSidebarBinding()],
+    ),
     // sidebar details screens
     GetPage(
       name: overviewScreen,
@@ -231,6 +242,11 @@ class AppRoutes {
       name: dataUsageScreen,
       page: () => const DataUsageScreen(),
       bindings: [DataUsageBinding()],
+    ),
+    GetPage(
+      name: referralScreen,
+      page: () => const ReferralScreen(),
+      bindings: [ReferralBinding()],
     ),
     // wallet
     GetPage(
