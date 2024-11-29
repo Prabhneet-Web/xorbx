@@ -13,4 +13,5 @@ class ImageConstants {
   static String facebook = 'assets/images/facebook.png';
   static String paypalLogo = 'assets/images/paypal_logo.png';
   static String masterCardLogo = 'assets/images/mastercard_logo.png';
+  static String shield = 'assets/images/shield.png';
 }

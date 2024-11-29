@@ -91,7 +91,7 @@ class VerificationScreen extends GetWidget<VerificationController> {
                       ElevatedButton(
                         onPressed: () {
                           Get.toNamed(
-                            AppRoutes.dashboardScreen,
+                            AppRoutes.multiFactorAuthenticationScreen,
                           );
                         },
                         style: ElevatedButton.styleFrom(

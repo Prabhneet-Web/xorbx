@@ -5,6 +5,7 @@ import 'package:xorbx/constants/color_constants.dart';
 import 'package:xorbx/presentation/password_management/widgets/overview.dart';
 import 'package:xorbx/presentation/dashboard_screen/widgets/dashboard_cards.dart';
 import 'package:xorbx/presentation/password_management/widgets/password_list.dart';
+import 'package:xorbx/presentation/password_management/widgets/settings.dart';
 import 'package:xorbx/presentation/subscription_plan/controller/subscription_plan_controller.dart';
 import 'package:xorbx/routes/app_routes.dart';
 import 'package:xorbx/utils/scaling_utility.dart';
@@ -53,23 +54,6 @@ class SubscriptionPlanScreen extends GetWidget<SubscriptionPlanController> {
                     ),
                   ),
                   SizedBox(height: scale.getScaledHeight(5)),
-                  Row(
-                    children: [
-                      Text(
-                        "Unlock exclusive content and benefits",
-                        style: AppStyle.style1.copyWith(
-                          fontSize: scale.getScaledHeight(14),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  const DashboardCards(
-                    SubscriptionPlanScreen(),
-                    'Subscriptions Plans',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
                   const DashboardCards(
                     Overview(),
                     'Overview',
@@ -79,6 +63,12 @@ class SubscriptionPlanScreen extends GetWidget<SubscriptionPlanController> {
                   const DashboardCards(
                     PasswordList(),
                     'Password List',
+                    AppRoutes.realTimeThreadDetectionScreen,
+                  ),
+                  SizedBox(height: scale.getScaledHeight(16)),
+                  const DashboardCards(
+                    Settings(),
+                    'Settings',
                     AppRoutes.realTimeThreadDetectionScreen,
                   ),
                   SizedBox(height: scale.getScaledHeight(50)),
