@@ -30,8 +30,8 @@ class SplashController extends GetxController {
     "Welcome to Your Security\nHub!",
     "Stay Ahead of Cyber\nThreats!",
     "Your Network, Your\nFortress!",
-    "Don't Get Hooked by Phishing\nAttacks!",
-    "Comprehensive Protection at Your\nFingertips",
+    "Don't Get Hooked by Phishing Attacks!",
+    "Comprehensive Protection at Your Fingertips",
     "Your Security, Simplified!",
     "Ready to Secure Your Data?",
   ];

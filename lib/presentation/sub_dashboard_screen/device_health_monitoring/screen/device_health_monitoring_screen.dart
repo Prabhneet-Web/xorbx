@@ -253,54 +253,50 @@ class DeviceHealthMonitoringScreen
   }
 
   Widget _overlayText(String name, String date) {
-    return Positioned(
-      top: scale.getScaledHeight(0),
-      right: scale.getScaledHeight(30),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Row(
-            children: [
-              const Icon(
-                Icons.refresh,
-                size: 13,
-                color: Colors.white60,
-              ),
-              SizedBox(width: scale.getScaledHeight(2)),
-              Text(
-                name,
-                style: AppStyle.style2.copyWith(
-                    color: Colors.white60,
-                    fontWeight: FontWeight.normal,
-                    fontSize: 13),
-              ),
-            ],
-          ),
-          Text(
-            date,
-            style: const TextStyle(
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Row(
+          children: [
+            const Icon(
+              Icons.refresh,
+              size: 13,
               color: Colors.white60,
-              fontSize: 8,
+            ),
+            SizedBox(width: scale.getScaledHeight(2)),
+            Text(
+              name,
+              style: AppStyle.style2.copyWith(
+                  color: Colors.white60,
+                  fontWeight: FontWeight.normal,
+                  fontSize: 13),
+            ),
+          ],
+        ),
+        Text(
+          date,
+          style: const TextStyle(
+            color: Colors.white60,
+            fontSize: 8,
+          ),
+        ),
+        TextButton(
+          onPressed: () {},
+          style: TextButton.styleFrom(
+            fixedSize: Size((scale.fw - 150) / 3, scale.getScaledHeight(0)),
+            backgroundColor: Colors.orange,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(5)),
             ),
           ),
-          TextButton(
-            onPressed: () {},
-            style: TextButton.styleFrom(
-              fixedSize: Size((scale.fw - 150) / 3, scale.getScaledHeight(0)),
-              backgroundColor: Colors.orange,
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(5)),
-              ),
-            ),
-            child: Text(
-              'Refresh',
-              style: AppStyle.style3.copyWith(
-                fontSize: 9,
-              ),
+          child: Text(
+            'Refresh',
+            style: AppStyle.style3.copyWith(
+              fontSize: 9,
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

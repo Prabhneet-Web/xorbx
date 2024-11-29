@@ -171,10 +171,6 @@ class NetworkSecurityAlertScreen
   }
 
   Widget _overlayText(String name, String date) {
-    return Positioned(
-      top: scale.getScaledHeight(10),
-      right: scale.getScaledHeight(10),
-      child: overlayText(name, date),
-    );
+    return overlayText(name, date);
   }
 }
