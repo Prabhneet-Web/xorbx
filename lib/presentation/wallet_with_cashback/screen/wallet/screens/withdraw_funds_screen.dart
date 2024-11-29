@@ -168,7 +168,7 @@ class WithdrawFundsScreen extends GetWidget<WithdrawFundsController> {
                   SizedBox(height: scale.getScaledHeight(70)),
                   ElevatedButton(
                     onPressed: () {
-                      Get.dialog(FundsSuccessfullyWidget(
+                      Get.dialog(fundsSuccessfullyWidget(
                           title: "Funds Successfully\nWithdraw!"));
                     },
                     style: ElevatedButton.styleFrom(

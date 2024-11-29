@@ -261,7 +261,7 @@ class TransferFundsScreen extends GetWidget<TransferFundsController> {
                   SizedBox(height: scale.getScaledHeight(40)),
                   ElevatedButton(
                     onPressed: () {
-                      Get.dialog(FundsSuccessfullyWidget(
+                      Get.dialog(fundsSuccessfullyWidget(
                           title: "Funds Successfully\nTransferred!"));
                     },
                     style: ElevatedButton.styleFrom(

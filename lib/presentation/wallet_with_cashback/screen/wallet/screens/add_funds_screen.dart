@@ -168,7 +168,7 @@ class AddFundsScreen extends GetWidget<AddFundsController> {
                   SizedBox(height: scale.getScaledHeight(70)),
                   ElevatedButton(
                     onPressed: () {
-                      Get.dialog(FundsSuccessfullyWidget(
+                      Get.dialog(fundsSuccessfullyWidget(
                           title: "Funds Successfully\nAdded!"));
                     },
                     style: ElevatedButton.styleFrom(

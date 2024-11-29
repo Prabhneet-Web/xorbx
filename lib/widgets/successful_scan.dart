@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/constants/color_constants.dart';
-import 'package:xorbx/constants/image_constants.dart';
 import 'package:xorbx/utils/scaling_utility.dart';
 import 'package:xorbx/widgets/semi_circular_progress_indicator.dart';
 import 'package:xorbx/widgets/shadow_card.dart';
 
-Widget fundsSuccessfullyWidget({required String? title}) {
+Widget successfulScan({required String? title}) {
   var scale = Get.find<ScalingUtility>()..setCurrentDeviceSize(Get.context!);
   return AlertDialog(
     contentPadding: EdgeInsets.zero,
@@ -31,35 +30,9 @@ Widget fundsSuccessfullyWidget({required String? title}) {
                       .copyWith(fontSize: scale.getScaledFont(20)),
                   textAlign: TextAlign.center)),
           SizedBox(height: scale.getScaledHeight(36)),
-          Text("Transaction ID: *********4387",
+          Text(
+              "Your scan was successful! All systems are functioning normally. No issues detected at this time.",
               style: AppStyle.style1.copyWith(fontWeight: FontWeight.w500)),
-          SizedBox(height: scale.getScaledHeight(4)),
-          Text("Amount: +\$3200",
-              style: AppStyle.style1.copyWith(fontWeight: FontWeight.w500)),
-          SizedBox(height: scale.getScaledHeight(4)),
-          Text("Type: Transfer",
-              style: AppStyle.style1.copyWith(fontWeight: FontWeight.w500)),
-          SizedBox(height: scale.getScaledHeight(18)),
-          Row(
-            children: [
-              CircleAvatar(
-                backgroundImage: AssetImage(ImageConstants.person),
-                radius: scale.getScaledHeight(16),
-              ),
-              SizedBox(width: scale.getScaledWidth(12)),
-              Text(
-                "Brooklyn Simmons",
-                style: AppStyle.style1.copyWith(
-                    fontWeight: FontWeight.w500,
-                    fontSize: scale.getScaledFont(12)),
-              )
-            ],
-          ),
-          SizedBox(height: scale.getScaledHeight(8)),
-          Text("Bank Account: *********2046",
-              style: AppStyle.style1.copyWith(
-                  fontWeight: FontWeight.w600,
-                  fontSize: scale.getScaledFont(12))),
           SizedBox(height: scale.getScaledHeight(40)),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,

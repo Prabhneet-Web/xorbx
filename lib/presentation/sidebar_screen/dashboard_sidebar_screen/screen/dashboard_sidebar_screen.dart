@@ -107,8 +107,21 @@ class DashboardSidebarScreen extends GetWidget<DashboardSidebarController> {
                         DropDownOptions(
                           icon: Icons.dataset_outlined,
                           title: "Privacy Settings",
-                          items: const [],
+                          items: const [
+                            "Eye",
+                            "Fingerprint",
+                            "Voice",
+                          ],
                           scale: scale,
+                          onItemTap: (item) {
+                            if (item == "Eye") {
+                              Get.toNamed(AppRoutes.captureEyeScreen);
+                            } else if (item == "Fingerprint") {
+                              Get.toNamed(AppRoutes.captureFingerprintScreen);
+                            } else if (item == "Voice") {
+                              Get.toNamed(AppRoutes.captureVoiceScreen);
+                            }
+                          },
                         ),
                         DropDownOptions(
                           icon: Icons.candlestick_chart_outlined,
