@@ -13,7 +13,7 @@ class BatteryHealthStatus extends StatelessWidget {
     return Container(
         color: ColorConstant.color1,
         height: scale.getScaledHeight(100),
-        width: (scale.fw - 112) / 2,
+        width: (scale.fw /3),
         child: const SemiCircularProgressIndicator(progress: 0.78));
   }
 }

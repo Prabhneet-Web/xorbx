@@ -53,8 +53,11 @@ class WithdrawFundsScreen extends GetWidget<WithdrawFundsController> {
                 children: [
                   Row(
                     children: [
-                      const Icon(Icons.arrow_back_ios,
-                          color: ColorConstant.buttonBorder),
+                      InkWell(
+                        onTap: () => Get.back(),
+                        child: const Icon(Icons.arrow_back_ios,
+                            color: ColorConstant.buttonBorder),
+                      ),
                       Expanded(
                           child: Text("Withdraw Funds",
                               textAlign: TextAlign.center,

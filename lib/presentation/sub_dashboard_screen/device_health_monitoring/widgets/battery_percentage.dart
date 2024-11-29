@@ -23,7 +23,7 @@ class BatteryPercentage extends StatelessWidget {
       children: [
         SizedBox(
           height: scale.getScaledHeight(100),
-          width: (scale.fw - 112) / 2,
+          width: (scale.fw) / 3,
           child: Stack(
             alignment: Alignment.center,
             children: [

@@ -53,8 +53,11 @@ class AddFundsScreen extends GetWidget<AddFundsController> {
                 children: [
                   Row(
                     children: [
-                      const Icon(Icons.arrow_back_ios,
-                          color: ColorConstant.buttonBorder),
+                      InkWell(
+                        onTap: () => Get.back(),
+                        child: const Icon(Icons.arrow_back_ios,
+                            color: ColorConstant.buttonBorder),
+                      ),
                       Expanded(
                           child: Text("Add Funds to Wallet",
                               textAlign: TextAlign.center,

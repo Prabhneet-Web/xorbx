@@ -67,7 +67,7 @@ class TransactionHistoryScreen extends GetWidget<TransactionHistoryController> {
                     SizedBox(width: scale.getScaledHeight(10)),
                     GestureDetector(
                       onTap: () {
-                        _showPopup(context);
+                        showPopup(context);
                       },
                       child: CircleAvatar(
                         backgroundImage: AssetImage(ImageConstants.person),
@@ -94,7 +94,7 @@ class TransactionHistoryScreen extends GetWidget<TransactionHistoryController> {
     );
   }
 
-  void _showPopup(BuildContext context) {
+  void showPopup(BuildContext context) {
     OverlayEntry? overlayEntry;
 
     overlayEntry = OverlayEntry(
@@ -114,15 +114,13 @@ class TransactionHistoryScreen extends GetWidget<TransactionHistoryController> {
                 child: GestureDetector(
                   onTap: () {},
                   child: SizedBox(
-                    width: scale.getScaledHeight(160),
+                    width: scale.getScaledHeight(110),
                     child: ShadowBorderCard(
                       content: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          SizedBox(height: scale.getScaledHeight(20)),
                           Row(
                             children: [
-                              SizedBox(width: scale.getScaledHeight(10)),
                               const Icon(
                                 Icons.logout_outlined,
                                 color: ColorConstant.color4,
@@ -142,7 +140,6 @@ class TransactionHistoryScreen extends GetWidget<TransactionHistoryController> {
                           SizedBox(height: scale.getScaledHeight(10)),
                           Row(
                             children: [
-                              SizedBox(width: scale.getScaledHeight(10)),
                               const Icon(
                                 Icons.settings,
                                 color: ColorConstant.color4,
@@ -159,7 +156,6 @@ class TransactionHistoryScreen extends GetWidget<TransactionHistoryController> {
                               ),
                             ],
                           ),
-                          SizedBox(height: scale.getScaledHeight(20)),
                         ],
                       ),
                     ),
