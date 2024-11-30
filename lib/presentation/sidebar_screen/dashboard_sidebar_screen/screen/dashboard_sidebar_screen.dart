@@ -188,6 +188,11 @@ class DashboardSidebarScreen extends GetWidget<DashboardSidebarController> {
                             "App Version Info"
                           ],
                           scale: scale,
+                          onItemTap: (item) {
+                            if (item == "Send Feedback") {
+                              Get.toNamed(AppRoutes.customerFeedback);
+                            }
+                          },
                         ),
                         DropDownOptions(
                           icon: Icons.logout_outlined,

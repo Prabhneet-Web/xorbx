@@ -26,77 +26,88 @@ class DataUsageScreen extends GetWidget<DataUsageController> {
       backgroundColor: ColorConstant.color1,
       body: BackgroundEffect(
         dynamicChildren: [
-          SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.all(scale.getScaledHeight(16)),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                      bottom: scale.getScaledHeight(15),
-                      top: scale.getScaledHeight(25),
+          Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(
+                  bottom: scale.getScaledHeight(15),
+                  top: scale.getScaledHeight(35),
+                  left: scale.getScaledHeight(5),
+                  right: scale.getScaledHeight(16),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: const Icon(
+                        Icons.chevron_left_outlined,
+                        color: Colors.white,
+                      ),
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                    Text(
+                      'Data Usage',
+                      style: AppStyle.style2,
+                    ),
+                    const Spacer(),
+                    _overlayText("Last Synced:", "September 01, 2024"),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: scale.getScaledHeight(5),
+                      horizontal: scale.getScaledHeight(16),
+                    ),
+                    child: Column(
                       children: [
-                        IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: const Icon(
-                            Icons.chevron_left_outlined,
-                            color: Colors.white,
-                          ),
+                        SizedBox(height: scale.getScaledHeight(5)),
+                        const DashboardCards(
+                          SummarySection(),
+                          'Summary Section',
+                          AppRoutes.realTimeThreadDetectionScreen,
                         ),
-                        Text(
-                          'Data Usage',
-                          style: AppStyle.style2,
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        const DashboardCards(
+                          GraphicalRepresentation(),
+                          'Graphical Representation',
+                          AppRoutes.realTimeThreadDetectionScreen,
                         ),
-                        const Spacer(),
-                        _overlayText("Last Synced:", "September 01, 2024"),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        const DashboardCards(
+                          DetailedUsageBreakdown(),
+                          'Detailed Usage Breakdown',
+                          AppRoutes.realTimeThreadDetectionScreen,
+                        ),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        const DashboardCards(
+                          NotificationAlerts(),
+                          'Notification Alerts',
+                          AppRoutes.realTimeThreadDetectionScreen,
+                        ),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        const DashboardCards(
+                          ButtonsAndActions(),
+                          'Buttons and Actions',
+                          AppRoutes.realTimeThreadDetectionScreen,
+                        ),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        const DashboardCards(
+                          DataSavingTips(),
+                          'Data-Saving Tips Or Settings',
+                          AppRoutes.realTimeThreadDetectionScreen,
+                        ),
+                        SizedBox(height: scale.getScaledHeight(50)),
                       ],
                     ),
                   ),
-                  SizedBox(height: scale.getScaledHeight(5)),
-                  const DashboardCards(
-                    SummarySection(),
-                    'Summary Section',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  const DashboardCards(
-                    GraphicalRepresentation(),
-                    'Graphical Representation',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  const DashboardCards(
-                    DetailedUsageBreakdown(),
-                    'Detailed Usage Breakdown',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  const DashboardCards(
-                    NotificationAlerts(),
-                    'Notification Alerts',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  const DashboardCards(
-                    ButtonsAndActions(),
-                    'Buttons and Actions',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  const DashboardCards(
-                    DataSavingTips(),
-                    'Data-Saving Tips Or Settings',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(50)),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
         ],
       ),

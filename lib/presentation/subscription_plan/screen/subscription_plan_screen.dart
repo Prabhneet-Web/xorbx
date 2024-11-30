@@ -24,80 +24,91 @@ class SubscriptionPlanScreen extends GetWidget<SubscriptionPlanController> {
       backgroundColor: ColorConstant.color1,
       body: BackgroundEffect(
         dynamicChildren: [
-          SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.all(scale.getScaledHeight(16)),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                      bottom: scale.getScaledHeight(15),
-                      top: scale.getScaledHeight(25),
+          Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(
+                  bottom: scale.getScaledHeight(15),
+                  top: scale.getScaledHeight(35),
+                  left: scale.getScaledHeight(5),
+                  right: scale.getScaledHeight(16),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: const Icon(
+                        Icons.chevron_left_outlined,
+                        color: Colors.white,
+                      ),
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: const Icon(
-                            Icons.chevron_left_outlined,
-                            color: Colors.white,
-                          ),
-                        ),
-                        Text(
-                          'Subscription Plans',
-                          style: AppStyle.style2,
-                        ),
-                        // const Spacer(),
-                        // _overlayText("Last Synced:", "September 01, 2024"),
-                      ],
+                    Text(
+                      'Subscription Plans',
+                      style: AppStyle.style2,
                     ),
-                  ),
-                  SizedBox(height: scale.getScaledHeight(5)),
-                  const DashboardCards(
-                    SubscriptionsPlansCard(),
-                    'Subscriptions Plans',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  const DashboardCards(
-                    PaymentMethods(),
-                    'Payment Methods',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  const DashboardCards(
-                    Faqs(),
-                    'FAQs',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  const DashboardCards(
-                    UserTestimonials(),
-                    'Users Testimonials',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  ShadowBorderCard(
-                    content: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    // const Spacer(),
+                    // _overlayText("Last Synced:", "September 01, 2024"),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: scale.getScaledHeight(5),
+                      horizontal: scale.getScaledHeight(16),
+                    ),
+                    child: Column(
                       children: [
-                        _itemsSection(
-                          "Terms and Conditions",
+                        SizedBox(height: scale.getScaledHeight(5)),
+                        const DashboardCards(
+                          SubscriptionsPlansCard(),
+                          'Subscriptions Plans',
+                          AppRoutes.realTimeThreadDetectionScreen,
                         ),
                         SizedBox(height: scale.getScaledHeight(16)),
-                        _itemsSection(
-                          "Contact Support",
+                        const DashboardCards(
+                          PaymentMethods(),
+                          'Payment Methods',
+                          AppRoutes.realTimeThreadDetectionScreen,
                         ),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        const DashboardCards(
+                          Faqs(),
+                          'FAQs',
+                          AppRoutes.realTimeThreadDetectionScreen,
+                        ),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        const DashboardCards(
+                          UserTestimonials(),
+                          'Users Testimonials',
+                          AppRoutes.realTimeThreadDetectionScreen,
+                        ),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        ShadowBorderCard(
+                          content: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _itemsSection(
+                                "Terms and Conditions",
+                              ),
+                              SizedBox(height: scale.getScaledHeight(16)),
+                              _itemsSection(
+                                "Contact Support",
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: scale.getScaledHeight(50)),
                       ],
                     ),
                   ),
-                  SizedBox(height: scale.getScaledHeight(50)),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
         ],
       ),

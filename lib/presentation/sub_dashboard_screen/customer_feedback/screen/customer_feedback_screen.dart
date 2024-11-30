@@ -23,89 +23,100 @@ class CustomerFeedbackScreen extends GetWidget<CustomerFeedbackController> {
       backgroundColor: ColorConstant.color1,
       body: BackgroundEffect(
         dynamicChildren: [
-          SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.all(scale.getScaledHeight(16)),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                      bottom: scale.getScaledHeight(15),
-                      top: scale.getScaledHeight(30),
+          Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(
+                  bottom: scale.getScaledHeight(15),
+                  top: scale.getScaledHeight(35),
+                  left: scale.getScaledHeight(5),
+                  right: scale.getScaledHeight(16),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: const Icon(
+                        Icons.chevron_left_outlined,
+                        color: Colors.white,
+                      ),
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                    Text(
+                      'User Notifications\nDashboard',
+                      style: AppStyle.style2,
+                    ),
+                    const Spacer(),
+                    _overlayText("Last Synced:", "September 01, 2024"),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: scale.getScaledHeight(5),
+                      horizontal: scale.getScaledHeight(16),
+                    ),
+                    child: Column(
                       children: [
-                        IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: const Icon(
-                            Icons.chevron_left_outlined,
-                            color: Colors.white,
+                        SizedBox(height: scale.getScaledHeight(10)),
+                        Text(
+                          "Feedback Form",
+                          style: AppStyle.style2.copyWith(
+                            fontSize: scale.getScaledHeight(16),
                           ),
                         ),
-                        Text(
-                          'User Notifications\nDashboard',
-                          style: AppStyle.style2,
+                        SizedBox(height: scale.getScaledHeight(10)),
+                        const DashboardCards(
+                          RatingSystem(),
+                          'Rating System',
+                          AppRoutes.realTimeThreadDetectionScreen,
                         ),
-                        const Spacer(),
-                        _overlayText("Last Synced:", "September 01, 2024"),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        const MessageCard(
+                          hintText: 'Feedback',
+                          content:
+                              "It is informative and easy to navigate, with clear visuals and color-coded alerts that help prioritize threats. Having high-severity alerts more prominently displayed would improve response times. Customization options for filtering or sorting by severity and recency would also enhance usability, making it quicker to access critical information.",
+                        ),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        const MessageCard(
+                          hintText: 'Suggestion',
+                          content:
+                              "Consider adding more prominent alerts for high-severity threats to improve response times, and include customization options to filter and prioritize information by severity or recent activity. A quick-access section for frequently used actions or resources could also streamline user interactions and make the dashboard more efficient.",
+                        ),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        const MessageCard(
+                          hintText: 'Issues',
+                          content:
+                              "I've found it challenging to quickly locate critical, high-severity alerts, as they’re sometimes mixed in with lower-priority notifications. Navigating to specific threat details could be more streamlined, and filtering options are limited, making it hard to focus on particular types of alerts. Additionally, certain sections, like the alert history, can be slow to load, which disrupts workflow when monitoring for recent activity.",
+                        ),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        _customizeFeedback(),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        const DashboardCards(
+                          SpecificIssues(),
+                          'Specific Issues',
+                          AppRoutes.realTimeThreadDetectionScreen,
+                        ),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        Text(
+                          "Feedback History",
+                          style: AppStyle.style2.copyWith(
+                            fontSize: scale.getScaledHeight(16),
+                          ),
+                        ),
+                        SizedBox(height: scale.getScaledHeight(10)),
+                        _customizeFeedback2(),
+                        SizedBox(height: scale.getScaledHeight(50)),
                       ],
                     ),
                   ),
-                  SizedBox(height: scale.getScaledHeight(10)),
-                  Text(
-                    "Feedback Form",
-                    style: AppStyle.style2.copyWith(
-                      fontSize: scale.getScaledHeight(16),
-                    ),
-                  ),
-                  SizedBox(height: scale.getScaledHeight(10)),
-                  const DashboardCards(
-                    RatingSystem(),
-                    'Rating System',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  const MessageCard(
-                    hintText: 'Feedback',
-                    content:
-                        "It is informative and easy to navigate, with clear visuals and color-coded alerts that help prioritize threats. Having high-severity alerts more prominently displayed would improve response times. Customization options for filtering or sorting by severity and recency would also enhance usability, making it quicker to access critical information.",
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  const MessageCard(
-                    hintText: 'Suggestion',
-                    content:
-                        "Consider adding more prominent alerts for high-severity threats to improve response times, and include customization options to filter and prioritize information by severity or recent activity. A quick-access section for frequently used actions or resources could also streamline user interactions and make the dashboard more efficient.",
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  const MessageCard(
-                    hintText: 'Issues',
-                    content:
-                        "I've found it challenging to quickly locate critical, high-severity alerts, as they’re sometimes mixed in with lower-priority notifications. Navigating to specific threat details could be more streamlined, and filtering options are limited, making it hard to focus on particular types of alerts. Additionally, certain sections, like the alert history, can be slow to load, which disrupts workflow when monitoring for recent activity.",
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  _customizeFeedback(),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  const DashboardCards(
-                    SpecificIssues(),
-                    'Specific Issues',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  Text(
-                    "Feedback History",
-                    style: AppStyle.style2.copyWith(
-                      fontSize: scale.getScaledHeight(16),
-                    ),
-                  ),
-                  SizedBox(height: scale.getScaledHeight(10)),
-                  _customizeFeedback2(),
-                  SizedBox(height: scale.getScaledHeight(50)),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
         ],
       ),

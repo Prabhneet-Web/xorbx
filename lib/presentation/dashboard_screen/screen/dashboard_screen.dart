@@ -27,131 +27,140 @@ class DashboardScreen extends GetWidget<DashboardController> {
     return Scaffold(
       backgroundColor: ColorConstant.color1,
       body: BackgroundEffect(dynamicChildren: [
-        SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(
-                  top: scale.getScaledHeight(45),
-                  bottom: scale.getScaledHeight(25),
-                  left: scale.getScaledHeight(5),
-                  right: scale.getScaledHeight(5),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        Get.toNamed(AppRoutes.dashboardSidebarScreen);
-                      },
-                      icon: const Icon(
-                        Icons.menu_outlined,
-                        color: ColorConstant.color4,
-                      ),
-                    ),
-                    SizedBox(width: scale.getScaledHeight(5)),
-                    Text(
-                      'Cyber Security Dashboard',
-                      style: AppStyle.style2,
-                    ),
-                    const Spacer(flex: 1),
-                    IconButton(
-                      onPressed: () {
-                        Get.toNamed(AppRoutes.customerFeedback);
-                      },
-                      icon: const Icon(
-                        Icons.notifications_none_rounded,
-                        color: Colors.white,
-                        size: 26,
-                      ),
-                    ),
-                    SizedBox(width: scale.getScaledHeight(10)),
-                    GestureDetector(
-                      onTap: () {
-                        showPopup(context);
-                      },
-                      child: CircleAvatar(
-                        backgroundImage: AssetImage(ImageConstants.person),
-                        radius: scale.getScaledHeight(16),
-                      ),
-                    ),
-                    SizedBox(width: scale.getScaledHeight(10)),
-                  ],
-                ),
+        Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(
+                top: scale.getScaledHeight(45),
+                bottom: scale.getScaledHeight(25),
+                left: scale.getScaledHeight(5),
+                right: scale.getScaledHeight(5),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      Get.toNamed(AppRoutes.dashboardSidebarScreen);
+                    },
+                    icon: const Icon(
+                      Icons.menu_outlined,
+                      color: ColorConstant.color4,
+                    ),
+                  ),
+                  SizedBox(width: scale.getScaledHeight(5)),
+                  Text(
+                    'Cyber Security Dashboard',
+                    style: AppStyle.style2,
+                  ),
+                  const Spacer(flex: 1),
+                  IconButton(
+                    onPressed: () {
+                      Get.toNamed(AppRoutes.customerFeedback);
+                    },
+                    icon: const Icon(
+                      Icons.notifications_none_rounded,
+                      color: Colors.white,
+                      size: 26,
+                    ),
+                  ),
+                  SizedBox(width: scale.getScaledHeight(10)),
+                  GestureDetector(
+                    onTap: () {
+                      showPopup(context);
+                    },
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage(ImageConstants.person),
+                      radius: scale.getScaledHeight(16),
+                    ),
+                  ),
+                  SizedBox(width: scale.getScaledHeight(10)),
+                ],
+              ),
+            ),
+            Expanded(
+              child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    const DashboardCards(
-                      HeatMap(),
-                      'Real-Time Threat Detection',
-                      buttonTitle: 'View Detailed Report',
-                      AppRoutes.realTimeThreadDetectionScreen,
-                      isButtonNeed: true,
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: scale.getScaledHeight(25),
+                        vertical: scale.getScaledHeight(5),
+                      ),
+                      child: Column(
+                        children: [
+                          const DashboardCards(
+                            HeatMap(),
+                            'Real-Time Threat Detection',
+                            buttonTitle: 'View Detailed Report',
+                            AppRoutes.realTimeThreadDetectionScreen,
+                            isButtonNeed: true,
+                          ),
+                          SizedBox(height: scale.getScaledHeight(20)),
+                          const DashboardCards(
+                            AppPermissionChecker(),
+                            'App Permission Checker',
+                            buttonTitle: 'Review Permission',
+                            AppRoutes.appPermissionChecker,
+                            isButtonNeed: true,
+                          ),
+                          SizedBox(height: scale.getScaledHeight(20)),
+                          const DashboardCards(
+                            NetworkSecurityAlert(),
+                            'Network Security Alerts',
+                            buttonTitle: 'See All Alerts',
+                            AppRoutes.networkSecurityAlert,
+                            isButtonNeed: true,
+                          ),
+                          SizedBox(height: scale.getScaledHeight(20)),
+                          const DashboardCards(
+                            PhishingDetection(),
+                            'Phishing Detection',
+                            buttonTitle: 'View Detailed Analysis',
+                            AppRoutes.phisingDetectionScreen,
+                            isButtonNeed: true,
+                          ),
+                          SizedBox(height: scale.getScaledHeight(20)),
+                          const DashboardCards(
+                            CompromisedPassword(),
+                            'Compromised password',
+                            buttonTitle: 'View Detailed List',
+                            AppRoutes.compromisedPassword,
+                            isButtonNeed: true,
+                          ),
+                          SizedBox(height: scale.getScaledHeight(20)),
+                          const DashboardCards(
+                            DeviceHealthMonitoring(),
+                            'Device Health Monitoring',
+                            buttonTitle: 'View Detailed List',
+                            AppRoutes.deviceHealthMonitoring,
+                            isButtonNeed: true,
+                          ),
+                          SizedBox(height: scale.getScaledHeight(20)),
+                          const DashboardCards(
+                            UserNotification(),
+                            'Users Notifications',
+                            buttonTitle: 'View All Notifications',
+                            AppRoutes.userNotification,
+                            isButtonNeed: true,
+                          ),
+                          SizedBox(height: scale.getScaledHeight(20)),
+                          const DashboardCards(
+                            CustomerFeedback(),
+                            'Customer Feedback',
+                            buttonTitle: 'Analyze Feedback',
+                            AppRoutes.customerFeedback,
+                            isButtonNeed: true,
+                          ),
+                          SizedBox(height: scale.getScaledHeight(20)),
+                        ],
+                      ),
                     ),
-                    SizedBox(height: scale.getScaledHeight(20)),
-                    const DashboardCards(
-                      AppPermissionChecker(),
-                      'App Permission Checker',
-                      buttonTitle: 'Review Permission',
-                      AppRoutes.appPermissionChecker,
-                      isButtonNeed: true,
-                    ),
-                    SizedBox(height: scale.getScaledHeight(20)),
-                    const DashboardCards(
-                      NetworkSecurityAlert(),
-                      'Network Security Alerts',
-                      buttonTitle: 'See All Alerts',
-                      AppRoutes.networkSecurityAlert,
-                      isButtonNeed: true,
-                    ),
-                    SizedBox(height: scale.getScaledHeight(20)),
-                    const DashboardCards(
-                      PhishingDetection(),
-                      'Phishing Detection',
-                      buttonTitle: 'View Detailed Analysis',
-                      AppRoutes.phisingDetectionScreen,
-                      isButtonNeed: true,
-                    ),
-                    SizedBox(height: scale.getScaledHeight(20)),
-                    const DashboardCards(
-                      CompromisedPassword(),
-                      'Compromised password',
-                      buttonTitle: 'View Detailed List',
-                      AppRoutes.compromisedPassword,
-                      isButtonNeed: true,
-                    ),
-                    SizedBox(height: scale.getScaledHeight(20)),
-                    const DashboardCards(
-                      DeviceHealthMonitoring(),
-                      'Device Health Monitoring',
-                      buttonTitle: 'View Detailed List',
-                      AppRoutes.deviceHealthMonitoring,
-                      isButtonNeed: true,
-                    ),
-                    SizedBox(height: scale.getScaledHeight(20)),
-                    const DashboardCards(
-                      UserNotification(),
-                      'Users Notifications',
-                      buttonTitle: 'View All Notifications',
-                      AppRoutes.userNotification,
-                      isButtonNeed: true,
-                    ),
-                    SizedBox(height: scale.getScaledHeight(20)),
-                    const DashboardCards(
-                      CustomerFeedback(),
-                      'Customer Feedback',
-                      buttonTitle: 'Analyze Feedback',
-                      AppRoutes.customerFeedback,
-                      isButtonNeed: true,
-                    ),
-                    SizedBox(height: scale.getScaledHeight(20)),
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ]),
     );

@@ -24,118 +24,127 @@ class ReferralScreen extends GetWidget<ReferralController> {
     return Scaffold(
       backgroundColor: ColorConstant.color1,
       body: BackgroundEffect(dynamicChildren: [
-        SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(
-                  top: scale.getScaledHeight(45),
-                  bottom: scale.getScaledHeight(25),
-                  left: scale.getScaledHeight(5),
-                  right: scale.getScaledHeight(5),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        Get.toNamed(AppRoutes.referralSidebarScreen);
-                      },
-                      icon: const Icon(
-                        Icons.menu_outlined,
-                        color: ColorConstant.color4,
-                      ),
-                    ),
-                    SizedBox(width: scale.getScaledHeight(5)),
-                    Text(
-                      'Referral',
-                      style: AppStyle.style2,
-                    ),
-                    const Spacer(flex: 1),
-                    IconButton(
-                      onPressed: () {
-                        Get.toNamed(AppRoutes.customerFeedback);
-                      },
-                      icon: const Icon(
-                        Icons.notifications_none_rounded,
-                        color: Colors.white,
-                        size: 26,
-                      ),
-                    ),
-                    SizedBox(width: scale.getScaledHeight(10)),
-                    GestureDetector(
-                      onTap: () {
-                        showPopup(context);
-                      },
-                      child: CircleAvatar(
-                        backgroundImage: AssetImage(ImageConstants.person),
-                        radius: scale.getScaledHeight(16),
-                      ),
-                    ),
-                    SizedBox(width: scale.getScaledHeight(10)),
-                  ],
-                ),
+        Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(
+                top: scale.getScaledHeight(45),
+                bottom: scale.getScaledHeight(25),
+                left: scale.getScaledHeight(5),
+                right: scale.getScaledHeight(5),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      Get.toNamed(AppRoutes.referralSidebarScreen);
+                    },
+                    icon: const Icon(
+                      Icons.menu_outlined,
+                      color: ColorConstant.color4,
+                    ),
+                  ),
+                  SizedBox(width: scale.getScaledHeight(5)),
+                  Text(
+                    'Referral',
+                    style: AppStyle.style2,
+                  ),
+                  const Spacer(flex: 1),
+                  IconButton(
+                    onPressed: () {
+                      Get.toNamed(AppRoutes.customerFeedback);
+                    },
+                    icon: const Icon(
+                      Icons.notifications_none_rounded,
+                      color: Colors.white,
+                      size: 26,
+                    ),
+                  ),
+                  SizedBox(width: scale.getScaledHeight(10)),
+                  GestureDetector(
+                    onTap: () {
+                      showPopup(context);
+                    },
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage(ImageConstants.person),
+                      radius: scale.getScaledHeight(16),
+                    ),
+                  ),
+                  SizedBox(width: scale.getScaledHeight(10)),
+                ],
+              ),
+            ),
+            Expanded(
+              child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    const DashboardCards(
-                      ReferralSummarySection(),
-                      'Referral Summary Section',
-                      AppRoutes.realTimeThreadDetectionScreen,
-                    ),
-                    SizedBox(height: scale.getScaledHeight(16)),
-                    Text(
-                      "Referral Program Details",
-                      style: AppStyle.style2.copyWith(
-                        fontSize: 16,
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: scale.getScaledHeight(5),
+                        horizontal: scale.getScaledHeight(16),
                       ),
-                    ),
-                    SizedBox(height: scale.getScaledHeight(10)),
-                    const DashboardCards(
-                      ReferralProgramDetails(),
-                      'How It Works',
-                      AppRoutes.realTimeThreadDetectionScreen,
-                    ),
-                    SizedBox(height: scale.getScaledHeight(16)),
-                    Row(
-                      children: [
-                        Text(
-                          "Referral Form",
-                          style: AppStyle.style2.copyWith(
-                            fontSize: scale.getScaledHeight(16),
+                      child: Column(
+                        children: [
+                          const DashboardCards(
+                            ReferralSummarySection(),
+                            'Referral Summary Section',
+                            AppRoutes.realTimeThreadDetectionScreen,
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: scale.getScaledHeight(16)),
-                    const ReferralForm(),
-                    SizedBox(height: scale.getScaledHeight(16)),
-                    const DashboardCards(
-                      ReferralHistory(),
-                      'Referral History',
-                      AppRoutes.realTimeThreadDetectionScreen,
-                    ),
-                    SizedBox(height: scale.getScaledHeight(10)),
-                    Text(
-                      "Promotional Section",
-                      style: AppStyle.style2.copyWith(
-                        fontSize: scale.getScaledHeight(16),
+                          SizedBox(height: scale.getScaledHeight(16)),
+                          Text(
+                            "Referral Program Details",
+                            style: AppStyle.style2.copyWith(
+                              fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(height: scale.getScaledHeight(10)),
+                          const DashboardCards(
+                            ReferralProgramDetails(),
+                            'How It Works',
+                            AppRoutes.realTimeThreadDetectionScreen,
+                          ),
+                          SizedBox(height: scale.getScaledHeight(16)),
+                          Row(
+                            children: [
+                              Text(
+                                "Referral Form",
+                                style: AppStyle.style2.copyWith(
+                                  fontSize: scale.getScaledHeight(16),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: scale.getScaledHeight(16)),
+                          const ReferralForm(),
+                          SizedBox(height: scale.getScaledHeight(16)),
+                          const DashboardCards(
+                            ReferralHistory(),
+                            'Referral History',
+                            AppRoutes.realTimeThreadDetectionScreen,
+                          ),
+                          SizedBox(height: scale.getScaledHeight(10)),
+                          Text(
+                            "Promotional Section",
+                            style: AppStyle.style2.copyWith(
+                              fontSize: scale.getScaledHeight(16),
+                            ),
+                          ),
+                          SizedBox(height: scale.getScaledHeight(16)),
+                          const DashboardCards(
+                            CurrentPromotions(),
+                            'Current Promotions',
+                            AppRoutes.realTimeThreadDetectionScreen,
+                          ),
+                          SizedBox(height: scale.getScaledHeight(100)),
+                        ],
                       ),
                     ),
-                    SizedBox(height: scale.getScaledHeight(16)),
-                    const DashboardCards(
-                      CurrentPromotions(),
-                      'Current Promotions',
-                      AppRoutes.realTimeThreadDetectionScreen,
-                    ),
-                    SizedBox(height: scale.getScaledHeight(100)),
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ]),
     );
@@ -217,5 +226,4 @@ class ReferralScreen extends GetWidget<ReferralController> {
 
     Navigator.of(context).overlay!.insert(overlayEntry);
   }
-
 }

@@ -28,119 +28,130 @@ class AppPermissionCheckerScreen
       backgroundColor: ColorConstant.color1,
       body: BackgroundEffect(
         dynamicChildren: [
-          SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.all(scale.getScaledHeight(16)),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                      bottom: scale.getScaledHeight(15),
-                      top: scale.getScaledHeight(35),
+          Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(
+                  bottom: scale.getScaledHeight(15),
+                  top: scale.getScaledHeight(35),
+                  left: scale.getScaledHeight(5),
+                  right: scale.getScaledHeight(16),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: const Icon(
+                        Icons.chevron_left_outlined,
+                        color: Colors.white,
+                      ),
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                    Column(
                       children: [
-                        IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: const Icon(
-                            Icons.chevron_left_outlined,
-                            color: Colors.white,
-                          ),
+                        SizedBox(height: scale.getScaledHeight(10)),
+                        Text(
+                          'App Permission Checker\nDashboard',
+                          style: AppStyle.style2,
                         ),
-                        Column(
+                      ],
+                    ),
+                    const Spacer(),
+                    _overlayText("Last Synced:", "September 01, 2024"),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: scale.getScaledHeight(5),
+                      horizontal: scale.getScaledHeight(16),
+                    ),
+                    child: Column(
+                      children: [
+                        SizedBox(height: scale.getScaledHeight(5)),
+                        Stack(
                           children: [
-                            SizedBox(height: scale.getScaledHeight(10)),
-                            Text(
-                              'App Permission Checker\nDashboard',
-                              style: AppStyle.style2,
+                            const DashboardCards(
+                              AppPermissionOverview(),
+                              'App Permission Overview',
+                              AppRoutes.realTimeThreadDetectionScreen,
+                            ),
+                            Positioned(
+                              top: scale.getScaledHeight(20),
+                              right: scale.getScaledHeight(20),
+                              child: Icon(
+                                Icons.format_align_center_outlined,
+                                color: Colors.white,
+                                size: scale.getScaledHeight(20),
+                              ),
                             ),
                           ],
                         ),
-                        const Spacer(),
-                        _overlayText("Last Synced:", "September 01, 2024"),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        const DashboardCards(
+                          UsageFrequency(),
+                          'Usage Frequency',
+                          AppRoutes.realTimeThreadDetectionScreen,
+                        ),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        const DashboardCards(
+                          DataSensitivity(),
+                          'Data Sensitivity',
+                          AppRoutes.realTimeThreadDetectionScreen,
+                        ),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        const DashboardCards(
+                          UserControl(),
+                          'User Control',
+                          AppRoutes.realTimeThreadDetectionScreen,
+                        ),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        Text(
+                          'Privacy Score',
+                          style: AppStyle.style2.copyWith(
+                            fontSize: scale.getScaledHeight(16),
+                          ),
+                        ),
+                        SizedBox(height: scale.getScaledHeight(10)),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const DashboardCards(
+                              OverallPrivacyScore(),
+                              'Overall Privacy\nScore',
+                              AppRoutes.realTimeThreadDetectionScreen,
+                            ),
+                            SizedBox(width: scale.getScaledHeight(16)),
+                            const DashboardCards(
+                              LineGraph(),
+                              'Line Graph\n',
+                              AppRoutes.realTimeThreadDetectionScreen,
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        const DashboardCards(
+                          AlertsAndNotifications(),
+                          'Alerts and Notifications',
+                          AppRoutes.realTimeThreadDetectionScreen,
+                        ),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        const DashboardCards(
+                          DataSharingPractices(),
+                          'Data Sharing Practices',
+                          AppRoutes.realTimeThreadDetectionScreen,
+                        ),
+                        SizedBox(height: scale.getScaledHeight(50)),
                       ],
                     ),
                   ),
-                  SizedBox(height: scale.getScaledHeight(5)),
-                  Stack(
-                    children: [
-                      const DashboardCards(
-                        AppPermissionOverview(),
-                        'App Permission Overview',
-                        AppRoutes.realTimeThreadDetectionScreen,
-                      ),
-                      Positioned(
-                        top: scale.getScaledHeight(20),
-                        right: scale.getScaledHeight(20),
-                        child: Icon(
-                          Icons.format_align_center_outlined,
-                          color: Colors.white,
-                          size: scale.getScaledHeight(20),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  const DashboardCards(
-                    UsageFrequency(),
-                    'Usage Frequency',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  const DashboardCards(
-                    DataSensitivity(),
-                    'Data Sensitivity',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  const DashboardCards(
-                    UserControl(),
-                    'User Control',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  Text(
-                    'Privacy Score',
-                    style: AppStyle.style2.copyWith(
-                      fontSize: scale.getScaledHeight(16),
-                    ),
-                  ),
-                  SizedBox(height: scale.getScaledHeight(10)),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const DashboardCards(
-                        OverallPrivacyScore(),
-                        'Overall Privacy\nScore',
-                        AppRoutes.realTimeThreadDetectionScreen,
-                      ),
-                      SizedBox(width: scale.getScaledHeight(16)),
-                      const DashboardCards(
-                        LineGraph(),
-                        'Line Graph\n',
-                        AppRoutes.realTimeThreadDetectionScreen,
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  const DashboardCards(
-                    AlertsAndNotifications(),
-                    'Alerts and Notifications',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  const DashboardCards(
-                    DataSharingPractices(),
-                    'Data Sharing Practices',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(50)),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
         ],
       ),

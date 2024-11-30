@@ -28,146 +28,162 @@ class UserNotificationScreen extends GetWidget<UserNotificationController> {
       backgroundColor: ColorConstant.color1,
       body: BackgroundEffect(
         dynamicChildren: [
-          SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.all(scale.getScaledHeight(16)),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(top: scale.getScaledHeight(25)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            Get.toNamed(
-                                AppRoutes.userNotificationSidebarScreen);
-                          },
-                          icon: const Icon(
-                            Icons.menu_outlined,
-                            color: ColorConstant.color4,
-                          ),
-                        ),
-                      ],
+          Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(
+                  top: scale.getScaledHeight(35),
+                  left: scale.getScaledHeight(5),
+                  right: scale.getScaledHeight(16),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        Get.toNamed(AppRoutes.userNotificationSidebarScreen);
+                      },
+                      icon: const Icon(
+                        Icons.menu_outlined,
+                        color: ColorConstant.color4,
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: scale.getScaledHeight(15)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: const Icon(
-                            Icons.chevron_left_outlined,
-                            color: Colors.white,
-                          ),
-                        ),
-                        Text(
-                          'User Notifications\nDashboard',
-                          style: AppStyle.style2,
-                        ),
-                        const Spacer(),
-                        _overlayText("Last Synced:", "September 01, 2024"),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: scale.getScaledHeight(5)),
-                  Text(
-                    "Notifications",
-                    style: AppStyle.style2.copyWith(
-                      fontSize: 16,
-                    ),
-                  ),
-                  SizedBox(height: scale.getScaledHeight(10)),
-                  const DashboardCards(
-                    NotificationPanel(),
-                    'Notification Panel',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(10)),
-                  const DashboardCards(
-                    MetricRepresentation(),
-                    'Metric Representation',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  Text(
-                    'Reports',
-                    style: AppStyle.style2.copyWith(
-                      fontSize: 16,
-                    ),
-                  ),
-                  SizedBox(height: scale.getScaledHeight(10)),
-                  _totalSecurityAlertCount(),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  const DashboardCards(
-                    DetailedBreakdown(),
-                    'Detailed Breakdown',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  const DashboardCards(
-                    MetricRepresentation2(),
-                    'Metric Representation',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  Text(
-                    "Real-time Alerts",
-                    style: AppStyle.style2.copyWith(
-                      fontSize: 16,
-                    ),
-                  ),
-                  SizedBox(height: scale.getScaledHeight(10)),
-                  const DashboardCards(
-                    ImmediateAlertsSection(),
-                    'Immediate Alerts Section',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  _overlayTextDashboardCards(
-                    const DashboardCards(
-                      PushNotifications(),
-                      'Push Notifications',
-                      AppRoutes.realTimeThreadDetectionScreen,
-                    ),
-                    "Last Synced:",
-                    "November 02, 2024",
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  Text(
-                    "Past Notifications",
-                    style: AppStyle.style2.copyWith(
-                      fontSize: 16,
-                    ),
-                  ),
-                  SizedBox(height: scale.getScaledHeight(10)),
-                  _overlayTextDashboardCards(
-                    const DashboardCards(
-                      LastWeekNotifications(),
-                      'Last Week Notifications',
-                      AppRoutes.realTimeThreadDetectionScreen,
-                    ),
-                    "Last Synced:",
-                    "October 25, 2024",
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  _overlayTextDashboardCards(
-                    const DashboardCards(
-                      LastMonthNotifications(),
-                      'Last Month Notifications',
-                      AppRoutes.realTimeThreadDetectionScreen,
-                    ),
-                    "Last Synced:",
-                    "October 01, 2024",
-                  ),
-                  SizedBox(height: scale.getScaledHeight(50)),
-                ],
+                  ],
+                ),
               ),
-            ),
+              Padding(
+                padding: EdgeInsets.only(
+                  bottom: scale.getScaledHeight(15),
+                  left: scale.getScaledHeight(5),
+                  right: scale.getScaledHeight(16),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: const Icon(
+                        Icons.chevron_left_outlined,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Text(
+                      'User Notifications\nDashboard',
+                      style: AppStyle.style2,
+                    ),
+                    const Spacer(),
+                    _overlayText("Last Synced:", "September 01, 2024"),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: scale.getScaledHeight(5),
+                      horizontal: scale.getScaledHeight(16),
+                    ),
+                    child: Column(
+                      children: [
+                        SizedBox(height: scale.getScaledHeight(5)),
+                        Text(
+                          "Notifications",
+                          style: AppStyle.style2.copyWith(
+                            fontSize: 16,
+                          ),
+                        ),
+                        SizedBox(height: scale.getScaledHeight(10)),
+                        const DashboardCards(
+                          NotificationPanel(),
+                          'Notification Panel',
+                          AppRoutes.realTimeThreadDetectionScreen,
+                        ),
+                        SizedBox(height: scale.getScaledHeight(10)),
+                        const DashboardCards(
+                          MetricRepresentation(),
+                          'Metric Representation',
+                          AppRoutes.realTimeThreadDetectionScreen,
+                        ),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        Text(
+                          'Reports',
+                          style: AppStyle.style2.copyWith(
+                            fontSize: 16,
+                          ),
+                        ),
+                        SizedBox(height: scale.getScaledHeight(10)),
+                        _totalSecurityAlertCount(),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        const DashboardCards(
+                          DetailedBreakdown(),
+                          'Detailed Breakdown',
+                          AppRoutes.realTimeThreadDetectionScreen,
+                        ),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        const DashboardCards(
+                          MetricRepresentation2(),
+                          'Metric Representation',
+                          AppRoutes.realTimeThreadDetectionScreen,
+                        ),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        Text(
+                          "Real-time Alerts",
+                          style: AppStyle.style2.copyWith(
+                            fontSize: 16,
+                          ),
+                        ),
+                        SizedBox(height: scale.getScaledHeight(10)),
+                        const DashboardCards(
+                          ImmediateAlertsSection(),
+                          'Immediate Alerts Section',
+                          AppRoutes.realTimeThreadDetectionScreen,
+                        ),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        _overlayTextDashboardCards(
+                          const DashboardCards(
+                            PushNotifications(),
+                            'Push Notifications',
+                            AppRoutes.realTimeThreadDetectionScreen,
+                          ),
+                          "Last Synced:",
+                          "November 02, 2024",
+                        ),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        Text(
+                          "Past Notifications",
+                          style: AppStyle.style2.copyWith(
+                            fontSize: 16,
+                          ),
+                        ),
+                        SizedBox(height: scale.getScaledHeight(10)),
+                        _overlayTextDashboardCards(
+                          const DashboardCards(
+                            LastWeekNotifications(),
+                            'Last Week Notifications',
+                            AppRoutes.realTimeThreadDetectionScreen,
+                          ),
+                          "Last Synced:",
+                          "October 25, 2024",
+                        ),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        _overlayTextDashboardCards(
+                          const DashboardCards(
+                            LastMonthNotifications(),
+                            'Last Month Notifications',
+                            AppRoutes.realTimeThreadDetectionScreen,
+                          ),
+                          "Last Synced:",
+                          "October 01, 2024",
+                        ),
+                        SizedBox(height: scale.getScaledHeight(50)),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),

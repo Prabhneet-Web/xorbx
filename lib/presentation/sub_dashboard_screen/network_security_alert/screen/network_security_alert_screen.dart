@@ -29,141 +29,152 @@ class NetworkSecurityAlertScreen
       backgroundColor: ColorConstant.color1,
       body: BackgroundEffect(
         dynamicChildren: [
-          SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.all(scale.getScaledHeight(16)),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                      bottom: scale.getScaledHeight(15),
-                      top: scale.getScaledHeight(35),
+          Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(
+                  bottom: scale.getScaledHeight(15),
+                  top: scale.getScaledHeight(35),
+                  left: scale.getScaledHeight(5),
+                  right: scale.getScaledHeight(16),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: const Icon(
+                        Icons.chevron_left_outlined,
+                        color: Colors.white,
+                      ),
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                    Column(
                       children: [
-                        IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: const Icon(
-                            Icons.chevron_left_outlined,
-                            color: Colors.white,
+                        SizedBox(height: scale.getScaledHeight(10)),
+                        Text(
+                          'Network Security Alerts\nDashboard',
+                          style: AppStyle.style2,
+                        ),
+                      ],
+                    ),
+                    const Spacer(),
+                    _overlayText("Last Synced:", "September 01, 2024"),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: scale.getScaledHeight(5),
+                      horizontal: scale.getScaledHeight(16),
+                    ),
+                    child: Column(
+                      children: [
+                        SizedBox(height: scale.getScaledHeight(10)),
+                        Text(
+                          'Current Network Status',
+                          style: AppStyle.style2.copyWith(
+                            fontSize: scale.getScaledHeight(16),
                           ),
                         ),
-                        Column(
+                        SizedBox(height: scale.getScaledHeight(10)),
+                        const DashboardCards(
+                          NetworkInformationCard(),
+                          'Network Information Card',
+                          AppRoutes.realTimeThreadDetectionScreen,
+                        ),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        Text(
+                          'Security Alerts',
+                          style: AppStyle.style2.copyWith(
+                            fontSize: scale.getScaledHeight(16),
+                          ),
+                        ),
+                        SizedBox(height: scale.getScaledHeight(10)),
+                        const DashboardCards(
+                          AlertsList(),
+                          'Alerts List',
+                          AppRoutes.realTimeThreadDetectionScreen,
+                        ),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        Text(
+                          'Data Usage Monitoring',
+                          style: AppStyle.style2.copyWith(
+                            fontSize: scale.getScaledHeight(16),
+                          ),
+                        ),
+                        SizedBox(height: scale.getScaledHeight(10)),
+                        const DashboardCards(
+                          TotalDataUsed(),
+                          'Total Data Used',
+                          AppRoutes.realTimeThreadDetectionScreen,
+                        ),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            SizedBox(height: scale.getScaledHeight(10)),
-                            Text(
-                              'Network Security Alerts\nDashboard',
-                              style: AppStyle.style2,
+                            const DashboardCards(
+                              OverallPrivacyScore(),
+                              'Application Data\nUsage',
+                              AppRoutes.realTimeThreadDetectionScreen,
+                            ),
+                            SizedBox(width: scale.getScaledHeight(16)),
+                            const DashboardCards(
+                              LineGraph(),
+                              'Data Usage Graph\n',
+                              AppRoutes.realTimeThreadDetectionScreen,
                             ),
                           ],
                         ),
-                        const Spacer(),
-                        _overlayText("Last Synced:", "September 01, 2024"),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        Text(
+                          'Threat History',
+                          style: AppStyle.style2.copyWith(
+                            fontSize: scale.getScaledHeight(16),
+                          ),
+                        ),
+                        SizedBox(height: scale.getScaledHeight(10)),
+                        const DashboardCards(
+                          RecentAlertList(),
+                          'Recent Alerts List',
+                          AppRoutes.realTimeThreadDetectionScreen,
+                        ),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        Text(
+                          'Data Sharing Practices',
+                          style: AppStyle.style2.copyWith(
+                            fontSize: scale.getScaledHeight(16),
+                          ),
+                        ),
+                        SizedBox(height: scale.getScaledHeight(10)),
+                        const DashboardCards(
+                          SecurityTips(),
+                          'Security Tips',
+                          AppRoutes.realTimeThreadDetectionScreen,
+                        ),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        Text(
+                          'User Education',
+                          style: AppStyle.style2.copyWith(
+                            fontSize: scale.getScaledHeight(16),
+                          ),
+                        ),
+                        SizedBox(height: scale.getScaledHeight(10)),
+                        const DashboardCards(
+                          EducationalResources(),
+                          'Educational Resources',
+                          AppRoutes.realTimeThreadDetectionScreen,
+                        ),
+                        SizedBox(height: scale.getScaledHeight(36)),
                       ],
                     ),
                   ),
-                  SizedBox(height: scale.getScaledHeight(10)),
-                  Text(
-                    'Current Network Status',
-                    style: AppStyle.style2.copyWith(
-                      fontSize: scale.getScaledHeight(16),
-                    ),
-                  ),
-                  SizedBox(height: scale.getScaledHeight(10)),
-                  const DashboardCards(
-                    NetworkInformationCard(),
-                    'Network Information Card',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  Text(
-                    'Security Alerts',
-                    style: AppStyle.style2.copyWith(
-                      fontSize: scale.getScaledHeight(16),
-                    ),
-                  ),
-                  SizedBox(height: scale.getScaledHeight(10)),
-                  const DashboardCards(
-                    AlertsList(),
-                    'Alerts List',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  Text(
-                    'Data Usage Monitoring',
-                    style: AppStyle.style2.copyWith(
-                      fontSize: scale.getScaledHeight(16),
-                    ),
-                  ),
-                  SizedBox(height: scale.getScaledHeight(10)),
-                  const DashboardCards(
-                    TotalDataUsed(),
-                    'Total Data Used',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const DashboardCards(
-                        OverallPrivacyScore(),
-                        'Application Data\nUsage',
-                        AppRoutes.realTimeThreadDetectionScreen,
-                      ),
-                      SizedBox(width: scale.getScaledHeight(16)),
-                      const DashboardCards(
-                        LineGraph(),
-                        'Data Usage Graph\n',
-                        AppRoutes.realTimeThreadDetectionScreen,
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  Text(
-                    'Threat History',
-                    style: AppStyle.style2.copyWith(
-                      fontSize: scale.getScaledHeight(16),
-                    ),
-                  ),
-                  SizedBox(height: scale.getScaledHeight(10)),
-                  const DashboardCards(
-                    RecentAlertList(),
-                    'Recent Alerts List',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  Text(
-                    'Data Sharing Practices',
-                    style: AppStyle.style2.copyWith(
-                      fontSize: scale.getScaledHeight(16),
-                    ),
-                  ),
-                  SizedBox(height: scale.getScaledHeight(10)),
-                  const DashboardCards(
-                    SecurityTips(),
-                    'Security Tips',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  Text(
-                    'User Education',
-                    style: AppStyle.style2.copyWith(
-                      fontSize: scale.getScaledHeight(16),
-                    ),
-                  ),
-                  SizedBox(height: scale.getScaledHeight(10)),
-                  const DashboardCards(
-                    EducationalResources(),
-                    'Educational Resources',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(36)),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
         ],
       ),

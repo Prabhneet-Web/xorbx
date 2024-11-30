@@ -21,98 +21,107 @@ class DeviceManagementScreen extends GetWidget<DeviceManagementController> {
     return Scaffold(
       backgroundColor: ColorConstant.color1,
       body: BackgroundEffect(dynamicChildren: [
-        SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(
-                  top: scale.getScaledHeight(45),
-                  bottom: scale.getScaledHeight(25),
-                  left: scale.getScaledHeight(5),
-                  right: scale.getScaledHeight(5),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        Get.back();
-                      },
-                      icon: const Icon(
-                        Icons.chevron_left_outlined,
-                        color: Colors.white,
-                      ),
-                    ),
-                    SizedBox(width: scale.getScaledHeight(5)),
-                    Text(
-                      'Data Usage',
-                      style: AppStyle.style2,
-                    ),
-                    const Spacer(flex: 1),
-                    CustomPaint(
-                      painter: InnerShadowPainter(),
-                      child: Container(
-                        height: scale.getScaledHeight(30),
-                        width: scale.getScaledHeight(30),
-                        decoration: BoxDecoration(
-                          color: ColorConstant.color1,
-                          borderRadius:
-                              BorderRadius.circular(scale.getScaledHeight(10)),
-                        ),
-                        child: const Center(
-                          child: Icon(
-                            Icons.home_outlined,
-                            color: Colors.white,
-                            size: 20,
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: scale.getScaledHeight(10)),
-                    CustomPaint(
-                      painter: InnerShadowPainter(),
-                      child: Container(
-                        height: scale.getScaledHeight(30),
-                        width: scale.getScaledHeight(30),
-                        decoration: BoxDecoration(
-                          color: ColorConstant.color1,
-                          borderRadius:
-                              BorderRadius.circular(scale.getScaledHeight(10)),
-                        ),
-                        child: const Center(
-                          child: Icon(
-                            Icons.settings_outlined,
-                            color: Colors.white,
-                            size: 20,
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: scale.getScaledHeight(10)),
-                  ],
-                ),
+        Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(
+                top: scale.getScaledHeight(45),
+                bottom: scale.getScaledHeight(25),
+                left: scale.getScaledHeight(5),
+                right: scale.getScaledHeight(5),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    icon: const Icon(
+                      Icons.chevron_left_outlined,
+                      color: Colors.white,
+                    ),
+                  ),
+                  SizedBox(width: scale.getScaledHeight(5)),
+                  Text(
+                    'Data Usage',
+                    style: AppStyle.style2,
+                  ),
+                  const Spacer(flex: 1),
+                  CustomPaint(
+                    painter: InnerShadowPainter(),
+                    child: Container(
+                      height: scale.getScaledHeight(30),
+                      width: scale.getScaledHeight(30),
+                      decoration: BoxDecoration(
+                        color: ColorConstant.color1,
+                        borderRadius:
+                            BorderRadius.circular(scale.getScaledHeight(10)),
+                      ),
+                      child: const Center(
+                        child: Icon(
+                          Icons.home_outlined,
+                          color: Colors.white,
+                          size: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: scale.getScaledHeight(10)),
+                  CustomPaint(
+                    painter: InnerShadowPainter(),
+                    child: Container(
+                      height: scale.getScaledHeight(30),
+                      width: scale.getScaledHeight(30),
+                      decoration: BoxDecoration(
+                        color: ColorConstant.color1,
+                        borderRadius:
+                            BorderRadius.circular(scale.getScaledHeight(10)),
+                      ),
+                      child: const Center(
+                        child: Icon(
+                          Icons.settings_outlined,
+                          color: Colors.white,
+                          size: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: scale.getScaledHeight(10)),
+                ],
+              ),
+            ),
+            Expanded(
+              child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    const DashboardCards(
-                      DeviceList(),
-                      'Device List',
-                      AppRoutes.realTimeThreadDetectionScreen,
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: scale.getScaledHeight(5),
+                        horizontal: scale.getScaledHeight(16),
+                      ),
+                      child: Column(
+                        children: [
+                          const DashboardCards(
+                            DeviceList(),
+                            'Device List',
+                            AppRoutes.realTimeThreadDetectionScreen,
+                          ),
+                          SizedBox(height: scale.getScaledHeight(16)),
+                          const DashboardCards(
+                            DeviceDetails(),
+                            'Device Details',
+                            AppRoutes.realTimeThreadDetectionScreen,
+                          ),
+                          SizedBox(height: scale.getScaledHeight(20)),
+                        ],
+                      ),
                     ),
-                    SizedBox(height: scale.getScaledHeight(16)),
-                    const DashboardCards(
-                      DeviceDetails(),
-                      'Device Details',
-                      AppRoutes.realTimeThreadDetectionScreen,
-                    ),
-                    SizedBox(height: scale.getScaledHeight(20)),
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ]),
     );

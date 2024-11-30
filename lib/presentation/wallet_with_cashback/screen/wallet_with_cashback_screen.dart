@@ -26,121 +26,130 @@ class WalletWithCashbackScreen extends GetWidget<WalletWithCashbackController> {
     return Scaffold(
       backgroundColor: ColorConstant.color1,
       body: BackgroundEffect(dynamicChildren: [
-        SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(
-                  top: scale.getScaledHeight(45),
-                  bottom: scale.getScaledHeight(25),
-                  left: scale.getScaledHeight(5),
-                  right: scale.getScaledHeight(5),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        Get.toNamed(AppRoutes.walletSidebarScreen);
-                      },
-                      icon: const Icon(
-                        Icons.menu_outlined,
-                        color: ColorConstant.color4,
-                      ),
-                    ),
-                    SizedBox(width: scale.getScaledHeight(5)),
-                    Text(
-                      'Wallet with Cash-back',
-                      style: AppStyle.style2,
-                    ),
-                    const Spacer(flex: 1),
-                    IconButton(
-                      onPressed: () {
-                        Get.toNamed(AppRoutes.customerFeedback);
-                      },
-                      icon: const Icon(
-                        Icons.notifications_none_rounded,
-                        color: Colors.white,
-                        size: 26,
-                      ),
-                    ),
-                    SizedBox(width: scale.getScaledHeight(10)),
-                    GestureDetector(
-                      onTap: () {
-                        showPopup(context);
-                      },
-                      child: CircleAvatar(
-                        backgroundImage: AssetImage(ImageConstants.person),
-                        radius: scale.getScaledHeight(16),
-                      ),
-                    ),
-                    SizedBox(width: scale.getScaledHeight(10)),
-                  ],
-                ),
+        Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(
+                top: scale.getScaledHeight(45),
+                bottom: scale.getScaledHeight(25),
+                left: scale.getScaledHeight(5),
+                right: scale.getScaledHeight(5),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      Get.toNamed(AppRoutes.walletSidebarScreen);
+                    },
+                    icon: const Icon(
+                      Icons.menu_outlined,
+                      color: ColorConstant.color4,
+                    ),
+                  ),
+                  SizedBox(width: scale.getScaledHeight(5)),
+                  Text(
+                    'Wallet with Cash-back',
+                    style: AppStyle.style2,
+                  ),
+                  const Spacer(flex: 1),
+                  IconButton(
+                    onPressed: () {
+                      Get.toNamed(AppRoutes.customerFeedback);
+                    },
+                    icon: const Icon(
+                      Icons.notifications_none_rounded,
+                      color: Colors.white,
+                      size: 26,
+                    ),
+                  ),
+                  SizedBox(width: scale.getScaledHeight(10)),
+                  GestureDetector(
+                    onTap: () {
+                      showPopup(context);
+                    },
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage(ImageConstants.person),
+                      radius: scale.getScaledHeight(16),
+                    ),
+                  ),
+                  SizedBox(width: scale.getScaledHeight(10)),
+                ],
+              ),
+            ),
+            Expanded(
+              child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    const DashboardCards(
-                      WalletOverview(),
-                      'Wallet Overview',
-                      AppRoutes.realTimeThreadDetectionScreen,
-                    ),
-                    SizedBox(height: scale.getScaledHeight(16)),
-                    const DashboardCards(
-                      RecentTransactions(),
-                      'Recent Transactions',
-                      AppRoutes.realTimeThreadDetectionScreen,
-                    ),
-                    SizedBox(height: scale.getScaledHeight(16)),
-                    Text(
-                      "Cash-back Section",
-                      style: AppStyle.style2.copyWith(
-                        fontSize: 16,
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: scale.getScaledHeight(5),
+                        horizontal: scale.getScaledHeight(16),
+                      ),
+                      child: Column(
+                        children: [
+                          const DashboardCards(
+                            WalletOverview(),
+                            'Wallet Overview',
+                            AppRoutes.realTimeThreadDetectionScreen,
+                          ),
+                          SizedBox(height: scale.getScaledHeight(16)),
+                          const DashboardCards(
+                            RecentTransactions(),
+                            'Recent Transactions',
+                            AppRoutes.realTimeThreadDetectionScreen,
+                          ),
+                          SizedBox(height: scale.getScaledHeight(16)),
+                          Text(
+                            "Cash-back Section",
+                            style: AppStyle.style2.copyWith(
+                              fontSize: 16,
+                            ),
+                          ),
+                          SizedBox(height: scale.getScaledHeight(10)),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const DashboardCards(
+                                OverviewOfCashback(),
+                                'Overview of\nCash-back',
+                                AppRoutes.realTimeThreadDetectionScreen,
+                              ),
+                              SizedBox(width: scale.getScaledHeight(16)),
+                              const DashboardCards(
+                                BreakdownByCategory(),
+                                'Breakdown by\nCategory',
+                                AppRoutes.realTimeThreadDetectionScreen,
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: scale.getScaledHeight(16)),
+                          const DashboardCards(
+                            CashbackOffers(),
+                            'Cashback Offers',
+                            AppRoutes.realTimeThreadDetectionScreen,
+                          ),
+                          SizedBox(height: scale.getScaledHeight(16)),
+                          const DashboardCards(
+                            DetailedTransactionHistory(),
+                            'Detailed Transaction History',
+                            AppRoutes.realTimeThreadDetectionScreen,
+                          ),
+                          SizedBox(height: scale.getScaledHeight(16)),
+                          const DashboardCards(
+                            SecurityFeatures(),
+                            'Security Features',
+                            AppRoutes.realTimeThreadDetectionScreen,
+                          ),
+                          SizedBox(height: scale.getScaledHeight(20)),
+                        ],
                       ),
                     ),
-                    SizedBox(height: scale.getScaledHeight(10)),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const DashboardCards(
-                          OverviewOfCashback(),
-                          'Overview of\nCash-back',
-                          AppRoutes.realTimeThreadDetectionScreen,
-                        ),
-                        SizedBox(width: scale.getScaledHeight(16)),
-                        const DashboardCards(
-                          BreakdownByCategory(),
-                          'Breakdown by\nCategory',
-                          AppRoutes.realTimeThreadDetectionScreen,
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: scale.getScaledHeight(16)),
-                    const DashboardCards(
-                      CashbackOffers(),
-                      'Cashback Offers',
-                      AppRoutes.realTimeThreadDetectionScreen,
-                    ),
-                    SizedBox(height: scale.getScaledHeight(16)),
-                    const DashboardCards(
-                      DetailedTransactionHistory(),
-                      'Detailed Transaction History',
-                      AppRoutes.realTimeThreadDetectionScreen,
-                    ),
-                    SizedBox(height: scale.getScaledHeight(16)),
-                    const DashboardCards(
-                      SecurityFeatures(),
-                      'Security Features',
-                      AppRoutes.realTimeThreadDetectionScreen,
-                    ),
-                    SizedBox(height: scale.getScaledHeight(20)),
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ]),
     );

@@ -22,59 +22,66 @@ class PasswordManagementScreen extends GetWidget<PasswordManagementController> {
       backgroundColor: ColorConstant.color1,
       body: BackgroundEffect(
         dynamicChildren: [
-          SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.all(scale.getScaledHeight(16)),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                      bottom: scale.getScaledHeight(15),
-                      top: scale.getScaledHeight(25),
+          Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(
+                  bottom: scale.getScaledHeight(15),
+                  top: scale.getScaledHeight(35),
+                  right: scale.getScaledHeight(16),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: const Icon(
+                        Icons.chevron_left_outlined,
+                        color: Colors.white,
+                      ),
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                    Text(
+                      'Password Management',
+                      style: AppStyle.style2,
+                    ),
+                    const Spacer(),
+                    _overlayText("Last Synced:", "September 01, 2024"),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: EdgeInsets.all(scale.getScaledHeight(16)),
+                    child: Column(
                       children: [
-                        IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: const Icon(
-                            Icons.chevron_left_outlined,
-                            color: Colors.white,
-                          ),
+                        SizedBox(height: scale.getScaledHeight(5)),
+                        const DashboardCards(
+                          Overview(),
+                          'Overview',
+                          AppRoutes.realTimeThreadDetectionScreen,
                         ),
-                        Text(
-                          'Password Management',
-                          style: AppStyle.style2,
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        const DashboardCards(
+                          PasswordList(),
+                          'Password List',
+                          AppRoutes.realTimeThreadDetectionScreen,
                         ),
-                        const Spacer(),
-                        _overlayText("Last Synced:", "September 01, 2024"),
+                        SizedBox(height: scale.getScaledHeight(16)),
+                        const DashboardCards(
+                          Settings(),
+                          'Settings',
+                          AppRoutes.realTimeThreadDetectionScreen,
+                        ),
+                        SizedBox(height: scale.getScaledHeight(50)),
                       ],
                     ),
                   ),
-                  SizedBox(height: scale.getScaledHeight(5)),
-                  const DashboardCards(
-                    Overview(),
-                    'Overview',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  const DashboardCards(
-                    PasswordList(),
-                    'Password List',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(16)),
-                  const DashboardCards(
-                    Settings(),
-                    'Settings',
-                    AppRoutes.realTimeThreadDetectionScreen,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(50)),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
         ],
       ),

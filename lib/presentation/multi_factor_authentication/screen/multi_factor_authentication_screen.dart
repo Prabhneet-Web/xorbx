@@ -20,139 +20,145 @@ class MultiFactorAuthenticationScreen
     return Scaffold(
       backgroundColor: ColorConstant.color1,
       body: BackgroundEffect(dynamicChildren: [
-        SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(
-                  top: scale.getScaledHeight(45),
-                  bottom: scale.getScaledHeight(25),
-                  left: scale.getScaledHeight(5),
-                  right: scale.getScaledHeight(5),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        Get.back();
-                      },
-                      icon: const Icon(
-                        Icons.chevron_left_outlined,
-                        color: Colors.white,
-                      ),
-                    ),
-                    SizedBox(width: scale.getScaledHeight(5)),
-                    Text(
-                      'Multi-Factor Authentication',
-                      style: AppStyle.style2,
-                    ),
-                    const Spacer(flex: 1),
-                    IconButton(
-                      onPressed: () {
-                        Get.toNamed(AppRoutes.customerFeedback);
-                      },
-                      icon: const Icon(
-                        Icons.notifications_none_rounded,
-                        color: Colors.white,
-                        size: 26,
-                      ),
-                    ),
-                    SizedBox(width: scale.getScaledHeight(10)),
-                    GestureDetector(
-                      onTap: () {
-                        showPopup(context);
-                      },
-                      child: CircleAvatar(
-                        backgroundImage: AssetImage(ImageConstants.person),
-                        radius: scale.getScaledHeight(16),
-                      ),
-                    ),
-                    SizedBox(width: scale.getScaledHeight(10)),
-                  ],
-                ),
+        Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(
+                top: scale.getScaledHeight(45),
+                bottom: scale.getScaledHeight(25),
+                left: scale.getScaledHeight(5),
+                right: scale.getScaledHeight(5),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    icon: const Icon(
+                      Icons.chevron_left_outlined,
+                      color: Colors.white,
+                    ),
+                  ),
+                  SizedBox(width: scale.getScaledHeight(5)),
+                  Text(
+                    'Multi-Factor Authentication',
+                    style: AppStyle.style2,
+                  ),
+                  const Spacer(flex: 1),
+                  IconButton(
+                    onPressed: () {
+                      Get.toNamed(AppRoutes.customerFeedback);
+                    },
+                    icon: const Icon(
+                      Icons.notifications_none_rounded,
+                      color: Colors.white,
+                      size: 26,
+                    ),
+                  ),
+                  SizedBox(width: scale.getScaledHeight(10)),
+                  GestureDetector(
+                    onTap: () {
+                      showPopup(context);
+                    },
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage(ImageConstants.person),
+                      radius: scale.getScaledHeight(16),
+                    ),
+                  ),
+                  SizedBox(width: scale.getScaledHeight(10)),
+                ],
+              ),
+            ),
+            Expanded(
+              child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    SizedBox(
-                        height: scale.getScaledHeight(260),
-                        width: scale.getScaledHeight(300),
-                        child:
-                            CommonNetworkImageView(url: ImageConstants.shield)),
-                    SizedBox(height: scale.getScaledHeight(20)),
-                    ShadowBorderCard(
-                      content: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          color: ColorConstant.color1,
-                          child: Column(
-                            children: [
-                              _items(
-                                scale,
-                                "Authenticate using facial recognition.",
-                                "Use Face Recognition",
-                                const Icon(
-                                  Icons.person,
-                                  color: Colors.white,
-                                  size: 15,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                              height: scale.getScaledHeight(260),
+                              width: scale.getScaledHeight(300),
+                              child: CommonNetworkImageView(
+                                  url: ImageConstants.shield)),
+                          SizedBox(height: scale.getScaledHeight(20)),
+                          ShadowBorderCard(
+                            content: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                color: ColorConstant.color1,
+                                child: Column(
+                                  children: [
+                                    _items(
+                                      scale,
+                                      "Authenticate using facial recognition.",
+                                      "Use Face Recognition",
+                                      const Icon(
+                                        Icons.person,
+                                        color: Colors.white,
+                                        size: 15,
+                                      ),
+                                      AppRoutes.captureEyeScreen,
+                                    ),
+                                    SizedBox(
+                                      height: scale.getScaledHeight(12),
+                                    ),
+                                    _items(
+                                      scale,
+                                      "Authenticate using your iris pattern.",
+                                      "Use Eye Recognition",
+                                      const Icon(
+                                        Icons.remove_red_eye,
+                                        color: Colors.white,
+                                        size: 15,
+                                      ),
+                                      AppRoutes.captureEyeScreen,
+                                    ),
+                                    SizedBox(
+                                      height: scale.getScaledHeight(12),
+                                    ),
+                                    _items(
+                                      scale,
+                                      "Authenticate using your fingerprint.",
+                                      "Use Fingerprint Scan",
+                                      const Icon(
+                                        Icons.fingerprint,
+                                        color: Colors.white,
+                                        size: 15,
+                                      ),
+                                      AppRoutes.captureFingerprintScreen,
+                                    ),
+                                    SizedBox(
+                                      height: scale.getScaledHeight(12),
+                                    ),
+                                    _items(
+                                      scale,
+                                      "Authenticate using your voice.",
+                                      "Use Voice Recognition",
+                                      const Icon(
+                                        Icons.voice_chat,
+                                        color: Colors.white,
+                                        size: 15,
+                                      ),
+                                      AppRoutes.captureVoiceScreen,
+                                    ),
+                                  ],
                                 ),
-                                AppRoutes.captureEyeScreen,
                               ),
-                              SizedBox(
-                                height: scale.getScaledHeight(12),
-                              ),
-                              _items(
-                                scale,
-                                "Authenticate using your iris pattern.",
-                                "Use Eye Recognition",
-                                const Icon(
-                                  Icons.remove_red_eye,
-                                  color: Colors.white,
-                                  size: 15,
-                                ),
-                                AppRoutes.captureEyeScreen,
-                              ),
-                              SizedBox(
-                                height: scale.getScaledHeight(12),
-                              ),
-                              _items(
-                                scale,
-                                "Authenticate using your fingerprint.",
-                                "Use Fingerprint Scan",
-                                const Icon(
-                                  Icons.fingerprint,
-                                  color: Colors.white,
-                                  size: 15,
-                                ),
-                                AppRoutes.captureFingerprintScreen,
-                              ),
-                              SizedBox(
-                                height: scale.getScaledHeight(12),
-                              ),
-                              _items(
-                                scale,
-                                "Authenticate using your voice.",
-                                "Use Voice Recognition",
-                                const Icon(
-                                  Icons.voice_chat,
-                                  color: Colors.white,
-                                  size: 15,
-                                ),
-                                AppRoutes.captureVoiceScreen,
-                              ),
-                            ],
+                            ),
                           ),
-                        ),
+                          SizedBox(height: scale.getScaledHeight(20)),
+                        ],
                       ),
                     ),
-                    SizedBox(height: scale.getScaledHeight(20)),
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ]),
     );

@@ -24,89 +24,98 @@ class BiometricManagementScreen
     return Scaffold(
       backgroundColor: ColorConstant.color1,
       body: BackgroundEffect(dynamicChildren: [
-        SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(
-                  top: scale.getScaledHeight(45),
-                  bottom: scale.getScaledHeight(25),
-                  left: scale.getScaledHeight(5),
-                  right: scale.getScaledHeight(5),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.menu_outlined,
-                        color: ColorConstant.color4,
-                      ),
-                    ),
-                    SizedBox(width: scale.getScaledHeight(5)),
-                    Text(
-                      'Biometric',
-                      style: AppStyle.style2,
-                    ),
-                    const Spacer(flex: 1),
-                    GestureDetector(
-                      onTap: () {
-                        showPopup(context);
-                      },
-                      child: CircleAvatar(
-                        backgroundImage: AssetImage(ImageConstants.person),
-                        radius: scale.getScaledHeight(16),
-                      ),
-                    ),
-                    SizedBox(width: scale.getScaledHeight(10)),
-                  ],
-                ),
+        Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(
+                top: scale.getScaledHeight(45),
+                bottom: scale.getScaledHeight(25),
+                left: scale.getScaledHeight(5),
+                right: scale.getScaledHeight(5),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.menu_outlined,
+                      color: ColorConstant.color4,
+                    ),
+                  ),
+                  SizedBox(width: scale.getScaledHeight(5)),
+                  Text(
+                    'Biometric',
+                    style: AppStyle.style2,
+                  ),
+                  const Spacer(flex: 1),
+                  GestureDetector(
+                    onTap: () {
+                      showPopup(context);
+                    },
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage(ImageConstants.person),
+                      radius: scale.getScaledHeight(16),
+                    ),
+                  ),
+                  SizedBox(width: scale.getScaledHeight(10)),
+                ],
+              ),
+            ),
+            Expanded(
+              child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    const DashboardCards(
-                      AddUser(),
-                      'Add User',
-                      AppRoutes.realTimeThreadDetectionScreen,
-                    ),
-                    SizedBox(height: scale.getScaledHeight(16)),
-                    Row(
-                      children: [
-                        Text(
-                          "User Activity Overview",
-                          style: AppStyle.style2.copyWith(
-                            fontSize: scale.getScaledHeight(16),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: scale.getScaledHeight(16),
+                        vertical: scale.getScaledHeight(5),
+                      ),
+                      child: Column(
+                        children: [
+                          const DashboardCards(
+                            AddUser(),
+                            'Add User',
+                            AppRoutes.realTimeThreadDetectionScreen,
                           ),
-                        ),
-                      ],
+                          SizedBox(height: scale.getScaledHeight(16)),
+                          Row(
+                            children: [
+                              Text(
+                                "User Activity Overview",
+                                style: AppStyle.style2.copyWith(
+                                  fontSize: scale.getScaledHeight(16),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: scale.getScaledHeight(10)),
+                          const DashboardCards(
+                            RecentLogins(),
+                            'Recent Logins',
+                            AppRoutes.realTimeThreadDetectionScreen,
+                          ),
+                          SizedBox(height: scale.getScaledHeight(16)),
+                          const DashboardCards(
+                            NotificationAlertsCard(),
+                            'Notification Alerts',
+                            AppRoutes.realTimeThreadDetectionScreen,
+                          ),
+                          SizedBox(height: scale.getScaledHeight(16)),
+                          const DashboardCards(
+                            EnrolledUser(),
+                            'Enrolled User',
+                            AppRoutes.realTimeThreadDetectionScreen,
+                          ),
+                          SizedBox(height: scale.getScaledHeight(20)),
+                        ],
+                      ),
                     ),
-                    SizedBox(height: scale.getScaledHeight(10)),
-                    const DashboardCards(
-                      RecentLogins(),
-                      'Recent Logins',
-                      AppRoutes.realTimeThreadDetectionScreen,
-                    ),
-                    SizedBox(height: scale.getScaledHeight(16)),
-                    const DashboardCards(
-                      NotificationAlertsCard(),
-                      'Notification Alerts',
-                      AppRoutes.realTimeThreadDetectionScreen,
-                    ),
-                    SizedBox(height: scale.getScaledHeight(16)),
-                    const DashboardCards(
-                      EnrolledUser(),
-                      'Enrolled User',
-                      AppRoutes.realTimeThreadDetectionScreen,
-                    ),
-                    SizedBox(height: scale.getScaledHeight(20)),
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ]),
     );
