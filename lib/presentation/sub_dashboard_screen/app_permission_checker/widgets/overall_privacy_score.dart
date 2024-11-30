@@ -12,8 +12,8 @@ class OverallPrivacyScore extends StatelessWidget {
     var scale = Get.find<ScalingUtility>()..setCurrentDeviceSize(context);
     return Container(
         color: ColorConstant.color1,
-        height: scale.getScaledHeight(100), // Scaled height
-        width: (scale.fw - 112) / 2,
+        height: scale.getScaledHeight(100),
+        width: (scale.fw) / 3,
         child: const SemiCircularProgressIndicator(progress: 0.78));
   }
 }

@@ -13,7 +13,7 @@ class TotalAlerts extends StatelessWidget {
     return Container(
       color: ColorConstant.color1,
       height: scale.getScaledHeight(100),
-      width: (scale.fw - scale.getScaledHeight(113)) / scale.getScaledHeight(2),
+      width: (scale.fw) / scale.getScaledHeight(3),
       child: Row(
         children: [
           Icon(

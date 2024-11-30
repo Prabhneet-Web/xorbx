@@ -13,7 +13,7 @@ class AlertsBySeverity extends StatelessWidget {
     return Container(
       color: ColorConstant.color1,
       height: scale.getScaledHeight(100),
-      width: (scale.fw - scale.getScaledHeight(112)) / 2,
+      width: (scale.fw) / 3,
       child: const CustomPieChart(
         percentage: 65,
         color1: Colors.orange,

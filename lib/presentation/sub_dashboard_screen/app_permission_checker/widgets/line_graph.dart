@@ -13,7 +13,7 @@ class LineGraph extends StatelessWidget {
     return Container(
       color: ColorConstant.color1,
       height: scale.getScaledHeight(100), // Scaled height
-      width: (scale.fw - 112) / 2,
+      width: (scale.fw) / 3,
       child: LineChart(
         LineChartData(
           gridData: FlGridData(
