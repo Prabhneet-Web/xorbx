@@ -22,61 +22,75 @@ class CaptureVoiceScreen extends GetWidget<CaptureVoiceController> {
       backgroundColor: ColorConstant.color1,
       body: BackgroundEffect(
         dynamicChildren: [
-          Padding(
-            padding: EdgeInsets.all(scale.getScaledHeight(16)),
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(
-                    bottom: scale.getScaledHeight(15),
-                    top: scale.getScaledHeight(35),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: const Icon(
-                          Icons.chevron_left_outlined,
-                          color: Colors.white,
+          Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(
+                  bottom: scale.getScaledHeight(15),
+                  top: scale.getScaledHeight(35),
+                  left: scale.getScaledHeight(5),
+                  right: scale.getScaledHeight(16),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: const Icon(
+                        Icons.chevron_left_outlined,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          'Voice Recognition',
+                          style: AppStyle.style2,
                         ),
-                      ),
-                      Column(
-                        children: [
-                          Text(
-                            'Voice Recognition',
-                            style: AppStyle.style2,
+                      ],
+                    ),
+                    SizedBox(width: scale.getScaledHeight(5)),
+                    const Text("")
+                  ],
+                ),
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: scale.getScaledHeight(5),
+                      horizontal: scale.getScaledHeight(16),
+                    ),
+                    child: Column(
+                      children: [
+                        SizedBox(height: scale.getScaledHeight(5)),
+                        ShadowBorderCard(
+                          content: SizedBox(
+                            height: 400,
+                            width: 300,
+                            child: CommonNetworkImageView(
+                                url: ImageConstants.frame),
                           ),
-                        ],
-                      ),
-                      SizedBox(width: scale.getScaledHeight(5)),
-                      const Text("")
-                    ],
+                        ),
+                        SizedBox(height: scale.getScaledHeight(25)),
+                        Text(
+                          "Please hold your phone",
+                          style: AppStyle.style1.copyWith(
+                            fontSize: scale.getScaledHeight(12),
+                          ),
+                        ),
+                        SizedBox(height: scale.getScaledHeight(45)),
+                        _customButton(scale, AppRoutes.captureEyeScreen,
+                            "Recognize Voice"),
+                        SizedBox(height: scale.getScaledHeight(50)),
+                      ],
+                    ),
                   ),
                 ),
-                SizedBox(height: scale.getScaledHeight(5)),
-                ShadowBorderCard(
-                  content: SizedBox(
-                    height: scale.getScaledHeight(400),
-                    width: scale.getScaledHeight(300),
-                    child: CommonNetworkImageView(url: ImageConstants.frame),
-                  ),
-                ),
-                SizedBox(height: scale.getScaledHeight(25)),
-                Text(
-                  "Please hold your phone",
-                  style: AppStyle.style1.copyWith(
-                    fontSize: scale.getScaledHeight(12),
-                  ),
-                ),
-                SizedBox(height: scale.getScaledHeight(45)),
-                _customButton(
-                    scale, AppRoutes.captureEyeScreen, "Recognize Voice"),
-                SizedBox(height: scale.getScaledHeight(50)),
-              ],
-            ),
+              ),
+            ],
           ),
         ],
       ),
