@@ -14,4 +14,10 @@ class ImageConstants {
   static String paypalLogo = 'assets/images/paypal_logo.png';
   static String masterCardLogo = 'assets/images/mastercard_logo.png';
   static String shield = 'assets/images/shield.png';
+  static String download = 'assets/images/download.png';
+  static String pdf = 'assets/images/pdf.png';
+  static String play = 'assets/images/play.png';
+  static String training = 'assets/images/training.png';
+  static String trainingModule = 'assets/images/training_module.png';
+  static String blueOverlay = 'assets/images/blue_overlay.png';
 }

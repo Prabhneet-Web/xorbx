@@ -21,6 +21,8 @@ import 'package:xorbx/presentation/security_screen/capture_voice/binding/capture
 import 'package:xorbx/presentation/security_screen/capture_voice/screen/capture_voice_screen.dart';
 import 'package:xorbx/presentation/sidebar_screen/referral_sidebar_screen/binding/referral_sidebar_binding.dart';
 import 'package:xorbx/presentation/sidebar_screen/referral_sidebar_screen/screen/referral_sidebar_screen.dart';
+import 'package:xorbx/presentation/sidebar_screen/training_sidebar/binding/training_sidebar_binding.dart';
+import 'package:xorbx/presentation/sidebar_screen/training_sidebar/screen/training_sidebar_screen.dart';
 import 'package:xorbx/presentation/sidebar_screen/wallet_sidebar_screen/binding/wallet_sidebar_binding.dart';
 import 'package:xorbx/presentation/sidebar_screen/wallet_sidebar_screen/screen/wallet_sidebar_screen.dart';
 import 'package:xorbx/presentation/sidebar_screen_details/dashboard_sidebar_details/overview_screen/binding/overview_binding.dart';
@@ -61,6 +63,8 @@ import 'package:xorbx/presentation/sub_dashboard_screen/real_time_threat_detecti
 import 'package:xorbx/presentation/sub_dashboard_screen/real_time_threat_detection/screen/real_time_threat_detection_screen.dart';
 import 'package:xorbx/presentation/subscription_plan/binding/subscription_plan_binding.dart';
 import 'package:xorbx/presentation/subscription_plan/screen/subscription_plan_screen.dart';
+import 'package:xorbx/presentation/training/binding/training_binding.dart';
+import 'package:xorbx/presentation/training/screen/training_screen.dart';
 import 'package:xorbx/presentation/verification_screen/binding/verification_binding.dart';
 import 'package:xorbx/presentation/verification_screen/screen/verification_screen.dart';
 import 'package:xorbx/presentation/wallet_with_cashback/screen/wallet/bindings/add_funds_binding.dart';
@@ -110,6 +114,7 @@ class AppRoutes {
   static const termsAndConditionsScreen = '/terms_and_conditions';
   static const walletWithCashbackScreen = '/wallet_with_cashback';
   static const walletSidebarScreen = '/wallet_sidebar_screen';
+  static const trainingSidebarScreen = '/training_sidebar';
   static const addFunds = '/add_funds';
   static const withdrawFunds = '/withdraw_funds';
   static const transferFunds = '/transfer_funds';
@@ -124,6 +129,7 @@ class AppRoutes {
   static const multiFactorAuthenticationScreen = '/multi_factor_authentication';
   static const deviceManagement = '/device_management';
   static const biometricManagementScreen = '/biometric_management';
+  static const training = '/training';
 
   static List<GetPage> pages = [
     // Flow 1
@@ -248,6 +254,11 @@ class AppRoutes {
       page: () => const ReferralSidebarScreen(),
       bindings: [ReferralSidebarBinding()],
     ),
+    GetPage(
+      name: trainingSidebarScreen,
+      page: () => const TrainingSidebarScreen(),
+      bindings: [TrainingSidebarBinding()],
+    ),
     // sidebar details screens
     GetPage(
       name: overviewScreen,
@@ -329,6 +340,11 @@ class AppRoutes {
       name: transactionHistory,
       page: () => const TransactionHistoryScreen(),
       bindings: [TransactionHistoryBinding()],
+    ),
+    GetPage(
+      name: training,
+      page: () => const TrainingScreen(),
+      bindings: [TrainingBinding()],
     ),
   ];
 }

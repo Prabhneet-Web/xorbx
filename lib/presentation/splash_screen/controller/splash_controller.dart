@@ -4,10 +4,11 @@ import 'package:get/get.dart';
 
 class SplashController extends GetxController {
   final currentIndex = 0.obs;
-  final CarouselSliderController carouselController = CarouselSliderController();
+  final CarouselSliderController carouselController =
+      CarouselSliderController();
 
   void nextSlide() {
-    if (currentIndex.value < 5) {
+    if (currentIndex.value < 6) {
       carouselController.nextPage(
         duration: const Duration(milliseconds: 500),
         curve: Curves.easeInOut,
@@ -25,6 +26,7 @@ class SplashController extends GetxController {
     'assets/images/image4.png',
     'assets/images/image5.png',
     'assets/images/image6.png',
+    'assets/images/image7.png',
   ];
   final List<String> titles = [
     "Welcome to Your Security\nHub!",
@@ -44,7 +46,6 @@ class SplashController extends GetxController {
     "Easy Access to Essential Security Features.",
     "Tap to Begin Your Journey to Safety!"
   ];
-
 
   void skipToSignIn() {
     Get.offNamed('/sign_in_screen');

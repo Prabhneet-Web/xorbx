@@ -164,7 +164,8 @@ class DashboardSidebarScreen extends GetWidget<DashboardSidebarController> {
                             "Subscription Information",
                             "Payment Methods",
                             "Wallet with cashback",
-                            "Referral"
+                            "Referral",
+                            "Training",
                           ],
                           scale: scale,
                           onItemTap: (item) {
@@ -176,6 +177,8 @@ class DashboardSidebarScreen extends GetWidget<DashboardSidebarController> {
                               Get.toNamed(AppRoutes.subscriptionPlan);
                             } else if (item == "Payment Methods") {
                               Get.toNamed(AppRoutes.paymentMethods);
+                            } else if (item == "Training") {
+                              Get.toNamed(AppRoutes.training);
                             }
                           },
                         ),
