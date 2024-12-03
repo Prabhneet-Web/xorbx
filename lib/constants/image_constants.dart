@@ -20,4 +20,5 @@ class ImageConstants {
   static String training = 'assets/images/training.png';
   static String trainingModule = 'assets/images/training_module.png';
   static String blueOverlay = 'assets/images/blue_overlay.png';
+  static String map = 'assets/images/map.png';
 }

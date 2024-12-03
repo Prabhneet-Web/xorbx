@@ -81,9 +81,7 @@ class UserControl extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              width: scale.getScaledHeight(10),
-            ),
+            SizedBox(width: scale.getScaledHeight(5)),
             TextButton(
               onPressed: () {},
               style: TextButton.styleFrom(
@@ -99,9 +97,7 @@ class UserControl extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              width: scale.getScaledHeight(10),
-            ),
+            SizedBox(width: scale.getScaledHeight(5)),
             TextButton(
               onPressed: () {},
               style: TextButton.styleFrom(

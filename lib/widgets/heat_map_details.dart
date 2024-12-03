@@ -3,7 +3,9 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:get/get.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:xorbx/constants/color_constants.dart';
+import 'package:xorbx/constants/image_constants.dart';
 import 'package:xorbx/utils/scaling_utility.dart';
+import 'package:xorbx/widgets/common_network_image.dart';
 
 class HeatMapDetails extends StatelessWidget {
   const HeatMapDetails({super.key});
@@ -18,26 +20,31 @@ class HeatMapDetails extends StatelessWidget {
           height: scale.getScaledHeight(130),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(12.0),
-            child: FlutterMap(
-              options: const MapOptions(
-                backgroundColor: ColorConstant.color1,
-                initialCenter: LatLng(40.0, 0.0),
-                initialZoom: 0,
-                interactionOptions:
-                    InteractionOptions(flags: InteractiveFlag.none),
-              ),
-              children: [
-                TileLayer(
-                  urlTemplate:
-                      'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png',
-                  subdomains: const ['a', 'b', 'c', 'd'],
-                  tileDisplay: const TileDisplay.instantaneous(),
-                ),
-                MarkerLayer(
-                  markers: _buildVulnerabilityMarkers(scale),
-                ),
-              ],
+            child: CommonNetworkImageView(
+              url: ImageConstants.map,
+              height: scale.getScaledHeight(130),
+              width: scale.fw,
             ),
+            // child: FlutterMap(
+            //   options: const MapOptions(
+            //     backgroundColor: ColorConstant.color1,
+            //     initialCenter: LatLng(40.0, 0.0),
+            //     initialZoom: 0,
+            //     interactionOptions:
+            //         InteractionOptions(flags: InteractiveFlag.none),
+            //   ),
+            //   children: [
+            //     TileLayer(
+            //       urlTemplate:
+            //           'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png',
+            //       subdomains: const ['a', 'b', 'c', 'd'],
+            //       tileDisplay: const TileDisplay.instantaneous(),
+            //     ),
+            //     MarkerLayer(
+            //       markers: _buildVulnerabilityMarkers(scale),
+            //     ),
+            //   ],
+            // ),
           ),
         ),
       ],

@@ -111,8 +111,6 @@ class UserControls extends StatelessWidget {
             TextButton(
               onPressed: () {},
               style: TextButton.styleFrom(
-                fixedSize:
-                    Size((scale.fw - 120) / 3, scale.getScaledHeight(20)),
                 backgroundColor: ColorConstant.color3,
                 shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(5)),
@@ -131,8 +129,6 @@ class UserControls extends StatelessWidget {
             TextButton(
               onPressed: () {},
               style: TextButton.styleFrom(
-                fixedSize:
-                    Size((scale.fw - 120) / 3, scale.getScaledHeight(20)),
                 backgroundColor: Colors.orange,
                 shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(5)),
@@ -151,8 +147,6 @@ class UserControls extends StatelessWidget {
             TextButton(
               onPressed: () {},
               style: TextButton.styleFrom(
-                fixedSize:
-                    Size((scale.fw - 120) / 3, scale.getScaledHeight(20)),
                 backgroundColor: Colors.red,
                 shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(5)),

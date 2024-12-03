@@ -50,13 +50,13 @@ class DashboardScreen extends GetWidget<DashboardController> {
                   ),
                   SizedBox(width: scale.getScaledHeight(5)),
                   Text(
-                    'Cyber Security Dashboard',
+                    'Cyber Security',
                     style: AppStyle.style2,
                   ),
                   const Spacer(flex: 1),
                   IconButton(
                     onPressed: () {
-                      Get.toNamed(AppRoutes.customerFeedback);
+                      Get.toNamed(AppRoutes.userNotification);
                     },
                     icon: const Icon(
                       Icons.notifications_none_rounded,

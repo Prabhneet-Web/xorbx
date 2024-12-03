@@ -19,7 +19,8 @@ class HeatMap extends StatelessWidget {
           child: Text(
             'Threats\nDetected: 12',
             style: TextStyle(
-              color: ColorConstant.color1,
+              // color: ColorConstant.color1,
+              color: Colors.white,
               fontSize: scale.getScaledHeight(11),
               fontWeight: FontWeight.bold,
             ),

@@ -69,38 +69,35 @@ class SplashScreen extends GetWidget<SplashController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Obx(() => Text(
-                  controller.titles[controller.currentIndex.value],
-                  style: const TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                )),
+                      controller.titles[controller.currentIndex.value],
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    )),
                 const SizedBox(height: 8),
                 Obx(() => Text(
-                  controller.subtitle[controller.currentIndex.value],
-                  style: const TextStyle(
-                    fontSize: 16,
-                    color: Colors.white70,
-                  ),
-                  textAlign: TextAlign.start,
-                )),
+                      controller.subtitle[controller.currentIndex.value],
+                      style: const TextStyle(
+                        fontSize: 16,
+                        color: Colors.white70,
+                      ),
+                      textAlign: TextAlign.start,
+                    )),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    TextButton(
-                      onPressed: controller.skipToSignIn,
-                      child: const Text(
-                        "Skip",
-                        style: TextStyle(color: Colors.white),
-                      ),
+                    const Text(
+                      "",
+                      style: TextStyle(color: Colors.white),
                     ),
                     TextButton(
                       onPressed: controller.nextSlide,
                       child: const Row(
                         children: [
                           Text(
-                            "Next",
+                            "Enter",
                             style: TextStyle(color: Colors.white),
                           ),
                           Icon(
@@ -116,17 +113,17 @@ class SplashScreen extends GetWidget<SplashController> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: List.generate(
                     controller.images.length,
-                        (index) => Obx(() => Container(
-                      margin: const EdgeInsets.all(4),
-                      width: 10,
-                      height: 10,
-                      decoration: BoxDecoration(
-                        color: controller.currentIndex.value == index
-                            ? Colors.white
-                            : Colors.grey,
-                        shape: BoxShape.circle,
-                      ),
-                    )),
+                    (index) => Obx(() => Container(
+                          margin: const EdgeInsets.all(4),
+                          width: 10,
+                          height: 10,
+                          decoration: BoxDecoration(
+                            color: controller.currentIndex.value == index
+                                ? Colors.white
+                                : Colors.grey,
+                            shape: BoxShape.circle,
+                          ),
+                        )),
                   ),
                 ),
               ],

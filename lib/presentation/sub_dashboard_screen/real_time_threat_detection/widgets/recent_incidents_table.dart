@@ -72,15 +72,15 @@ class RecentIncidentsTable
           columns: const [
             DataColumn(
                 label: Text('Timestamp',
-                    style: TextStyle(color: Colors.white, fontSize: 9))),
+                    style: TextStyle(color: Colors.white, fontSize: 8))),
             DataColumn(
               label: Row(
                 children: [
                   Text('Severity',
-                      style: TextStyle(color: Colors.white, fontSize: 9)),
+                      style: TextStyle(color: Colors.white, fontSize: 8)),
                   Icon(
                     Icons.arrow_drop_down_rounded,
-                    size: 20,
+                    size: 17,
                     color: Colors.white,
                   ),
                 ],
@@ -90,10 +90,10 @@ class RecentIncidentsTable
               label: Row(
                 children: [
                   Text('Type of Threat',
-                      style: TextStyle(color: Colors.white, fontSize: 9)),
+                      style: TextStyle(color: Colors.white, fontSize: 8)),
                   Icon(
                     Icons.arrow_drop_down_rounded,
-                    size: 20,
+                    size: 17,
                     color: Colors.white,
                   ),
                 ],
@@ -101,7 +101,7 @@ class RecentIncidentsTable
             ),
             DataColumn(
                 label: Text('Action Taken',
-                    style: TextStyle(color: Colors.white, fontSize: 9))),
+                    style: TextStyle(color: Colors.white, fontSize: 8))),
           ],
           rows: [
             DataRow(cells: [

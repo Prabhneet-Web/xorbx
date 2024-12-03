@@ -57,7 +57,7 @@ class RealTimeThreatDetectionScreen
                       children: [
                         SizedBox(height: scale.getScaledHeight(10)),
                         Text(
-                          'Real Time Threat\nDetection Dashboard',
+                          'Real Time Threat\nDetection',
                           style: AppStyle.style2,
                         ),
                       ],

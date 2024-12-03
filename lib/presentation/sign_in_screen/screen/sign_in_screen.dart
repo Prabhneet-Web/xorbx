@@ -32,145 +32,154 @@ class SignInScreen extends GetWidget<SignInController> {
               ),
             ),
           ),
-          SingleChildScrollView(
-            child: Padding(
-              padding: scale.getPadding(horizontal: 20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(height: scale.getScaledHeight(100)),
-                  CommonNetworkImageView(
-                    url: ImageConstants.xorbx,
-                    height: scale.getScaledHeight(40),
-                    width: scale.getScaledHeight(82),
-                  ),
-                  SizedBox(height: scale.getScaledHeight(30)),
-                  Text(
-                    "Sign In",
-                    style: AppStyle.style3.copyWith(
-                      fontSize: scale.getScaledHeight(22),
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  SizedBox(height: scale.getScaledHeight(30)),
-                  SocialButton(
-                    image: Image.asset(ImageConstants.google),
-                    text: 'Continue with Google',
-                  ),
-                  SizedBox(height: scale.getScaledHeight(10)),
-                  SocialButton(
-                    image: Image.asset(ImageConstants.apple),
-                    text: 'Continue with Apple',
-                  ),
-                  SizedBox(height: scale.getScaledHeight(20)),
-                  const DividerWithText(text: 'OR'),
-                  SizedBox(height: scale.getScaledHeight(20)),
-                  CustomTextField(
-                    hintText: 'Email',
-                    onChanged: (value) => controller.email.value = value,
-                  ),
-                  SizedBox(height: scale.getScaledHeight(10)),
-                  CustomTextField(
-                    hintText: 'Password',
-                    isPassword: true,
-                    onChanged: (value) => controller.password.value = value,
-                  ),
-                  SizedBox(
-                    width: scale.getScaledHeight(scale.fw),
-                    height: scale.getScaledHeight(50),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Column(
+            children: [
+              SizedBox(height: scale.getScaledHeight(100)),
+              CommonNetworkImageView(
+                url: ImageConstants.xorbx,
+                height: scale.getScaledHeight(40),
+                width: scale.getScaledHeight(82),
+              ),
+              SizedBox(height: scale.getScaledHeight(30)),
+              Text(
+                "Sign In",
+                style: AppStyle.style3.copyWith(
+                  fontSize: scale.getScaledHeight(22),
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              SizedBox(height: scale.getScaledHeight(20)),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: scale.getPadding(horizontal: 20),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Row(
-                          children: [
-                            Obx(
-                              () => Checkbox(
-                                value: controller.rememberMe.value,
-                                onChanged: (value) =>
-                                    controller.toggleRememberMe(),
-                                activeColor: Colors.white,
-                                checkColor: Colors.black,
+                        SizedBox(height: scale.getScaledHeight(10)),
+                        SocialButton(
+                          image: Image.asset(ImageConstants.google),
+                          text: 'Continue with Google',
+                        ),
+                        SizedBox(height: scale.getScaledHeight(10)),
+                        SocialButton(
+                          image: Image.asset(ImageConstants.apple),
+                          text: 'Continue with Apple',
+                        ),
+                        SizedBox(height: scale.getScaledHeight(20)),
+                        const DividerWithText(text: 'OR'),
+                        SizedBox(height: scale.getScaledHeight(20)),
+                        CustomTextField(
+                          hintText: 'Email',
+                          onChanged: (value) => controller.email.value = value,
+                        ),
+                        SizedBox(height: scale.getScaledHeight(10)),
+                        CustomTextField(
+                          hintText: 'Password',
+                          isPassword: true,
+                          onChanged: (value) =>
+                              controller.password.value = value,
+                        ),
+                        SizedBox(
+                          width: scale.getScaledHeight(scale.fw),
+                          height: scale.getScaledHeight(50),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Obx(
+                                    () => Checkbox(
+                                      value: controller.rememberMe.value,
+                                      onChanged: (value) =>
+                                          controller.toggleRememberMe(),
+                                      activeColor: Colors.white,
+                                      checkColor: Colors.black,
+                                    ),
+                                  ),
+                                  Text(
+                                    "Remember me",
+                                    style: AppStyle.style2.copyWith(
+                                      fontSize: scale.getScaledHeight(12),
+                                      fontWeight: FontWeight.normal,
+                                      color: Colors.white54,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Text(
+                                "Forgot Password?",
+                                style: AppStyle.style2.copyWith(
+                                  fontSize: scale.getScaledHeight(12),
+                                  fontWeight: FontWeight.normal,
+                                  color: Colors.white54,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: scale.getScaledHeight(20)),
+                        ElevatedButton(
+                          onPressed: () {
+                            Get.toNamed(
+                              AppRoutes.verificationScreen,
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: ColorConstant.color4,
+                            fixedSize: Size(
+                                scale.fh - scale.getScaledHeight(100),
+                                scale.getScaledHeight(60)),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(scale.getScaledHeight(12)),
                               ),
                             ),
+                          ),
+                          child: Text(
+                            'Sign In',
+                            style: AppStyle.style3.copyWith(
+                              fontSize: scale.getScaledHeight(20),
+                              fontWeight: FontWeight.w700,
+                              color: ColorConstant.color1,
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: scale.getScaledHeight(20)),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
                             Text(
-                              "Remember me",
+                              "Don't have an account?  | ",
                               style: AppStyle.style2.copyWith(
                                 fontSize: scale.getScaledHeight(12),
                                 fontWeight: FontWeight.normal,
                                 color: Colors.white54,
                               ),
                             ),
+                            GestureDetector(
+                              onTap: () {
+                                Get.toNamed(
+                                  AppRoutes.signUpScreen,
+                                );
+                              },
+                              child: Text(
+                                "Sign Up",
+                                style: AppStyle.style2.copyWith(
+                                  fontSize: scale.getScaledHeight(12),
+                                  color: Colors.white70,
+                                ),
+                              ),
+                            ),
                           ],
                         ),
-                        Text(
-                          "Forgot Password?",
-                          style: AppStyle.style2.copyWith(
-                            fontSize: scale.getScaledHeight(12),
-                            fontWeight: FontWeight.normal,
-                            color: Colors.white54,
-                          ),
-                        ),
+                        SizedBox(height: scale.getScaledHeight(100)),
                       ],
                     ),
                   ),
-                  SizedBox(height: scale.getScaledHeight(20)),
-                  ElevatedButton(
-                    onPressed: () {
-                      Get.toNamed(
-                        AppRoutes.verificationScreen,
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: ColorConstant.color4,
-                      fixedSize: Size(scale.fh - scale.getScaledHeight(100),
-                          scale.getScaledHeight(60)),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(scale.getScaledHeight(12)),
-                        ),
-                      ),
-                    ),
-                    child: Text(
-                      'Sign In',
-                      style: AppStyle.style3.copyWith(
-                        fontSize: scale.getScaledHeight(20),
-                        fontWeight: FontWeight.w700,
-                        color: ColorConstant.color1,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: scale.getScaledHeight(20)),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Don't have an account?  | ",
-                        style: AppStyle.style2.copyWith(
-                          fontSize: scale.getScaledHeight(12),
-                          fontWeight: FontWeight.normal,
-                          color: Colors.white54,
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Get.toNamed(
-                            AppRoutes.signUpScreen,
-                          );
-                        },
-                        child: Text(
-                          "Sign Up",
-                          style: AppStyle.style2.copyWith(
-                            fontSize: scale.getScaledHeight(12),
-                            color: Colors.white70,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: scale.getScaledHeight(100)),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
         ],
       ),
