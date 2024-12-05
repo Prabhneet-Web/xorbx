@@ -267,9 +267,7 @@ class SignUpScreen extends GetWidget<SignUpController> {
                         SizedBox(height: scale.getScaledHeight(20)),
                         ElevatedButton(
                           onPressed: () {
-                            Get.toNamed(
-                              AppRoutes.verificationScreen,
-                            );
+                            controller.signUp();
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: ColorConstant.color4,
