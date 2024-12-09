@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:country_code_picker_plus/country_code_picker_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xorbx/routes/app_routes.dart';
@@ -56,21 +59,34 @@ class SignUpScreen extends GetWidget<SignUpController> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(height: scale.getScaledHeight(10)),
-                        SocialButton(
-                          image: Image.asset(ImageConstants.google),
-                          text: 'Continue with Google',
+                        GestureDetector(
+                          onTap: () {
+                            controller.signInWithGoogle();
+                          },
+                          child: SocialButton(
+                            image: Image.asset(ImageConstants.google),
+                            text: 'Continue with Google',
+                          ),
                         ),
                         SizedBox(height: scale.getScaledHeight(10)),
-                        SocialButton(
-                          image: Image.asset(ImageConstants.apple),
-                          text: 'Continue with Apple',
-                        ),
+                        Platform.isAndroid
+                            ? const SizedBox.shrink()
+                            : GestureDetector(
+                                onTap: () {
+                                  controller.signInWithApple();
+                                },
+                                child: SocialButton(
+                                  image: Image.asset(ImageConstants.apple),
+                                  text: 'Continue with Apple',
+                                ),
+                              ),
                         SizedBox(height: scale.getScaledHeight(20)),
                         const DividerWithText(text: 'OR'),
                         SizedBox(height: scale.getScaledHeight(20)),
                         CustomTextField(
                           hintText: 'UserName / ID',
-                          controller: TextEditingController(),
+                          onChanged: (value) =>
+                              controller.username.value = value,
                         ),
                         SizedBox(height: scale.getScaledHeight(10)),
                         CustomTextField(
@@ -82,58 +98,33 @@ class SignUpScreen extends GetWidget<SignUpController> {
                           children: [
                             SizedBox(
                               width: scale.getScaledWidth(110),
-                              child: CustomTextField(
+                              child: const CustomTextField(
                                 hintText: "Code",
-                                content: DropdownButtonFormField<String>(
-                                  value: controller.selectedCountryCode.value,
-                                  decoration: InputDecoration(
-                                    filled: true,
-                                    fillColor: Colors.transparent,
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(15),
-                                      borderSide: const BorderSide(
-                                        color: Colors.transparent,
-                                      ),
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(15),
-                                      borderSide: const BorderSide(
-                                        color: Colors.transparent,
-                                      ),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      borderSide: const BorderSide(
-                                        color: Colors.transparent,
-                                      ),
-                                    ),
+                                content: CountryCodePicker(
+                                  closeIcon: Icon(
+                                    Icons.close,
+                                    color: Colors.white,
                                   ),
-                                  dropdownColor: const Color(0xFF1A3A5A),
-                                  style: const TextStyle(color: Colors.white),
-                                  items: [
-                                    '+1 (US)',
-                                    '+44 (UK)',
-                                    '+91 (IN)',
-                                    '+61 (AU)',
-                                    '+81 (JP)',
-                                  ].map((code) {
-                                    return DropdownMenuItem(
-                                      value: code,
-                                      child: Text(code),
-                                    );
-                                  }).toList(),
-                                  onChanged: (value) {
-                                    controller.selectedCountryCode.value =
-                                        value!;
-                                  },
+                                  showCountryOnly: true,
+                                  textStyle: TextStyle(color: Colors.white),
+                                  dialogBackgroundColor: ColorConstant.color1,
+                                  dialogTextStyle:
+                                      TextStyle(color: Colors.white),
+                                  searchStyle: TextStyle(color: Colors.white),
+                                  searchDecoration: InputDecoration(
+                                    suffixIconColor: Colors.white,
+                                    iconColor: Colors.white,
+                                    hintText: "Search",
+                                  ),
                                 ),
                               ),
                             ),
                             SizedBox(width: scale.getScaledWidth(10)),
-                            const Flexible(
+                            Flexible(
                               child: CustomTextField(
                                 hintText: 'Phone',
-                                keyboardType: TextInputType.phone,
+                                onChanged: (value) =>
+                                    controller.phoneNumber.value = value,
                               ),
                             ),
                           ],
@@ -203,9 +194,11 @@ class SignUpScreen extends GetWidget<SignUpController> {
                               controller.password.value = value,
                         ),
                         SizedBox(height: scale.getScaledHeight(10)),
-                        const CustomTextField(
+                        CustomTextField(
                           hintText: 'Confirm Password',
                           isPassword: true,
+                          onChanged: (value) =>
+                              controller.confirmPassword.value = value,
                         ),
                         SizedBox(height: scale.getScaledHeight(10)),
                         SizedBox(

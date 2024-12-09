@@ -56,7 +56,7 @@ class DashboardScreen extends GetWidget<DashboardController> {
                   const Spacer(flex: 1),
                   IconButton(
                     onPressed: () {
-                      Get.toNamed(AppRoutes.userNotification);
+                      Get.toNamed(AppRoutes.notification);
                     },
                     icon: const Icon(
                       Icons.notifications_none_rounded,

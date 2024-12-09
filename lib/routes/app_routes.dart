@@ -9,6 +9,8 @@ import 'package:xorbx/presentation/device_management/bindings/device_management_
 import 'package:xorbx/presentation/device_management/screens/device_management_screen.dart';
 import 'package:xorbx/presentation/multi_factor_authentication/binding/multi_factor_authentication_binding.dart';
 import 'package:xorbx/presentation/multi_factor_authentication/screen/multi_factor_authentication_screen.dart';
+import 'package:xorbx/presentation/notification/binding/notification_binding.dart';
+import 'package:xorbx/presentation/notification/screen/notification_screen.dart';
 import 'package:xorbx/presentation/password_management/binding/password_management_binding.dart';
 import 'package:xorbx/presentation/password_management/screen/password_management_screen.dart';
 import 'package:xorbx/presentation/referral_screen/binding/referral_binding.dart';
@@ -130,6 +132,7 @@ class AppRoutes {
   static const deviceManagement = '/device_management';
   static const biometricManagementScreen = '/biometric_management';
   static const training = '/training';
+  static const notification = '/notification';
 
   static List<GetPage> pages = [
     // Flow 1
@@ -194,6 +197,7 @@ class AppRoutes {
       page: () => const UserNotificationScreen(),
       bindings: [UserNotificationBinding()],
     ),
+
     GetPage(
       name: customerFeedback,
       page: () => const CustomerFeedbackScreen(),
@@ -345,6 +349,11 @@ class AppRoutes {
       name: training,
       page: () => const TrainingScreen(),
       bindings: [TrainingBinding()],
+    ),
+    GetPage(
+      name: notification,
+      page: () => const NotificationScreen(),
+      bindings: [NotificationBinding()],
     ),
   ];
 }

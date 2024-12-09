@@ -110,7 +110,7 @@ class DashboardSidebarScreen extends GetWidget<DashboardSidebarController> {
                           items: const [
                             "Eye",
                             "Fingerprint",
-                            "Voice",
+                            "Profile picture",
                           ],
                           scale: scale,
                           onItemTap: (item) {
@@ -146,9 +146,9 @@ class DashboardSidebarScreen extends GetWidget<DashboardSidebarController> {
                           icon: Icons.cloud_queue_outlined,
                           title: "Data Management",
                           items: const [
-                            "Backup & Sync",
+                            // "Backup & Sync",
                             "Data Usage",
-                            "Clear Cache/Data"
+                            // "Clear Cache/Data"
                           ],
                           scale: scale,
                           onItemTap: (item) {

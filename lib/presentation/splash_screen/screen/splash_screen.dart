@@ -6,7 +6,7 @@ import 'package:xorbx/utils/scaling_utility.dart';
 import 'package:xorbx/widgets/common_network_image.dart';
 
 class SplashScreen extends GetWidget<SplashController> {
-  SplashScreen({super.key});
+  const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -88,9 +88,17 @@ class SplashScreen extends GetWidget<SplashController> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      "",
-                      style: TextStyle(color: Colors.white),
+                    Obx(
+                      () => controller.currentIndex.value ==
+                              controller.images.length - 1
+                          ? const SizedBox.shrink()
+                          : TextButton(
+                              onPressed: controller.skipToSignIn,
+                              child: const Text(
+                                "Skip",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
                     ),
                     TextButton(
                       onPressed: controller.nextSlide,

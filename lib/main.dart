@@ -6,6 +6,7 @@ import 'package:xorbx/firebase_options.dart';
 import 'package:xorbx/utils/app_bindings.dart';
 import 'package:xorbx/routes/app_routes.dart';
 import 'package:xorbx/constants/app_theme.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,18 +17,25 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const App());
+
+  String initialRoute = FirebaseAuth.instance.currentUser != null
+      ? AppRoutes.multiFactorAuthenticationScreen
+      : AppRoutes.splashScreen;
+
+  runApp(App(initialRoute: initialRoute));
 }
 
 class App extends StatelessWidget {
-  const App({super.key});
+  final String initialRoute;
+
+  const App({required this.initialRoute, super.key});
 
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.theme,
-      initialRoute: AppRoutes.splashScreen,
+      initialRoute: initialRoute,
       getPages: AppRoutes.pages,
       defaultTransition: Transition.fade,
       initialBinding: AppBinding(),

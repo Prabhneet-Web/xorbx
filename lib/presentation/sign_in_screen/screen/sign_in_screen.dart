@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xorbx/routes/app_routes.dart';
@@ -57,15 +59,27 @@ class SignInScreen extends GetWidget<SignInController> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(height: scale.getScaledHeight(10)),
-                        SocialButton(
-                          image: Image.asset(ImageConstants.google),
-                          text: 'Continue with Google',
+                        GestureDetector(
+                          onTap: () {
+                            controller.signInWithGoogle();
+                          },
+                          child: SocialButton(
+                            image: Image.asset(ImageConstants.google),
+                            text: 'Continue with Google',
+                          ),
                         ),
                         SizedBox(height: scale.getScaledHeight(10)),
-                        SocialButton(
-                          image: Image.asset(ImageConstants.apple),
-                          text: 'Continue with Apple',
-                        ),
+                        Platform.isAndroid
+                            ? const SizedBox.shrink()
+                            : GestureDetector(
+                                onTap: () {
+                                  controller.signInWithApple();
+                                },
+                                child: SocialButton(
+                                  image: Image.asset(ImageConstants.apple),
+                                  text: 'Continue with Apple',
+                                ),
+                              ),
                         SizedBox(height: scale.getScaledHeight(20)),
                         const DividerWithText(text: 'OR'),
                         SizedBox(height: scale.getScaledHeight(20)),

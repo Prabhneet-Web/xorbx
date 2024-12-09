@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:local_auth/local_auth.dart';
 import 'package:xorbx/presentation/security_screen/capture_fingerprint/controller/capture_fingerprint_controller.dart';
 import 'package:xorbx/routes/app_routes.dart';
 import 'package:xorbx/constants/app_style.dart';
@@ -11,8 +13,30 @@ import 'package:xorbx/widgets/common_network_image.dart';
 import 'package:xorbx/widgets/shadow_border_card.dart';
 import 'package:xorbx/widgets/successful_scan.dart';
 
-class CaptureFingerprintScreen extends GetWidget<CaptureFingerprintController> {
+class CaptureFingerprintScreen extends StatefulWidget {
   const CaptureFingerprintScreen({super.key});
+
+  @override
+  State<CaptureFingerprintScreen> createState() =>
+      _CaptureFingerprintScreenState();
+}
+
+class _CaptureFingerprintScreenState extends State<CaptureFingerprintScreen> {
+  late final LocalAuthentication auth;
+  bool _supportState = false;
+
+  @override
+  void initState() {
+    super.initState();
+    auth = LocalAuthentication();
+    auth.isDeviceSupported().then(
+      (bool isSupported) {
+        setState(() {
+          _supportState = isSupported;
+        });
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,8 +106,7 @@ class CaptureFingerprintScreen extends GetWidget<CaptureFingerprintController> {
                           ),
                         ),
                         SizedBox(height: scale.getScaledHeight(45)),
-                        _customButton(scale, AppRoutes.captureEyeScreen,
-                            "Recognize Fingerprint"),
+                        _customButton(scale, "Recognize Fingerprint"),
                         SizedBox(height: scale.getScaledHeight(50)),
                       ],
                     ),
@@ -97,7 +120,7 @@ class CaptureFingerprintScreen extends GetWidget<CaptureFingerprintController> {
     );
   }
 
-  Widget _customButton(ScalingUtility scale, String route, String buttonTitle) {
+  Widget _customButton(ScalingUtility scale, String buttonTitle) {
     return Center(
       child: SizedBox(
         width: scale.getScaledHeight(240),
@@ -110,8 +133,19 @@ class CaptureFingerprintScreen extends GetWidget<CaptureFingerprintController> {
               ),
             ),
           ),
-          onPressed: () {
-            Get.dialog(successfulScan(title: "Successful Scan!"));
+          onPressed: () async {
+            bool isAuthenticated = await _authenticate();
+            if (isAuthenticated) {
+              Get.dialog(successfulScan(title: "Successful Scan!"));
+            } else {
+              Get.snackbar(
+                "Authentication Failed",
+                "Please try again.",
+                snackPosition: SnackPosition.BOTTOM,
+                backgroundColor: Colors.red,
+                colorText: Colors.white,
+              );
+            }
           },
           child: Text(
             buttonTitle,
@@ -123,5 +157,21 @@ class CaptureFingerprintScreen extends GetWidget<CaptureFingerprintController> {
         ),
       ),
     );
+  }
+
+  Future<bool> _authenticate() async {
+    try {
+      bool authenticated = await auth.authenticate(
+        localizedReason: "Please scan your fingerprint to authenticate.",
+        options: const AuthenticationOptions(
+          stickyAuth: true,
+          biometricOnly: true,
+        ),
+      );
+      return authenticated;
+    } on PlatformException catch (e) {
+      print("Error during authentication: $e");
+      return false;
+    }
   }
 }

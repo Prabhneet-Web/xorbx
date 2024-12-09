@@ -10,7 +10,7 @@ class SplashController extends GetxController {
   void nextSlide() {
     if (currentIndex.value < 6) {
       carouselController.nextPage(
-        duration: const Duration(milliseconds: 500),
+        // duration: const Duration(milliseconds: 500),
         curve: Curves.easeInOut,
       );
       currentIndex.value++;

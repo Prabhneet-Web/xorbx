@@ -15,6 +15,44 @@ class SignInController extends GetxController {
 
   final FirebaseAuthService _auth = FirebaseAuthService();
 
+  void signInWithGoogle() async {
+    try {
+      UserCredential? user = await _auth.loginWithGoogle();
+      Get.toNamed(
+        AppRoutes.multiFactorAuthenticationScreen,
+      );
+      if (user != null) {
+        print("Logged in as ${user.user?.displayName}");
+        Get.snackbar(
+          "Success",
+          "Logged in as ${user.user?.displayName}",
+          colorText: Colors.white,
+        );
+      }
+    } catch (e) {
+      print("Error during sign-up: $e");
+    }
+  }
+
+  void signInWithApple() async {
+    try {
+      UserCredential? user = await _auth.loginWithApple();
+      Get.toNamed(
+        AppRoutes.multiFactorAuthenticationScreen,
+      );
+      if (user != null) {
+        print("Logged in as ${user.user?.displayName}");
+        Get.snackbar(
+          "Success",
+          "Logged in as ${user.user?.displayName}",
+          colorText: Colors.white,
+        );
+      }
+    } catch (e) {
+      print("Error during sign-up: $e");
+    }
+  }
+
   void signIn() async {
     if (_validateForm()) {
       try {

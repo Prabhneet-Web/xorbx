@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:local_auth/local_auth.dart';
 import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/constants/color_constants.dart';
 import 'package:xorbx/constants/image_constants.dart';
@@ -11,8 +13,29 @@ import 'package:xorbx/widgets/common_network_image.dart';
 import 'package:xorbx/widgets/shadow_border_card.dart';
 import 'package:xorbx/widgets/successful_scan.dart';
 
-class CaptureEyeScreen extends GetWidget<CaptureEyeController> {
+class CaptureEyeScreen extends StatefulWidget {
   const CaptureEyeScreen({super.key});
+
+  @override
+  State<CaptureEyeScreen> createState() => _CaptureEyeScreenState();
+}
+
+class _CaptureEyeScreenState extends State<CaptureEyeScreen> {
+  late final LocalAuthentication auth;
+  bool _supportState = false;
+
+  @override
+  void initState() {
+    super.initState();
+    auth = LocalAuthentication();
+    auth.isDeviceSupported().then(
+      (bool isSupported) {
+        setState(() {
+          _supportState = isSupported;
+        });
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -110,8 +133,19 @@ class CaptureEyeScreen extends GetWidget<CaptureEyeController> {
               ),
             ),
           ),
-          onPressed: () {
-            Get.dialog(successfulScan(title: "Successful Scan!"));
+          onPressed: () async {
+            bool isAuthenticated = await _authenticate();
+            if (isAuthenticated) {
+              Get.dialog(successfulScan(title: "Successful Scan!"));
+            } else {
+              Get.snackbar(
+                "Authentication Failed",
+                "Please try again.",
+                snackPosition: SnackPosition.BOTTOM,
+                backgroundColor: Colors.red,
+                colorText: Colors.white,
+              );
+            }
           },
           child: Text(
             buttonTitle,
@@ -123,5 +157,48 @@ class CaptureEyeScreen extends GetWidget<CaptureEyeController> {
         ),
       ),
     );
+  }
+
+  Future<bool> _authenticate() async {
+    try {
+      List<BiometricType> availableBiometrics =
+          await auth.getAvailableBiometrics();
+
+      bool canAuthenticateWithFace =
+          availableBiometrics.contains(BiometricType.face);
+
+      if (!canAuthenticateWithFace) {
+        Get.snackbar(
+          "Feature Not Supported",
+          "Face verification is not supported on this device.",
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.red,
+          colorText: Colors.white,
+        );
+        return false;
+      }
+
+      bool authenticated = await auth.authenticate(
+        localizedReason: "Please scan your face to authenticate.",
+        options: const AuthenticationOptions(
+          stickyAuth: true,
+          biometricOnly: true,
+        ),
+      );
+
+      return authenticated;
+    } on PlatformException catch (e) {
+      print("Error during authentication: $e");
+
+      Get.snackbar(
+        "Authentication Error",
+        "An error occurred: ${e.message}",
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
+
+      return false;
+    }
   }
 }

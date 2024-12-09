@@ -20,31 +20,31 @@ class HeatMapDetails extends StatelessWidget {
           height: scale.getScaledHeight(130),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(12.0),
-            child: CommonNetworkImageView(
-              url: ImageConstants.map,
-              height: scale.getScaledHeight(130),
-              width: scale.fw,
-            ),
-            // child: FlutterMap(
-            //   options: const MapOptions(
-            //     backgroundColor: ColorConstant.color1,
-            //     initialCenter: LatLng(40.0, 0.0),
-            //     initialZoom: 0,
-            //     interactionOptions:
-            //         InteractionOptions(flags: InteractiveFlag.none),
-            //   ),
-            //   children: [
-            //     TileLayer(
-            //       urlTemplate:
-            //           'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png',
-            //       subdomains: const ['a', 'b', 'c', 'd'],
-            //       tileDisplay: const TileDisplay.instantaneous(),
-            //     ),
-            //     MarkerLayer(
-            //       markers: _buildVulnerabilityMarkers(scale),
-            //     ),
-            //   ],
+            // child: CommonNetworkImageView(
+            //   url: ImageConstants.map,
+            //   height: scale.getScaledHeight(130),
+            //   width: scale.fw,
             // ),
+            child: FlutterMap(
+              options: const MapOptions(
+                backgroundColor: ColorConstant.color1,
+                initialCenter: LatLng(40.0, 0.0),
+                initialZoom: 0,
+                interactionOptions:
+                    InteractionOptions(flags: InteractiveFlag.none),
+              ),
+              children: [
+                TileLayer(
+                  urlTemplate:
+                      'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png',
+                  subdomains: const ['a', 'b', 'c', 'd'],
+                  tileDisplay: const TileDisplay.instantaneous(),
+                ),
+                MarkerLayer(
+                  markers: _buildVulnerabilityMarkers(scale),
+                ),
+              ],
+            ),
           ),
         ),
       ],
