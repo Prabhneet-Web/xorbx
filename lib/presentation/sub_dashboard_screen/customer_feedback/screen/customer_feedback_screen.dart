@@ -45,7 +45,7 @@ class CustomerFeedbackScreen extends GetWidget<CustomerFeedbackController> {
                       ),
                     ),
                     Text(
-                      'User Notifications\nDashboard',
+                      'Customer Feedback',
                       style: AppStyle.style2,
                     ),
                     const Spacer(),

@@ -77,7 +77,7 @@ class DeviceHealthMonitoringScreen
                       ),
                     ),
                     Text(
-                      'Device Health Monitoing\nDashboard',
+                      'Device Health Monitoing',
                       style: AppStyle.style2,
                     ),
                     const Spacer(),

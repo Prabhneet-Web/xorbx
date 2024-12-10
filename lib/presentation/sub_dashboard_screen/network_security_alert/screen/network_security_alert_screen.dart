@@ -52,9 +52,8 @@ class NetworkSecurityAlertScreen
                     ),
                     Column(
                       children: [
-                        SizedBox(height: scale.getScaledHeight(10)),
                         Text(
-                          'Network Security Alerts\nDashboard',
+                          'Network Security Alerts',
                           style: AppStyle.style2,
                         ),
                       ],

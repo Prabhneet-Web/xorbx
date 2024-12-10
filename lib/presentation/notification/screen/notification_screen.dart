@@ -3,12 +3,8 @@ import 'package:get/get.dart';
 import 'package:xorbx/constants/app_style.dart';
 import 'package:xorbx/constants/color_constants.dart';
 import 'package:xorbx/presentation/notification/controller/notification_controller.dart';
-import 'package:xorbx/presentation/sub_dashboard_screen/user_notification/widgets/last_month_notifications.dart';
-import 'package:xorbx/presentation/sub_dashboard_screen/user_notification/widgets/last_week_notifications.dart';
-import 'package:xorbx/presentation/sub_dashboard_screen/user_notification/widgets/push_notifications.dart';
-import 'package:xorbx/presentation/dashboard_screen/widgets/dashboard_cards.dart';
-import 'package:xorbx/routes/app_routes.dart';
 import 'package:xorbx/utils/scaling_utility.dart';
+import 'package:xorbx/widgets/shadow_border_card.dart';
 import 'package:xorbx/widgets/background_effect.dart';
 
 class NotificationScreen extends GetWidget<NotificationController> {
@@ -26,8 +22,7 @@ class NotificationScreen extends GetWidget<NotificationController> {
             children: [
               Padding(
                 padding: EdgeInsets.only(
-                  bottom: scale.getScaledHeight(15),
-                  top: scale.getScaledHeight(35),
+                  top: scale.getScaledHeight(40),
                   left: scale.getScaledHeight(5),
                   right: scale.getScaledHeight(16),
                 ),
@@ -36,7 +31,7 @@ class NotificationScreen extends GetWidget<NotificationController> {
                   children: [
                     IconButton(
                       onPressed: () {
-                        Navigator.pop(context);
+                        Get.back();
                       },
                       icon: const Icon(
                         Icons.chevron_left_outlined,
@@ -48,56 +43,52 @@ class NotificationScreen extends GetWidget<NotificationController> {
                       style: AppStyle.style2,
                     ),
                     const Spacer(),
-                    _overlayText("Last Synced:", "September 01, 2024"),
+                    Obx(() => _overlayText("Last Synced:",
+                        controller.lastSynced.value, controller)),
                   ],
                 ),
               ),
+              // Notifications List
               Expanded(
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      vertical: scale.getScaledHeight(5),
-                      horizontal: scale.getScaledHeight(16),
+                child: Obx(() {
+                  return SingleChildScrollView(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: scale.getScaledHeight(16),
+                      ),
+                      child: Column(
+                        children: [
+                          controller.notifications.isEmpty
+                              ? Text(
+                                  "No notifications available",
+                                  style: AppStyle.style1
+                                      .copyWith(color: Colors.white),
+                                )
+                              : ListView.builder(
+                                  shrinkWrap: true,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  itemCount: controller.notifications.length,
+                                  itemBuilder: (context, index) {
+                                    var notification =
+                                        controller.notifications[index];
+                                    return Column(
+                                      children: [
+                                        _itemsSection(
+                                          notification['title'] ?? '',
+                                          notification['timestamp'] ?? '',
+                                        ),
+                                        SizedBox(
+                                            height: scale.getScaledHeight(16)),
+                                      ],
+                                    );
+                                  },
+                                ),
+                          SizedBox(height: scale.getScaledHeight(50)),
+                        ],
+                      ),
                     ),
-                    child: Column(
-                      children: [
-                        SizedBox(height: scale.getScaledHeight(5)),
-                        Text(
-                          "Notifications",
-                          style: AppStyle.style2.copyWith(
-                            fontSize: 16,
-                          ),
-                        ),
-                        SizedBox(height: scale.getScaledHeight(10)),
-                        const DashboardCards(
-                          PushNotifications(),
-                          'Push Notifications',
-                          AppRoutes.realTimeThreadDetectionScreen,
-                        ),
-                        SizedBox(height: scale.getScaledHeight(16)),
-                        Text(
-                          "Past Notifications",
-                          style: AppStyle.style2.copyWith(
-                            fontSize: 16,
-                          ),
-                        ),
-                        SizedBox(height: scale.getScaledHeight(10)),
-                        const DashboardCards(
-                          LastWeekNotifications(),
-                          'Last Week Notifications',
-                          AppRoutes.realTimeThreadDetectionScreen,
-                        ),
-                        SizedBox(height: scale.getScaledHeight(16)),
-                        const DashboardCards(
-                          LastMonthNotifications(),
-                          'Last Month Notifications',
-                          AppRoutes.realTimeThreadDetectionScreen,
-                        ),
-                        SizedBox(height: scale.getScaledHeight(50)),
-                      ],
-                    ),
-                  ),
-                ),
+                  );
+                }),
               ),
             ],
           ),
@@ -106,25 +97,81 @@ class NotificationScreen extends GetWidget<NotificationController> {
     );
   }
 
-  Widget _overlayTextDashboardCards(Widget content, String name, String date) {
-    return Stack(
-      children: [
-        content,
-        _overlayText(name, date),
-      ],
+  Widget _itemsSection(String title, String timestamp) {
+    var scale = Get.find<ScalingUtility>();
+    return ShadowBorderCard(
+      content: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(
+                  top: scale.getScaledHeight(3),
+                ),
+                child: CircleAvatar(
+                  radius: scale.getScaledHeight(5.5),
+                  backgroundColor: Colors.red,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            width: scale.getScaledHeight(10),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: AppStyle.style1.copyWith(
+                  fontSize: scale.getScaledHeight(12),
+                ),
+              ),
+              SizedBox(height: scale.getScaledHeight(6)),
+              Row(
+                children: [
+                  Text(
+                    "Last timestamp:",
+                    style: AppStyle.style1.copyWith(
+                      fontSize: scale.getScaledHeight(9),
+                    ),
+                  ),
+                  SizedBox(width: scale.getScaledHeight(6)),
+                  Text(
+                    timestamp,
+                    style: AppStyle.style1.copyWith(
+                      fontSize: scale.getScaledHeight(9),
+                      color: Colors.white54,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 
-  Widget _overlayText(String name, String date) {
+  Widget _overlayText(String name, String date, controller) {
+    var scale = Get.find<ScalingUtility>();
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         Row(
           children: [
-            const Icon(
-              Icons.refresh,
-              size: 13,
-              color: Colors.white60,
+            GestureDetector(
+              onTap: controller.refreshNotifications,
+              child: const Icon(
+                Icons.refresh,
+                size: 13,
+                color: Colors.white60,
+              ),
             ),
             SizedBox(width: scale.getScaledHeight(2)),
             Text(

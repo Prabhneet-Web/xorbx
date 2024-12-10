@@ -51,9 +51,8 @@ class CompromisedPasswordScreen
                     ),
                     Column(
                       children: [
-                        SizedBox(height: scale.getScaledHeight(10)),
                         Text(
-                          'Compromised Password\nDashboard',
+                          'Compromised Password',
                           style: AppStyle.style2,
                         ),
                       ],

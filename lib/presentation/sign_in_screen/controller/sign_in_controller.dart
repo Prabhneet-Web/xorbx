@@ -1,3 +1,4 @@
+import 'package:email_auth/email_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,6 +15,7 @@ class SignInController extends GetxController {
   }
 
   final FirebaseAuthService _auth = FirebaseAuthService();
+  EmailAuth emailAuth = EmailAuth(sessionName: "Sample session");
 
   void signInWithGoogle() async {
     try {
@@ -61,9 +63,8 @@ class SignInController extends GetxController {
           password.value,
           rememberMe.value,
         );
-        Get.toNamed(
-          AppRoutes.multiFactorAuthenticationScreen,
-        );
+        sendOTP();
+
         if (user != null) {
           print("Sign-in successful: ${user.email}");
           Get.snackbar(
@@ -80,16 +81,35 @@ class SignInController extends GetxController {
     }
   }
 
+  void sendOTP() async {
+    try {
+      var res =
+          await emailAuth.sendOtp(recipientMail: email.value, otpLength: 4);
+      if (res) {
+        Get.toNamed(AppRoutes.verificationScreen);
+        Get.snackbar(
+          "Success",
+          "OTP sent successfully to ${email.value}",
+          colorText: Colors.white,
+        );
+      } else {
+        Get.snackbar(
+          "Error",
+          "Failed to send OTP. Please try again.",
+          colorText: Colors.red,
+        );
+      }
+    } catch (e) {
+      print("Error while sending OTP: $e");
+      Get.snackbar(
+        "Error",
+        "An unexpected error occurred while sending OTP.",
+        colorText: Colors.red,
+      );
+    }
+  }
+
   bool _validateForm() {
-    // if (username.value.trim().isEmpty) {
-    //   print("Error: Username is required.");
-    //   Get.snackbar(
-    //     "Error",
-    //     "Username is required.",
-    //     colorText: Colors.white,
-    //   );
-    //   return false;
-    // }
     if (email.value.trim().isEmpty || !email.value.contains('@')) {
       print("Error: A valid email address is required.");
       Get.snackbar(
@@ -99,16 +119,7 @@ class SignInController extends GetxController {
       );
       return false;
     }
-    // if (phoneNumber.value.trim().isEmpty ||
-    //     phoneNumber.value.trim().length < 10) {
-    //   print("Error: Phone number must be at least 10 digits long.");
-    //   Get.snackbar(
-    //     "Error",
-    //     "Phone number must be at least 10 digits long.",
-    //     colorText: Colors.white,
-    //   );
-    //   return false;
-    // }
+
     if (password.value.trim().isEmpty || password.value.length < 8) {
       print("Error: Password must be at least 6 characters long.");
       Get.snackbar(
@@ -118,15 +129,7 @@ class SignInController extends GetxController {
       );
       return false;
     }
-    // if (confirmPassword.value.trim() != password.value.trim()) {
-    //   print("Error: Passwords do not match.");
-    //   Get.snackbar(
-    //     "Error",
-    //     "Error: Passwords do not match.",
-    //   );
 
-    //   return false;
-    // }
     return true;
   }
 }

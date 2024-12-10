@@ -21,6 +21,8 @@ import 'package:xorbx/presentation/security_screen/capture_fingerprint/binding/c
 import 'package:xorbx/presentation/security_screen/capture_fingerprint/screen/capture_fingerprint_screen.dart';
 import 'package:xorbx/presentation/security_screen/capture_voice/binding/capture_voice_binding.dart';
 import 'package:xorbx/presentation/security_screen/capture_voice/screen/capture_voice_screen.dart';
+import 'package:xorbx/presentation/settings/binding/settings_binding.dart';
+import 'package:xorbx/presentation/settings/screen/settings_screen.dart';
 import 'package:xorbx/presentation/sidebar_screen/referral_sidebar_screen/binding/referral_sidebar_binding.dart';
 import 'package:xorbx/presentation/sidebar_screen/referral_sidebar_screen/screen/referral_sidebar_screen.dart';
 import 'package:xorbx/presentation/sidebar_screen/training_sidebar/binding/training_sidebar_binding.dart';
@@ -133,13 +135,14 @@ class AppRoutes {
   static const biometricManagementScreen = '/biometric_management';
   static const training = '/training';
   static const notification = '/notification';
+  static const settings = '/settings';
 
   static List<GetPage> pages = [
     // Flow 1
     // main screens
     GetPage(
       name: splashScreen,
-      page: () => SplashScreen(),
+      page: () => const SplashScreen(),
       bindings: [SplashBinding()],
     ),
     GetPage(
@@ -354,6 +357,11 @@ class AppRoutes {
       name: notification,
       page: () => const NotificationScreen(),
       bindings: [NotificationBinding()],
+    ),
+    GetPage(
+      name: settings,
+      page: () => const SettingsScreen(),
+      bindings: [SettingsBinding()],
     ),
   ];
 }

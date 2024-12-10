@@ -54,14 +54,34 @@ class DashboardScreen extends GetWidget<DashboardController> {
                     style: AppStyle.style2,
                   ),
                   const Spacer(flex: 1),
-                  IconButton(
-                    onPressed: () {
+                  GestureDetector(
+                    onTap: () {
                       Get.toNamed(AppRoutes.notification);
                     },
-                    icon: const Icon(
-                      Icons.notifications_none_rounded,
-                      color: Colors.white,
-                      size: 26,
+                    child: Stack(
+                      children: [
+                        IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.notifications_none_rounded,
+                            color: Colors.white,
+                            size: 26,
+                          ),
+                        ),
+                        Positioned(
+                          bottom: 8,
+                          left: 8,
+                          child: CircleAvatar(
+                            backgroundColor: Colors.red,
+                            radius: scale.getScaledHeight(8),
+                            child: Text(
+                              "${controller.notifications.length}",
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 10),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   SizedBox(width: scale.getScaledHeight(10)),

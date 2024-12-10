@@ -84,16 +84,16 @@ class DashboardSidebarScreen extends GetWidget<DashboardSidebarController> {
                             }
                           },
                         ),
-                        DropDownOptions(
-                          icon: Icons.settings_outlined,
-                          title: "General Settings",
-                          items: const [
-                            "Language Preference",
-                            "Arabic",
-                            "English"
-                          ],
-                          scale: scale,
-                        ),
+                        // DropDownOptions(
+                        //   icon: Icons.settings_outlined,
+                        //   title: "General Settings",
+                        //   items: const [
+                        //     "Language Preference",
+                        //     "Arabic",
+                        //     "English"
+                        //   ],
+                        //   scale: scale,
+                        // ),
                         DropDownOptions(
                           icon: Icons.person_pin_outlined,
                           title: "Account Information",
@@ -104,44 +104,44 @@ class DashboardSidebarScreen extends GetWidget<DashboardSidebarController> {
                           ],
                           scale: scale,
                         ),
-                        DropDownOptions(
-                          icon: Icons.dataset_outlined,
-                          title: "Privacy Settings",
-                          items: const [
-                            "Eye",
-                            "Fingerprint",
-                            "Profile picture",
-                          ],
-                          scale: scale,
-                          onItemTap: (item) {
-                            if (item == "Eye") {
-                              Get.toNamed(AppRoutes.captureEyeScreen);
-                            } else if (item == "Fingerprint") {
-                              Get.toNamed(AppRoutes.captureFingerprintScreen);
-                            } else if (item == "Voice") {
-                              Get.toNamed(AppRoutes.captureVoiceScreen);
-                            }
-                          },
-                        ),
-                        DropDownOptions(
-                          icon: Icons.candlestick_chart_outlined,
-                          title: "Security Settings",
-                          items: const [
-                            "Password Management",
-                            "Biometric Security",
-                            "Device Management",
-                          ],
-                          scale: scale,
-                          onItemTap: (item) {
-                            if (item == "Password Management") {
-                              Get.toNamed(AppRoutes.passwordManagement);
-                            } else if (item == "Device Management") {
-                              Get.toNamed(AppRoutes.deviceManagement);
-                            } else if (item == "Biometric Security") {
-                              Get.toNamed(AppRoutes.biometricManagementScreen);
-                            }
-                          },
-                        ),
+                        // DropDownOptions(
+                        //   icon: Icons.dataset_outlined,
+                        //   title: "Privacy Settings",
+                        //   items: const [
+                        //     "Eye",
+                        //     "Fingerprint",
+                        //     "Profile picture",
+                        //   ],
+                        //   scale: scale,
+                        //   onItemTap: (item) {
+                        //     if (item == "Eye") {
+                        //       Get.toNamed(AppRoutes.captureEyeScreen);
+                        //     } else if (item == "Fingerprint") {
+                        //       Get.toNamed(AppRoutes.captureFingerprintScreen);
+                        //     } else if (item == "Voice") {
+                        //       Get.toNamed(AppRoutes.captureVoiceScreen);
+                        //     }
+                        //   },
+                        // ),
+                        // DropDownOptions(
+                        //   icon: Icons.candlestick_chart_outlined,
+                        //   title: "Security Settings",
+                        //   items: const [
+                        //     "Password Management",
+                        //     "Biometric Security",
+                        //     "Device Management",
+                        //   ],
+                        //   scale: scale,
+                        //   onItemTap: (item) {
+                        //     if (item == "Password Management") {
+                        //       Get.toNamed(AppRoutes.passwordManagement);
+                        //     } else if (item == "Device Management") {
+                        //       Get.toNamed(AppRoutes.deviceManagement);
+                        //     } else if (item == "Biometric Security") {
+                        //       Get.toNamed(AppRoutes.biometricManagementScreen);
+                        //     }
+                        //   },
+                        // ),
                         DropDownOptions(
                           icon: Icons.cloud_queue_outlined,
                           title: "Data Management",

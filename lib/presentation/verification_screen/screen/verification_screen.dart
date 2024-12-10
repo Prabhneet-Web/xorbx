@@ -63,7 +63,7 @@ class VerificationScreen extends GetWidget<VerificationController> {
                         enableActiveFill: true,
                         keyboardType: TextInputType.number,
                         onChanged: (value) {
-                          controller.textFieldText.value = value;
+                          controller.otp.value = value;
                         },
                       ),
                       SizedBox(height: scale.getScaledHeight(10)),
@@ -78,22 +78,21 @@ class VerificationScreen extends GetWidget<VerificationController> {
                               color: Colors.white54,
                             ),
                           ),
-                          Text(
-                            "Request Again",
-                            style: AppStyle.style2.copyWith(
-                              fontSize: 12,
-                              color: Colors.white70,
+                          GestureDetector(
+                            onTap: controller.resendCode,
+                            child: Text(
+                              "Request Again",
+                              style: AppStyle.style2.copyWith(
+                                fontSize: 12,
+                                color: Colors.white70,
+                              ),
                             ),
                           ),
                         ],
                       ),
                       SizedBox(height: scale.getScaledHeight(150)),
                       ElevatedButton(
-                        onPressed: () {
-                          Get.toNamed(
-                            AppRoutes.multiFactorAuthenticationScreen,
-                          );
-                        },
+                        onPressed: controller.verifyOTP,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: ColorConstant.color4,
                           fixedSize:

@@ -76,7 +76,7 @@ class PhishingDetectionScreen extends GetWidget<PhishingDetectionController> {
                       ),
                     ),
                     Text(
-                      'Phishing Detection\nDashboard',
+                      'Phishing Detection',
                       style: AppStyle.style2,
                     ),
                     const Spacer(),

@@ -36,7 +36,7 @@ class HeatMapDetails extends StatelessWidget {
               children: [
                 TileLayer(
                   urlTemplate:
-                      'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png',
+                      'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}.png',
                   subdomains: const ['a', 'b', 'c', 'd'],
                   tileDisplay: const TileDisplay.instantaneous(),
                 ),

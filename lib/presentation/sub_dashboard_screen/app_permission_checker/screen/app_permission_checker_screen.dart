@@ -51,9 +51,8 @@ class AppPermissionCheckerScreen
                     ),
                     Column(
                       children: [
-                        SizedBox(height: scale.getScaledHeight(10)),
                         Text(
-                          'App Permission Checker\nDashboard',
+                          'App Permission Checker',
                           style: AppStyle.style2,
                         ),
                       ],

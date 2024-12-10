@@ -70,7 +70,7 @@ class UserNotificationScreen extends GetWidget<UserNotificationController> {
                       ),
                     ),
                     Text(
-                      'User Notifications\nDashboard',
+                      'User Notifications',
                       style: AppStyle.style2,
                     ),
                     const Spacer(),

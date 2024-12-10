@@ -64,23 +64,31 @@ void showPopup(BuildContext context) {
                           ),
                         ),
                         SizedBox(height: scale.getScaledHeight(10)),
-                        Row(
-                          children: [
-                            const Icon(
-                              Icons.settings,
-                              color: ColorConstant.color4,
-                              size: 18,
-                            ),
-                            SizedBox(width: scale.getScaledHeight(10)),
-                            Text(
-                              "Settings",
-                              style: AppStyle.style3.copyWith(
-                                fontSize: 12,
-                                color: Colors.white70,
-                                decoration: TextDecoration.none,
+                        GestureDetector(
+                          onTap: () {
+                            overlayEntry?.remove();
+                            Get.toNamed(
+                              AppRoutes.settings,
+                            );
+                          },
+                          child: Row(
+                            children: [
+                              const Icon(
+                                Icons.settings,
+                                color: ColorConstant.color4,
+                                size: 18,
                               ),
-                            ),
-                          ],
+                              SizedBox(width: scale.getScaledHeight(10)),
+                              Text(
+                                "Settings",
+                                style: AppStyle.style3.copyWith(
+                                  fontSize: 12,
+                                  color: Colors.white70,
+                                  decoration: TextDecoration.none,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),

@@ -1,41 +1,43 @@
+import 'package:email_auth/email_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xorbx/routes/app_routes.dart';
-import 'package:xorbx/constants/color_constants.dart';
 
 class VerificationController extends GetxController {
-  RxString textFieldText = ''.obs;
+  var otp = ''.obs;
+  var email = ''.obs;
+  EmailAuth emailAuth = EmailAuth(sessionName: "Sample session");
 
-  void verify() {
-    if (textFieldText.value == '1234') {
-      // Get.snackbar(
-      //   'Success',
-      //   'Verification successful!',
-      //   snackPosition: SnackPosition.BOTTOM,
-      //   backgroundColor: Colors.green,
-      //   colorText: Colors.white,
-      // );
+  void verifyOTP() async {
+    var res =
+        emailAuth.validateOtp(recipientMail: email.value, userOtp: otp.value);
+
+    if (res) {
+      Get.snackbar(
+        'Success',
+        'Verification successful!',
+        colorText: Colors.white,
+      );
       Get.toNamed(
-        AppRoutes.dashboardScreen,
+        AppRoutes.multiFactorAuthenticationScreen,
       );
     } else {
       Get.snackbar(
         'Error',
         'Invalid verification code. Please try again.',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red,
         colorText: Colors.white,
       );
     }
   }
 
-  void resendCode() {
-    Get.snackbar(
-      'Verification Code Sent',
-      'A new verification code has been sent to your email.',
-      snackPosition: SnackPosition.BOTTOM,
-      backgroundColor: ColorConstant.color1,
-      colorText: Colors.white,
-    );
+  void resendCode() async {
+    var res = await emailAuth.sendOtp(recipientMail: email.value, otpLength: 4);
+    if (res) {
+      Get.snackbar(
+        "Success",
+        "OTP sent",
+        colorText: Colors.white,
+      );
+    }
   }
 }
